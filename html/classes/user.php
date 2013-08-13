@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This is the user class that conaitsn, update & creates all the information needed for a user.
+ * This is the user class that update & creates all the information needed for a user.
  * This class requires the database class.
  */
 class User {
@@ -9,13 +9,9 @@ class User {
 
     private static $user = null;
     private static $users = null;
-    /* containts the prototype of a user (before update) so that we know what has changed when updating a user */
+    /*Connection object that contains the prototype of the object (before update) so that we know what has changed when updating.*/
     private static $rs = null;
 
-    /**
-     * This is the user class, it contains all the information that has been saved for a user in the database.
-     *
-     */
     public function __construct() {
         include_once(CLASSES_PATH.'db.php');
     }
@@ -40,10 +36,12 @@ class User {
             self::$rs = null;
             return false;
         }
-    } /**
-    * This function queries the database for all the pantries and returns them as a 2d array.
-    * @return Array An array of all the users and all of their information.
-    */
+    }
+
+    /**
+     * This function queries the database for all the pantries and returns them as a 2d array.
+     * @return Array An array of all the users and all of their information.
+     */
     public static function getAllUsers(){
          
         $sql = "SELECT * FROM User order by user_id";
@@ -82,9 +80,25 @@ class User {
      * This function gets the user based on a user_id and saves the information into the local $user variable. If no user is found, the user variable is set to null.
      * @param String $user_id The user_id of a user in the user table.
      */
-    public static function getUserId($user_id) {
+    public static function getUserByUserId($user_id) {
 
         $sql = "SELECT * FROM User WHERE user_id = '" . $user_id . "' LIMIT 1";
+
+        self::$rs = Data::DB()->Execute($sql);
+        if (!self::$rs->EOF) {
+            self::$user = self::$rs->fields;
+        } else {
+            self::$rs = null;
+        }
+    }
+
+    /**
+     * This function retrieves all of the projects accepted into the database associated with the user
+     * @param unknown $user_id the user_id for the user to get the projects related to
+     */
+    public static function getUserProjects($user_id) {
+
+        $sql = "SELECT * FROM Projects WHERE user_id = '" . $user_id . "'";
 
         self::$rs = Data::DB()->Execute($sql);
         if (!self::$rs->EOF) {
@@ -104,21 +118,21 @@ class User {
     }
 
     /**
-     * This function creates a user and inserts it into the database.
-     * @param String $email User email address.
-     * @param String $password User password (unhashed).
-     * @param Boolean $is_farmer 1 for farmer, 0 for regular user.
-     * @param Boolean $is_newsletter 1 for newsletter signup, otherwise 0.
-     * @param String $first_name User first name.
-     * @param String $last_name User last name.
-     * @param String $phone_number User phone number.
-     * @param String $address User address.
-     * @param String $city User city.
-     * @param String $postal_code User postal Code.
-     * @param String $provice_state Enum state or prove ('ON','AB','BC','NB','NL','NS','NU','PE','QC','SK','YT','MB','NT')
-     * @param String $socialNetworkName the name of the social media site that the account was created with
-     * @param Int $socialNetwork_id the user_id of the signed up account from the social media API
-     * @return User returns null if required fields are missing or if a record was not inserted.
+     * 
+     * @param unknown $userType the enumerated user class
+     * @param unknown $email
+     * @param unknown $password
+     * @param string $firstName
+     * @param string $lastName
+     * @param string $organization the organization the user is associated with/is a communal account for
+     * @param string $phoneNo 
+     * @param string $phoneNoExt
+     * @param string $address
+     * @param string $city
+     * @param string $postalCode
+     * @param string $province
+     * @param string $SSID the single sign on id needed for SSO login
+     * @return NULL
      */
     public static function createUser($userType,$email,$password,$firstName=null,$lastName=null,$organization=null,$phoneNo=null,$phoneNoExt=null,$address=null,$city=null,$postalCode=null,$province=null,$SSID=null) {
 
@@ -143,14 +157,14 @@ class User {
             self::$user['postal_code'] = $postalCode;
             self::$user['province'] = $provice;
             self::$user['SSID'] = $SSID;
-            
+
             $insertQuery = Data::DB()->GetInsertSQL(self::$rs, self::$user);
             self::$rs = Data::DB()->Execute($insertQuery);
 
             if($SSID != null)
             {
                 /*$sql = "SELECT user_id FROM User WHERE email=\"$email\"";
-                $new_user = Data::DB()->Execute($sql);
+                 $new_user = Data::DB()->Execute($sql);
 
                 $socialNetwork = array();
                 $socialNetwork['socialNetwork_id'] = $socialNetwork_id;
@@ -172,7 +186,7 @@ class User {
 
     private static function emptyUser() {
 
-        $sql = "SELECT * FROM User u WHERE u.user_id = '0' LIMIT 1";
+        $sql = "SELECT * FROM Users u WHERE u.user_id = '0' LIMIT 1";
 
         self::$rs = Data::DB()->Execute($sql);
         if (!self::$rs->EOF) {
