@@ -36,13 +36,13 @@ class Application {
      * @param unknown $constraints
      * @return NULL
      */
-    public static function createApplication($userid,$title,$projectContactFirst,$projectContactLast,$projectContactEmail,$projectContactPhone,
+    public static function createApplication($userId,$title,$projectContactFirst,$projectContactLast,$projectContactEmail,$projectContactPhone,
             $projectContactPhoneExt,$description,$location,$expectedTime,$motivation,$resources,$constraints){
 
         self::emptyApplication();
 
         self::$application['app_id'] = null;
-        self::$application['user_id'] = $userid;
+        self::$application['user_id'] = $userId;
         
         $insertQuery = Data::DB()->GetInsertSQL(self::$rs, self::$application);
         self::$rs = Data::DB()->Execute($insertQuery);
@@ -52,16 +52,16 @@ class Application {
         }
         
         $app_id = DB()->insertID(); //retrieves the last autoincremented field inserted
-        createProjectInfo($appId,null,$userid,$title,$projectContactFirst,$projectContactLast,$projectContactEmail,$projectContactPhone,
+        createProjectInfo($appId,null,$userId,$title,$projectContactFirst,$projectContactLast,$projectContactEmail,$projectContactPhone,
             $projectContactPhoneExt,$description,$location,$expectedTime,$motivation,$resources,$constraints);
     }
 
     /**
-     * fetches a empty application record from the database for createApplication to fill
+     * fetches a empty application record from the database for createApplication() to fill
      */
     public static function emptyApplication(){
         
-        $sql = "SELECT * FROM Application a WHERE a.app_id = '0' LIMIT 1";
+        $sql = "SELECT * FROM Applications a WHERE a.app_id = '0' LIMIT 1";
 
         self::$rs = Data::DB()->Execute($sql);
         if (!self::$rs->EOF) {

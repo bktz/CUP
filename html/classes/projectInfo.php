@@ -38,14 +38,14 @@ class ProjectInfo {
      * @param unknown $constraints
      * @return NULL
      */
-    public static function createProjectInfo($appId,$projectId,$userid,$title,$projectContactFirst,$projectContactLast,$projectContactEmail,$projectContactPhone,
+    public static function createProjectInfo($appId,$projectId,$userId,$title,$projectContactFirst,$projectContactLast,$projectContactEmail,$projectContactPhone,
             $projectContactPhoneExt,$description,$location,$expectedTime,$motivation,$resources,$constraints){
         
         self::emptyProjectInfo();
         
         self::$projectInfo['app_id'] = $app_id;
         self::$projectInfo['project_id'] = $project_id;
-        self::$projectInfo['user_id'] = $userid;
+        self::$projectInfo['user_id'] = $userId;
         self::$projectInfo['title'] = $title;
         self::$projectInfo['$project_contact_first'] = $projectContactFirst;
         self::$projectInfo['project_contact_last'] = $projectContactLast;
@@ -68,7 +68,7 @@ class ProjectInfo {
     }
 
     /**
-     * fetches a empty projectInfo record from the database for createProjectInfo to fill
+     * fetches a empty projectInfo record from the database for createProjectInfo() to fill
      */
     private static function emptyProjectInfo() {
     

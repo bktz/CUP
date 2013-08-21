@@ -13,7 +13,7 @@ class Project {
     /**
      * @var Array A group of one or more projects meeting search criteria all all their information.
      */
-    private static $project = null;
+    private static $projects = null;
 
     /**
      *  @var Object Connection object that contains the prototype of the object (before update) so that we know what has changed when updating.
@@ -23,6 +23,41 @@ class Project {
     public function __construct() {
     }
 
+    public static function createProject($userId,$appID,$title,$projectContactFirst,$projectContactLast,$projectContactEmail,$projectContactPhone,
+            $projectContactPhoneExt,$description,$location,$expectedTime,$motivation,$resources,$constraints){
+    
+        self::emptyApplication();
+    
+        self::$project['user_id'] = $userId;
+        self::$project['app_id'] = $appId;
+        
+        $insertQuery = Data::DB()->GetInsertSQL(self::$rs, self::$application);
+        self::$rs = Data::DB()->Execute($insertQuery);
+    
+        if(self::$rs == null){
+            return null;
+        }
+    
+        $projectId = DB()->insertID(); //retrieves the last autoincremented field inserted
+        createProjectInfo($appId,$projectId,$userid,$title,$projectContactFirst,$projectContactLast,$projectContactEmail,$projectContactPhone,
+        $projectContactPhoneExt,$description,$location,$expectedTime,$motivation,$resources,$constraints);
+    }
+    
+    /**
+     * fetches a empty project record from the database for createProject() to fill
+     */
+    public static function emptyApplication(){
+    
+        $sql = "SELECT * FROM Projects     p WHERE p.project_id = '0' LIMIT 1";
+    
+        self::$rs = Data::DB()->Execute($sql);
+        if (!self::$rs->EOF) {
+            self::$project = self::$rs->fields;
+        } else {
+            self::$rs = null;
+        }
+    }
+    
     /**
      * Retrieves a specific project from the database
      * @param unknown $project_id
