@@ -44,8 +44,14 @@
 		<!-- To make sticky footer need to wrap in a div -->
 		<div id="wrap">
 		<!-- Navbar -->
-		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+
+			<div class="container" style="height:100px;">
+				<a class="UoGLogo" href="{{{ URL::to('') }}}"><img src="/assets/img/template/UoG_Logo.gif"/></a>
+			</div>
+
+		<div class="navbar navbar-default navbar-inverse">
 			 <div class="container">
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -56,19 +62,16 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-						<li {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('') }}}">Home</a></li>
-					</ul>
-
-                    <ul class="nav navbar-nav pull-right">
+						<li {{ (Request::is('/') ? ' class="active"' : '') }} style="margin-right: 30px"><a href="{{{ URL::to('/') }}}">Home</a></li>
                         @if (Auth::check())
-                        @if (Auth::user()->hasRole('admin'))
-                        <li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
+                        	@if (Auth::user()->hasRole('admin'))
+                        	<li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
                         @endif
                         <li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>
                         <li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
                         @else
                         <li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">Login</a></li>
-                        <li {{ (Request::is('user/register') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
+                        <li {{ (Request::is('user/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
                         @endif
                     </ul>
 					<!-- ./ nav-collapse -->
