@@ -6,7 +6,7 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			Laravel 4 Sample Site
+			Learning Education Fund
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
@@ -46,7 +46,7 @@
 		<!-- Navbar -->
 
 			<div class="container" style="height:100px;">
-				<a class="UoGLogo" href="{{{ URL::to('') }}}"><img src="/assets/img/template/UoG_Logo.gif"/></a>
+				<a class="UoGLogo" href="{{{ URL::to('') }}}"><img alt="Homepage" src="/assets/img/template/UoG_Logo.gif"/></a>
 			</div>
 
 		<div class="navbar navbar-default navbar-inverse">
@@ -62,16 +62,18 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-						<li {{ (Request::is('/') ? ' class="active"' : '') }} style="margin-right: 30px"><a href="{{{ URL::to('/') }}}">Home</a></li>
+						<li class="home" {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('/') }}}">Home</a></li>
+						<li {{ (Request::is('project') ? ' class="active"' : '') }}><a href="{{{ URL::to('project') }}}">{{{ Lang::get('site.projects') }}}</a></li>
+						<li {{ (Request::is('project/apply') ? ' class="active"' : '') }}><a href="{{{ URL::to('project/apply') }}}">{{{ Lang::get('site.apply') }}}</a></li>
                         @if (Auth::check())
-                        	@if (Auth::user()->hasRole('admin'))
-                        	<li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
-                        @endif
-                        <li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>
-                        <li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
+                        	<li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>
+                        	<li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
+							@if (Auth::user()->hasRole('admin'))
+								<li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
+							@endif
                         @else
-                        <li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">Login</a></li>
-                        <li {{ (Request::is('user/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
+                        	<li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">Login</a></li>
+                        	<li {{ (Request::is('user/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
                         @endif
                     </ul>
 					<!-- ./ nav-collapse -->

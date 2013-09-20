@@ -126,9 +126,15 @@
     position: absolute;
     z-index: 2000;
     margin-top: -60px;
-    margin-left: 11px;
+    margin-left: -14px;
     color: #EDB613;
   }
+
+@media (min-width: @screen-sm) {
+  .UoGLogo {
+    margin-left: 11px;
+  }
+}
 
   .navbar {
     border: none;
@@ -139,8 +145,10 @@
   }
 
   /** Nav-bar Menu Items **/
-  .navbar-inverse .navbar-nav > li {
-    margin-right: 1px;
+  @media (min-width: @screen-sm) {
+    .navbar-inverse .navbar-nav .home {
+      margin-left: 95px;
+    }
   }
   .navbar-inverse .navbar-nav > li > a{
     color: #FFF;
