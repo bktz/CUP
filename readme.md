@@ -1,3 +1,37 @@
+#Learning Education Fund (LEF)
+##Here is a list of all the packages that LEF uses:
+
+* [Laravel 4 Generators](https://github.com/JeffreyWay/Laravel-4-Generators/blob/master/readme.md)
+    * This Laravel 4 package provides a variety of generators to speed up your development process.
+* [Presenter](https://github.com/robclancy/presenter)
+    * Presenter is a very simply class that overloads methods and variables so that you can add extra logic to your objects or arrays without adding view logic to areas like your models or controllers and also keeps any extra logic our of your views.
+* [Basset](http://jasonlewis.me/code/basset/4.0)
+    * Basset is a better asset management package for the Laravel framework.
+* [Carbon](https://github.com/briannesbitt/Carbon)
+    * A simple API extension for DateTime with PHP 5.3+.
+* [Ardent Documentation](https://github.com/laravelbook/ardent)
+    * Self-validating smart models for Laravel Framework 4's Eloquent O/RM.
+* [Zizaco/Entrust Documentation](https://github.com/zizaco/entrust)
+    * Entrust provides a flexible way to add Role-based Permissions to Laravel4.
+* [Zizaco/Confide Documentation](https://github.com/zizaco/confide)
+    * Confide is a authentication solution for Laravel4 made to eliminate repetitive tasks involving the management of users: Account creation, login, logout, confirmation by e-mail, password reset, etc.
+
+##To be added in the future:
+
+* [Laravel Console](https://github.com/Darsain/laravel-console)
+    * In-browser console for Laravel 4 PHP framework.
+* [Laravel MongoDB](https://github.com/jenssegers/Laravel-MongoDB)
+    * An Eloquent model and Query builder with support for MongoDB, inspired by LMongo, but using the original Laravel methods. This library extends the original Laravel classes, so it uses exactly the same methods.
+* [reCaptcha](https://github.com/greggilbert/recaptcha)
+    * A reCAPTCHA Validator for Laravel 4.
+
+##Some stackoverflow links that may be useful during development:
+
+* [Override Default Model Save Function](http://stackoverflow.com/questions/18199756/laravel-4-trouble-overriding-models-save-method)
+
+
+
+
 #Laravel 4 Bootstrap Starter Site
 `Version: 1.2.1 Stable` [![ProjectStatus](http://stillmaintained.com/andrew13/Laravel-4-Bootstrap-Starter-Site.png)](http://stillmaintained.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
 [![Build Status](https://api.travis-ci.org/Zizaco/confide.png)](https://travis-ci.org/andrew13/Laravel-4-Bootstrap-Starter-Site)
