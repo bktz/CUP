@@ -1,30 +1,18 @@
 <?php
 
-class BlogController extends BaseController {
-
-    /**
-     * Post Model
-     * @var Post
-     */
-    protected $post;
+class ProjectController extends BaseController {
 
     /**
      * User Model
      * @var User
      */
-    protected $user;
+    protected $project;
 
-    /**
-     * Inject the models.
-     * @param Post $post
-     * @param User $user
-     */
-    public function __construct(Post $post, User $user)
+	/**
+	 *
+	 */
+	public function __construct()
     {
-        parent::__construct();
-
-        $this->post = $post;
-        $this->user = $user;
     }
     
 	/**
@@ -35,10 +23,11 @@ class BlogController extends BaseController {
 	public function getIndex()
 	{
 		// Get all the blog posts
-		$posts = $this->post->orderBy('created_at', 'DESC')->paginate(10);
+		//$projects = $this->post->orderBy('created_at', 'DESC')->paginate(10);
+		$projects =  array();
 
 		// Show the page
-		return View::make('site/blog/index', compact('posts'));
+		return View::make('site/project/index', compact('projects'));
 	}
 
 	/**
