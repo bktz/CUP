@@ -4,8 +4,7 @@ class PermissionsTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('permissions')->delete();
-
+        //DB::table('permissions')->delete();
 
         $permissions = array(
             array(
