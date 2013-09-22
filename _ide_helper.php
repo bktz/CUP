@@ -2993,6 +2993,18 @@ class Eloquent extends Illuminate\Database\Eloquent\Model{
 	 }
 
 	/**
+	 * Chunk the results of the query.
+	 *
+	 * @param int  $count
+	 * @param callable  $callback
+	 * @return void
+	 * @static 
+	 */
+	 public static function chunk($count, $callback){
+		 Illuminate\Database\Eloquent\Builder::chunk($count, $callback);
+	 }
+
+	/**
 	 * Get an array with the values of a given column.
 	 *
 	 * @param string  $column

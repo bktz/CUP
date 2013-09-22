@@ -9,16 +9,26 @@ class RolesTableSeeder extends Seeder {
         $adminRole = new Role;
         $adminRole->name = 'admin';
         $adminRole->save();
-
-        $commentRole = new Role;
-        $commentRole->name = 'comment';
-        $commentRole->save();
-
         $user = User::where('username','=','admin')->first();
-        $user->attachRole( $adminRole );
-
+        $user->attachRole($adminRole);
+        
+        $BrokerRole = new Role;
+        $BrokerRole->name = 'broker';
+        $BrokerRole->save();
         $user = User::where('username','=','user')->first();
-        $user->attachRole( $commentRole );
+        $user->attachRole($BrokerRole);
+        
+        $campusRole = new Role;
+        $campusRole->name = 'campus';
+        $campusRole->save();
+        $user = User::where('username','=','user')->first();
+        $user->attachRole($campusRole);
+        
+        $communityRole = new Role;
+        $communityRole->name = 'community';
+        $communityRole->save();
+        $user = User::where('username','=','user')->first();
+        $user->attachRole($communityRole);
     }
 
 }
