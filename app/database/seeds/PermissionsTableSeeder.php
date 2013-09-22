@@ -33,7 +33,7 @@ class PermissionsTableSeeder extends Seeder {
             ),
             array(
                 'name'      => 'manage_brokers',
-                'display_name'      => 'Manage roles'
+                'display_name'      => 'Manage brokers'
             ),
         );
 
