@@ -18,14 +18,32 @@ class UsersTableSeeder extends Seeder {
                 'updated_at' => new DateTime,
             ),
             array(
-                'username'      => 'user',
-                'email'      => 'user@example.org',
-                'password'   => Hash::make('user'),
+                'username'      => 'broker',
+                'email'      => 'broker@example.org',
+                'password'   => Hash::make('broker'),
                 'confirmed'   => 1,
                 'confirmation_code' => md5(microtime().Config::get('app.key')),
                 'created_at' => new DateTime,
                 'updated_at' => new DateTime,
-            )
+            ),
+            array(
+                'username'      => 'campus',
+                'email'      => 'campus@example.org',
+                'password'   => Hash::make('campus'),
+                'confirmed'   => 1,
+                'confirmation_code' => md5(microtime().Config::get('app.key')),
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+           ),
+           array(
+                'username'      => 'community',
+                'email'      => 'community@example.org',
+                'password'   => Hash::make('community'),
+                'confirmed'   => 1,
+                'confirmation_code' => md5(microtime().Config::get('app.key')),
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime,
+           )
         );
 
         DB::table('users')->insert( $users );

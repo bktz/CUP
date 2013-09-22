@@ -10,27 +10,31 @@ class PermissionsTableSeeder extends Seeder {
         $permissions = array(
             array(
                 'name'      => 'create_project',
-                'display_name'      => 'create a project application'
+                'display_name'      => 'Create a project application'
             ),                
             array(
                 'name'      => 'apply_to_project',
-                'display_name'      => 'apply to take on a project'
+                'display_name'      => 'Apply to take on a project'
             ),
             array(
                 'name'      => 'manage_projects',
-                'display_name'      => 'manage projects'
+                'display_name'      => 'Manage projects'
             ),
             array(
                  'name'      => 'applications',
-                'display_name'      => 'view and give feedback on applications'
+                'display_name'      => 'View and give feedback on applications'
             ),                
             array(
                 'name'      => 'manage_users',
-                'display_name'      => 'manage users'
+                'display_name'      => 'Manage users'
             ),
             array(
                 'name'      => 'manage_roles',
-                'display_name'      => 'manage roles'
+                'display_name'      => 'Manage roles'
+            ),
+            array(
+                'name'      => 'manage_brokers',
+                'display_name'      => 'Manage roles'
             ),
         );
 
@@ -63,7 +67,11 @@ class PermissionsTableSeeder extends Seeder {
                 'role_id'      => 1,
                 'permission_id' => 6
             ),
-            array(//broker has them all too, but implicity can't manage other brokers
+            array(
+                'role_id'      => 1,
+                'permission_id' => 7
+            ),
+            array(//broker has them all too, but can't manage other brokers
                 'role_id'      => 2,
                 'permission_id' => 1
             ),

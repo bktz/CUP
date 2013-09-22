@@ -15,19 +15,19 @@ class RolesTableSeeder extends Seeder {
         $BrokerRole = new Role;
         $BrokerRole->name = 'broker';
         $BrokerRole->save();
-        $user = User::where('username','=','user')->first();
+        $user = User::where('username','=','broker')->first();
         $user->attachRole($BrokerRole);
         
         $campusRole = new Role;
         $campusRole->name = 'campus';
         $campusRole->save();
-        $user = User::where('username','=','user')->first();
+        $user = User::where('username','=','campus')->first();
         $user->attachRole($campusRole);
         
         $communityRole = new Role;
         $communityRole->name = 'community';
         $communityRole->save();
-        $user = User::where('username','=','user')->first();
+        $user = User::where('username','=','community')->first();
         $user->attachRole($communityRole);
     }
 
