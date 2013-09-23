@@ -5,6 +5,7 @@ class PermissionsTableSeeder extends Seeder {
     public function run()
     {
         //DB::table('permissions')->delete();
+		DB::statement('ALTER TABLE permissions AUTO_INCREMENT = 1');
 
         $permissions = array(
             array(

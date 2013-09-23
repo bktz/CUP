@@ -5,6 +5,7 @@ class RolesTableSeeder extends Seeder {
     public function run()
     {
         //DB::table('roles')->delete();
+		DB::statement('ALTER TABLE permissions AUTO_INCREMENT = 1');
 
         $adminRole = new Role;
         $adminRole->name = 'admin';
