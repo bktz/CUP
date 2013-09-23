@@ -36,6 +36,10 @@ class PermissionsTableSeeder extends Seeder {
                 'name'      => 'manage_brokers',
                 'display_name'      => 'Manage brokers'
             ),
+            array(
+                'name'      => 'manage_tags',
+                'display_name'      => 'Manage tags'
+            ),
         );
 
         DB::table('permissions')->insert( $permissions );
@@ -71,6 +75,10 @@ class PermissionsTableSeeder extends Seeder {
                 'role_id'      => 1,
                 'permission_id' => 7
             ),
+            array(
+                'role_id'      => 1,
+                'permission_id' => 8
+            ),                
             array(//broker has them all too, but can't manage other brokers
                 'role_id'      => 2,
                 'permission_id' => 1
@@ -94,6 +102,10 @@ class PermissionsTableSeeder extends Seeder {
             array(
                 'role_id'      => 2,
                 'permission_id' => 6
+            ),
+            array(
+                'role_id'      => 1,
+                'permission_id' => 8
             ),
             array(//campus accounts have limited permissions
                 'role_id'      => 3,
