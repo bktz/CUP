@@ -104,7 +104,7 @@ class PermissionsTableSeeder extends Seeder {
                 'permission_id' => 6
             ),
             array(
-                'role_id'      => 1,
+                'role_id'      => 2,
                 'permission_id' => 8
             ),
             array(//campus accounts have limited permissions
