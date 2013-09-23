@@ -90,9 +90,9 @@ Route::get('contact-us', function()
     return View::make('site/contact-us');
 });
 
-# Posts - Second to last set, match slug
-Route::get('{postSlug}', 'BlogController@getView');
-Route::post('{postSlug}', 'BlogController@postView');
+//# Posts - Second to last set, match slug
+//Route::get('{postSlug}', 'BlogController@getView');
+//Route::post('{postSlug}', 'BlogController@postView');
 
 # Index Page - Last route, no matches
 Route::get('/', array('before' => 'detectLang','uses' => 'ProjectController@getIndex'));

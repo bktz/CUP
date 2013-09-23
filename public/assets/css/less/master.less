@@ -122,6 +122,13 @@
 
 /* Nav bar */
 
+.navbar .divider-vertical {
+  height: 40px;
+  margin: 0 9px;
+  border-right: 1px solid #ffffff;
+  border-left: 1px solid #f2f2f2;
+}
+
   .UoGLogo{
     position: absolute;
     z-index: 2000;
@@ -130,11 +137,18 @@
     color: #EDB613;
   }
 
-@media (min-width: @screen-sm) {
-  .UoGLogo {
-    margin-left: 11px;
+  .menu-right{
+    float: none;
   }
-}
+
+  @media (min-width: @screen-sm) {
+    .UoGLogo {
+      margin-left: 11px;
+    }
+    .menu-right{
+      float: right !important;
+    }
+  }
 
   .navbar {
     border: none;
@@ -158,12 +172,22 @@
     background-color: #090909;
   }
 
-.navbar-inverse .navbar-nav > .active > a{
-  color: #fff;
-  background-color: #090909;
-}
+  .navbar-inverse .navbar-nav > .active > a{
+    color: #fff;
+    background-color: #090909;
+  }
 
-.navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #EDB613;
-  background-color: #090909;
-}
+  .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #EDB613;
+    background-color: #090909;
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    .container {
+      width: 914px;
+    }
+  }
+
+  .navbar-collapse {
+    max-height: 345px;
+  }

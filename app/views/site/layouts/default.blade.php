@@ -6,11 +6,11 @@
 		<meta charset="utf-8" />
 		<title>
 			@section('title')
-			Learning Education Fund
+			Community University Portal
 			@show
 		</title>
 		<meta name="keywords" content="your, awesome, keywords, here" />
-		<meta name="author" content="Jon Doe" />
+		<meta name="author" content="Benjamin Katznelson & Justin Tempelman" />
 		<meta name="description" content="Lorem ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei." />
 
 		<!-- Mobile Specific Metas
@@ -63,10 +63,14 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
 						<li class="home" {{ (Request::is('/') ? ' class="active"' : '') }}><a href="{{{ URL::to('/') }}}">Home</a></li>
-						<li {{ (Request::is('project') ? ' class="active"' : '') }}><a href="{{{ URL::to('project') }}}">{{{ Lang::get('site.projects') }}}</a></li>
-						<li {{ (Request::is('project/apply') ? ' class="active"' : '') }}><a href="{{{ URL::to('project/apply') }}}">{{{ Lang::get('site.apply') }}}</a></li>
-                        @if (Auth::check())
-                        	<li><a href="{{{ URL::to('user') }}}">Logged in as {{{ Auth::user()->username }}}</a></li>
+						<li {{ (Request::is('project') ? ' class="active"' : '') }}><a href="{{{ URL::to('project') }}}">View Projects</a></li>
+						<li {{ (Request::is('process') ? ' class="active"' : '') }}><a href="{{{ URL::to('process') }}}">The Process</a></li>
+						<li {{ (Request::is('project/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('project/create') }}}">Pitch An Idea</a></li>
+						<li {{ (Request::is('project/my') ? ' class="active"' : '') }}><a href="{{{ URL::to('project/my') }}}">My Projects</a></li>
+					</ul>
+					<ul class="nav navbar-nav menu-right">
+						@if (Auth::check())
+                        	<li  {{ (Request::is('user') ? ' class="active"' : '') }}><a href="{{{ URL::to('user') }}}">Profile</a></li>
                         	<li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
 							@if (Auth::user()->hasRole('admin'))
 								<li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
@@ -75,7 +79,7 @@
                         	<li {{ (Request::is('user/login') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/login') }}}">Login</a></li>
                         	<li {{ (Request::is('user/create') ? ' class="active"' : '') }}><a href="{{{ URL::to('user/create') }}}">{{{ Lang::get('site.sign_up') }}}</a></li>
                         @endif
-                    </ul>
+					</ul>
 					<!-- ./ nav-collapse -->
 				</div>
 			</div>
