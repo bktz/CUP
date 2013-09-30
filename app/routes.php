@@ -16,9 +16,8 @@
  *  ------------------------------------------
  */
 Route::model('user', 'User');
-Route::model('comment', 'Comment');
-Route::model('post', 'Post');
 Route::model('role', 'Role');
+Route::model('project', 'Project');
 
 /** ------------------------------------------
  *  Admin Routes
@@ -56,6 +55,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('/', 'AdminDashboardController');
 });
 
+
+
+/** ------------------------------------------
+ *  Project Routes
+ *  ------------------------------------------
+ */
+
+Route::group(array('prefix' => 'project'), function (){
+	Route::get('/my', 'ProjectController@getMy');
+});
+Route::resource('project', 'ProjectController');
 
 /** ------------------------------------------
  *  Frontend Routes
@@ -95,4 +105,4 @@ Route::get('contact-us', function()
 //Route::post('{postSlug}', 'BlogController@postView');
 
 # Index Page - Last route, no matches
-Route::get('/', array('before' => 'detectLang','uses' => 'ProjectController@getIndex'));
+Route::get('/', array('uses' => 'ProjectController@getIndex'));
