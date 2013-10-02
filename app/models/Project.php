@@ -1,10 +1,17 @@
 <?php
+use LaravelBook\Ardent\Ardent;
 
-class Project extends Eloquent{
+class Project extends Ardent{
+
+	// Table name
+	protected $table = 'projects';
+
 	protected $guarded = array();
 
+	// Validation rules
 	public static $rules = array(
-		'title'                    => 'required|between:1,255|unique:project,title',
+		'user_id'                  => 'required|exists:users,id',
+		'title'                    => 'required|between:1,255',
 		'contact_firstname'        => 'required|between:1,255',
 		'contact_lastname'         => 'required|between:1,255',
 		'contact_lastname'         => 'required|between:1,255',
@@ -21,5 +28,5 @@ class Project extends Eloquent{
 		'state'                    => 'required|integer|between:1,6', // enum('Application','Available','InProgress','Complete','Canceled','NA')
 	);
 
-	protected $table = 'projects';
+
 }
