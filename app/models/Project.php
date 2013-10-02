@@ -21,5 +21,5 @@ class Project extends Eloquent{
 		'state'                    => 'required|integer|between:1,6', // enum('Application','Available','InProgress','Complete','Canceled','NA')
 	);
 
-	protected $table = 'project';
+	protected $table = 'projects';
 }
