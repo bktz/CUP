@@ -2,7 +2,9 @@
 
 {{-- Content --}}
 @section('content')
-@foreach ($projects as $project)
-	<h4><strong>{{ String::title($project->title) }}</strong></h4>
-@endforeach
+    @if ($disabled == "disabled")
+        <h2>You must create an account to use this feature.</h3>
+    @else
+	    <h1>Projects</h1>            
+    @endif
 @stop

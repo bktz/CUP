@@ -8,9 +8,12 @@ class ProjectController extends BaseController {
      */
     protected $project;
 
-	public function __construct(Project $project){
+	public function __construct(Project $project)
+	{
+	    $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
 	}
-
+	
+	
 	/**
 	 * Website Index Page
 	 */
@@ -26,7 +29,12 @@ class ProjectController extends BaseController {
 	 */
 	public function getMy(){
 		$projects = Array();
-		return View::make('site/project/my', compact('projects'));
+		$disabled='';
+		if(Auth::check() == false)
+		{
+		    $disabled='disabled';
+		}
+		return View::make('site/project/my', compact('projects'),compact('disabled'));
 	}
 
 	/**
@@ -45,9 +53,12 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function create(){
-		$projects = Array();
-		return View::make('site/project/index', compact('projects'));
-
+	    $disabled='';
+	    if(Auth::check() == false)
+	    {
+	        $disabled='disabled';
+	    }
+		return View::make('site/project/create', compact('disabled'));
 	}
 
 	/**
@@ -57,8 +68,7 @@ class ProjectController extends BaseController {
 	 */
 	public function store(){
 
-		$projects = Array();
-		return View::make('site/project/index', compact('projects'));
+		return "test";
 	}
 
 	/**

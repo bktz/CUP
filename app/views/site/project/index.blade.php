@@ -2,8 +2,8 @@
 
 {{-- Content --}}
 @section('content')
-	@foreach ($projects as $project)
-		<h4><strong>{{ String::title($project->title) }}</strong></h4>
-	@endforeach
-	{{ $projects->links() }}
+	<p><h1>The Community University Portal</h1></p>
+	
+	The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph. 
+	
 @stop

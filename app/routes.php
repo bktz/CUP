@@ -100,6 +100,13 @@ Route::get('contact-us', function()
     return View::make('site/contact-us');
 });
 
+# The Process Static Page
+Route::get('process', function()
+{
+    // Return about us page
+    return View::make('site/process');
+});
+
 //# Posts - Second to last set, match slug
 //Route::get('{postSlug}', 'BlogController@getView');
 //Route::post('{postSlug}', 'BlogController@postView');

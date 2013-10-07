@@ -1,3 +1,5 @@
+.gitignore
+
 # Laravel
 /bootstrap/compiled.php
 /vendor
@@ -21,3 +23,8 @@ composer.lock
 
 # Packages
 app/_ide_helpers.php
+
+#eclipse stuff
+.buildpath
+.project
+.settings/
