@@ -16,7 +16,7 @@ class Project extends Ardent{
 		'contact_lastname'         => 'required|between:1,255',
 		'contact_lastname'         => 'required|between:1,255',
 		'contact_email'            => 'required|email|between:1,255',
-		'contact_phone_number'     => 'required|between:1,255',
+		'contact_phone_number'     => 'required|between:1,255|integer',
 		'contact_phone_number_ext' => 'between:1,255',
 		'description'              => 'required',
 		'location'                 => 'required|between:1,255',
@@ -27,6 +27,5 @@ class Project extends Ardent{
 		'constraints'              => 'required',
 		'state'                    => 'required|integer|between:1,6', // enum('Application','Available','InProgress','Complete','Canceled','NA')
 	);
-
 
 }

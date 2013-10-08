@@ -53,12 +53,7 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function create(){
-	    $disabled='';
-	    if(Auth::check() == false)
-	    {
-	        $disabled='disabled';
-	    }
-		return View::make('site/project/create', compact('disabled'));
+		return View::make('site/project/create');
 	}
 
 	/**
@@ -67,8 +62,33 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function store(){
+		$project = new Project();
+		$input = Input::all();
 
-		return "test";
+		$project->title = $input['title'];
+		$project->contact_firstname = $input['contact_firstname'];
+		$project->contact_lastname = $input['contact_lastname'];
+		$project->contact_email = $input['contact_email'];
+		$project->contact_phone_number = $input['contact_phone_number'];
+		$project->contact_phone_number_ext = $input['contact_phone_number_ext'];
+		$project->description = $input['description'];
+		$project->location = $input['location'];
+		$project->expected_time = $input['expected_time'];
+		$project->motivation =$input['motivation'];
+		$project->resources = $input['resources'];
+		$project->constraints = $input['constraints'];
+		$project->state = 1; //Application state
+		$project->user_id = Auth::user()->id;
+
+		$project->save();
+
+		if ($project->save()) {
+			return Redirect::to('/project/create')->with('info', 'The project application has been submitted.');
+		} else {
+			return Redirect::to('/project/create')->withErrors($project->errors());
+		}
+
+
 	}
 
 	/**

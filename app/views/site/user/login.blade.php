@@ -40,14 +40,6 @@
             </div>
         </div>
 
-        @if ( Session::get('error') )
-        <div class="alert alert-danger">{{ Session::get('error') }}</div>
-        @endif
-
-        @if ( Session::get('notice') )
-        <div class="alert">{{ Session::get('notice') }}</div>
-        @endif
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button tabindex="3" type="submit" class="btn btn-primary">{{ Lang::get('confide::confide.login.submit') }}</button>

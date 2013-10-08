@@ -77,6 +77,9 @@
  */
 
 /* Wrapper for page content to push down footer */
+body {
+  background: #f2f2f2;
+}
 #wrap {
     min-height: 100%;
     height: auto !important;
@@ -91,13 +94,14 @@
     height: 60px;
 }
 #footer {
-    background-color: #f5f5f5;
+    margin-top: 25px;
+    background-color: #D5D5D5;
 }
 
 
-#wrap > .container {
-    padding-top: 60px;
-}
+//#wrap > .container {
+//    padding-top: 60px;
+//}
 .container .credit {
     margin: 20px 0;
 }
@@ -129,13 +133,17 @@
   border-left: 1px solid #f2f2f2;
 }
 
-  .UoGLogo{
-    position: absolute;
-    z-index: 2000;
-    margin-top: -60px;
-    margin-left: -14px;
-    color: #EDB613;
-  }
+#logoContainer{
+  height: 100px;
+}
+
+.UoGLogo{
+  position: absolute;
+  z-index: 2000;
+//    margin-top: -60px;
+  margin-left: -14px;
+  color: #EDB613;
+}
 
   .menu-right{
     float: none;
@@ -182,9 +190,13 @@
     background-color: #090909;
   }
 
-  @media (min-width: 768px) and (max-width: 992px) {
-    .container {
-      width: 914px;
+  @media (min-width: 768px) and (max-width: 991px) {
+    .menu-right {
+      float: left!important;
+      margin-left: 95px;
+    }
+    #logoContainer{
+      height: 50px;
     }
   }
 

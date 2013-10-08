@@ -45,7 +45,7 @@
 		<div id="wrap">
 		<!-- Navbar -->
 
-			<div class="container" style="height:100px;">
+			<div id="logoContainer" class="container">
 				<a class="UoGLogo" href="{{{ URL::to('') }}}"><img alt="Homepage" src="/assets/img/template/UoG_Logo.gif"/></a>
 			</div>
 
