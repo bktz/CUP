@@ -1,12 +1,16 @@
 {
-    "name": "andrew13/Laravel-4-Bootstrap-Starter-Site",
-    "description": "Laravel 4 Starter Site",
-    "keywords": ["laravel","Starter Site"],
-    "license": "MIT",
+    "name": "Community-University-Portal",
+    "description": "The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph.",
+    "keywords": ["laravel","CUP", "UoGuelph"],
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License",
     "authors": [
         {
-            "name": "Andrew Elkins",
-            "homepage": "http://www.andrewelkins.com"
+            "name": "Benjamin Katznelson",
+            "homepage": "http://ca.linkedin.com/in/benikatznelson"
+        },
+        {
+            "name": "Justin Tempelman",
+            "homepage": "http://ca.linkedin.com/pub/justin-tempelman/63/a02/332"
         }
     ],
 	"require": {
