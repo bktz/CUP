@@ -14,7 +14,7 @@
 	<h4>Success</h4>
     @if(is_array($message))
         @foreach ($message as $m)
-            {{ $m }}
+            {{ $m."<br>" }}
         @endforeach
     @else
         {{ $message }}
@@ -28,7 +28,7 @@
 	<h4>Error</h4>
     @if(is_array($message))
     @foreach ($message as $m)
-    {{ $m }}
+    {{ $m."<br>" }}
     @endforeach
     @else
     {{ $message }}
@@ -42,7 +42,7 @@
 	<h4>Warning</h4>
     @if(is_array($message))
     @foreach ($message as $m)
-    {{ $m }}
+    {{ $m."<br>" }}
     @endforeach
     @else
     {{ $message }}
@@ -56,7 +56,7 @@
 	<h4>Info</h4>
     @if(is_array($message))
     @foreach ($message as $m)
-    {{ $m }}
+    {{ $m."<br>" }}
     @endforeach
     @else
     {{ $message }}

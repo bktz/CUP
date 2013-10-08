@@ -1,4 +1,24 @@
-#Learning Education Fund (LEF)
+#Community University Portal (CUP)
+
+The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph.
+
+##License
+
+[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License] (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
+
+[![License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)] (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
+
+###Authors
+* Benjamin Katznelson
+    * Website: http://ca.linkedin.com/in/benikatznelson
+* Justin Tempelm
+    * Website: http://ca.linkedin.com/pub/justin-tempelman/63/a02/332
+
+###Attribution
+
+1. All authors must be attributed in code and final products of derivative works.
+2. Links to all authors' respective websites must be included in code and final products of derivative works.
+
 ##Here is a list of all the packages that LEF uses:
 
 * [Laravel 4 Generators](https://github.com/JeffreyWay/Laravel-4-Generators/blob/master/readme.md)
@@ -28,9 +48,6 @@
 ##Some stackoverflow links that may be useful during development:
 
 * [Override Default Model Save Function](http://stackoverflow.com/questions/18199756/laravel-4-trouble-overriding-models-save-method)
-
-
-
 
 #Laravel 4 Bootstrap Starter Site
 `Version: 1.2.1 Stable` [![ProjectStatus](http://stillmaintained.com/andrew13/Laravel-4-Bootstrap-Starter-Site.png)](http://stillmaintained.com/andrew13/Laravel-4-Bootstrap-Starter-Site)

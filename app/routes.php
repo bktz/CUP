@@ -103,9 +103,24 @@ Route::get('contact-us', function()
 # The Process Static Page
 Route::get('process', function()
 {
-    // Return about us page
+    // Return process page
     return View::make('site/process');
 });
+
+# The Privacy Policy Static Page
+Route::get('privacy', function()
+{
+	// Return Privacy Policy page
+	return View::make('site/privacy');
+});
+
+# The License Static Page
+Route::get('license', function()
+{
+	// Return License page
+	return View::make('site/license');
+});
+
 
 //# Posts - Second to last set, match slug
 //Route::get('{postSlug}', 'BlogController@getView');
