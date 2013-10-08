@@ -80,8 +80,6 @@ class ProjectController extends BaseController {
 		$project->state = 1; //Application state
 		$project->user_id = Auth::user()->id;
 
-		$project->save();
-
 		if ($project->save()) {
 			return Redirect::to('/project/create')->with('info', 'The project application has been submitted.');
 		} else {
