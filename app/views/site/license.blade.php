@@ -2,12 +2,34 @@
 @section('content')
 
 <h1><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a></h1>
-<h3>Authors</h3>
+<h2>Authors</h2>
 <div class="well">
 
+	<h3>Founders</h3>
+	<div class="media">
+		<a class="pull-left" href="#">
+			<img class="media-object" src="http://placehold.it/100x100" alt="Dan Gillis Image">
+		</a>
+		<div class="media-body">
+			<h4>Dan Gillis</h4>
+			Website: <a href="#">#</a>
+		</div>
+	</div>
+
+	<div class="media">
+		<a class="pull-left" href="#">
+			<img class="media-object" src="http://placehold.it/100x100" alt="Daniel Williamson Image">
+		</a>
+		<div class="media-body">
+			<h4>Daniel Williamson</h4>
+			Website: <a href="#">#</a>
+		</div>
+	</div>
+
+	<h3>Developers</h3>
 	<div class="media">
 		<a class="pull-left" href="http://ca.linkedin.com/in/benikatznelson">
-			<img class="media-object" src="https://www.linkedin.com/mpr/pub/image-n-fQdjems1B1IIPQq7H8-MoAzDIXlIb32ePqlF4gzsbJcDoIn-fqIQ3mz7yrzG7xcYFF/benjamin-katznelson.jpg" alt="Benjamin Katznelson LinkedIn Image">
+			<img class="media-object" src="https://www.linkedin.com/mpr/pub/image-n-fQdjems1B1IIPQq7H8-MoAzDIXlIb32ePqlF4gzsbJcDoIn-fqIQ3mz7yrzG7xcYFF/benjamin-katznelson.jpg" alt="Benjamin Katznelson Image">
 		</a>
 		<div class="media-body">
 			<h4>Benjamin Katznelson</h4>
@@ -17,7 +39,7 @@
 
 	<div class="media">
 		<a class="pull-left" href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">
-			<img class="media-object" src="http://m.c.lnkd.licdn.com/mpr/pub/image-MDYgfWV7M2cNV5EZ9JD8RXVFFiXgGtKrwIY8CBJ7z9XgaW_pYDY8CV0IK9Jgoljvz4M/justin-tempelman.jpg" alt="Justin Tempelman LinkedIn Image">
+			<img class="media-object" src="http://m.c.lnkd.licdn.com/mpr/pub/image-MDYgfWV7M2cNV5EZ9JD8RXVFFiXgGtKrwIY8CBJ7z9XgaW_pYDY8CV0IK9Jgoljvz4M/justin-tempelman.jpg" alt="Justin Tempelman Image">
 		</a>
 		<div class="media-body">
 			<h4>Justin Tempelm</h4>
@@ -25,8 +47,9 @@
 		</div>
 	</div>
 
+
 </div>
-<h3>Attribution</h3>
+<h2>Attribution</h2>
 <div class="well">
 	<ol>
 		<li>All authors must be attributed in code and final products of derivative works.</li>

@@ -98,7 +98,7 @@
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<button tabindex="3" type="submit" class="btn btn-primary">Submit!</button>
+				<button tabindex="3" type="submit" class="btn btn-primary btn-lg">Submit!</button>
 			</div>
 		</div>
 		@endif
