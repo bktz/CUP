@@ -104,11 +104,15 @@
 		<!-- ./wrap -->
 
 
-	    <div id="footer">
-	      <div class="container">
-	        <p class="muted credit">Laravel 4 Starter Site on <a href="https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site">Github</a>.</p>
-	      </div>
-	    </div>
+	<div id="footer">
+		<div class="container">
+			<p class="muted credit">Copyright &copy; 2013 <a target="_blank" href="http://ca.linkedin.com/in/benikatznelson">Benjamin Katznelson</a> & <a target="_blank" href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">Justin Tempelman</a>
+				<block class="pull-right">
+					<a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">License</a>
+				</block>
+			</p>
+		</div>
+	</div>
 
 		<!-- Javascripts
 		================================================== -->
