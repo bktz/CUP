@@ -4,15 +4,15 @@ The Community University Portal provides a resource for community-university pro
 
 ##License
 
-[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License] (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
+[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
 
-[![License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)] (http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
+[![License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
 
 ###Authors
 * Benjamin Katznelson
-    * Website: http://ca.linkedin.com/in/benikatznelson
+    * Website: [http://ca.linkedin.com/in/benikatznelson](http://ca.linkedin.com/in/benikatznelson)
 * Justin Tempelm
-    * Website: http://ca.linkedin.com/pub/justin-tempelman/63/a02/332
+    * Website: [http://ca.linkedin.com/pub/justin-tempelman/63/a02/332](http://ca.linkedin.com/pub/justin-tempelman/63/a02/332)
 
 ###Attribution
 
