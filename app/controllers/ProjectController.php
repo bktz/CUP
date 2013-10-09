@@ -28,13 +28,9 @@ class ProjectController extends BaseController {
 	 * My Projects Page
 	 */
 	public function getMy(){
-		$projects = Array();
-		$disabled='';
-		if(Auth::check() == false)
-		{
-		    $disabled='disabled';
-		}
-		return View::make('site/project/my', compact('projects'),compact('disabled'));
+	    $userId = Auth::user()->id;
+	    $projects = Project::where('user_id', '=', $userId)->paginate(5);
+		return View::make('site/project/my', compact('projects'));
 	}
 
 	/**
