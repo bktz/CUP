@@ -21,7 +21,6 @@ class AdminTagController extends BaseController{
 	public function index(){
 
 		$tags = Tag::orderby('tag')->paginate(25);
-
 		return View::make('admin/tag/index', compact('tags'));
 	}
 
@@ -31,7 +30,7 @@ class AdminTagController extends BaseController{
 	 * @return Response
 	 */
 	public function create(){
-		return View::make('admin/dashboard');
+		return Redirect::to('/admin/tag');
 	}
 
 	/**
@@ -40,7 +39,17 @@ class AdminTagController extends BaseController{
 	 * @return Response
 	 */
 	public function store(){
-		return View::make('admin/dashboard');
+
+		$input = Input::all();
+
+		$tag = new Tag();
+		$tag->tag = $input['tag'];
+
+		if ($tag->save()) {
+			return Redirect::to('/admin/tag')->with('info', 'The new tag has been created.');
+		} else {
+			return Redirect::to('/admin/tag')->withErrors($tag->errors());
+		}
 	}
 
 	/**
@@ -51,7 +60,7 @@ class AdminTagController extends BaseController{
 	 * @return Response
 	 */
 	public function show($id){
-		return View::make('admin/dashboard');
+		return Redirect::to('/admin/tag');
 	}
 
 	/**
@@ -62,7 +71,7 @@ class AdminTagController extends BaseController{
 	 * @return Response
 	 */
 	public function edit($id){
-		return View::make('admin/dashboard');
+		return Redirect::to('/admin/tag');
 	}
 
 	/**
@@ -73,7 +82,7 @@ class AdminTagController extends BaseController{
 	 * @return Response
 	 */
 	public function update($id){
-		return View::make('admin/dashboard');
+		return Redirect::to('/admin/tag');
 	}
 
 	/**
@@ -84,7 +93,17 @@ class AdminTagController extends BaseController{
 	 * @return Response
 	 */
 	public function destroy($id){
-		return View::make('admin/dashboard');
+
+		// TODO fix this (still not done and not tested)
+
+		$affectedRows = Tag::destroy($id);
+
+		if ($affectedRows == 99) {
+			return Redirect::to('/admin/tag')->with('info', 'The tag has been deleted.');
+		} else {
+			MessageBag::add('error', 'Unable to delete the tag.');
+			return Redirect::to('/admin/tag');
+		}
 	}
 
 }

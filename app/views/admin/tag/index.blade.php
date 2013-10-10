@@ -1,13 +1,15 @@
 @extends('admin.layouts.default')
 
-
+{{-- Content --}}
+@section('content')
 <div class="container">
 	<h1>Tag Management</h1>
 
 	<div class="panel panel-primary">
 		<div class="panel-heading">Create New Tag</div>
 		<div class="panel-body">
-			<form class="form-horizontal" method="POST" action="#" accept-charset="UTF-8">
+			<form class="form-horizontal" method="POST" action="{{{ URL::to('admin/tag') }}}" accept-charset="UTF-8">
+				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 				<fieldset>
 					<div class="form-group">
 					<label class="col-md-1 control-label" for="title">Tag</label>
@@ -50,3 +52,5 @@
 <div class="text-center">
 	{{$tags->links()}}
 </div>
+
+@stop
