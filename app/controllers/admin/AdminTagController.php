@@ -1,16 +1,16 @@
 <?php
 
-class AdminTagController extends BaseController {
+class AdminTagController extends BaseController{
 
-    /**
-     * Project Model
-     * @var User
-     */
-    protected $project;
+	/**
+	 * Project Model
+	 *
+	 * @var User
+	 */
+	protected $project;
 
-	public function __construct(Project $project)
-	{
-	    $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
+	public function __construct(Project $project){
+		$this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
 	}
 
 	/**
@@ -19,7 +19,10 @@ class AdminTagController extends BaseController {
 	 * @return Response
 	 */
 	public function index(){
-		return View::make('admin/dashboard');
+
+		$tags = Tag::orderby('tag')->paginate(25);
+
+		return View::make('admin/tag/index', compact('tags'));
 	}
 
 	/**
@@ -43,7 +46,8 @@ class AdminTagController extends BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 *
 	 * @return Response
 	 */
 	public function show($id){
@@ -53,7 +57,8 @@ class AdminTagController extends BaseController {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 *
 	 * @return Response
 	 */
 	public function edit($id){
@@ -63,7 +68,8 @@ class AdminTagController extends BaseController {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 *
 	 * @return Response
 	 */
 	public function update($id){
@@ -73,7 +79,8 @@ class AdminTagController extends BaseController {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
+	 *
 	 * @return Response
 	 */
 	public function destroy($id){
