@@ -15,15 +15,13 @@
 
 // Core variables and mixins
 @import "../../../../vendor/twbs/bootstrap/less/variables.less";
-@import "variables-custom.less"; // Modify this for custom colors, font-sizes, etc
-
+@import "variables-custom.less";
+  // Modify this for custom colors, font-sizes, etc
 @import "../../../../vendor/twbs/bootstrap/less/mixins.less";
-
-// Reset
+  // Reset
 @import "../../../../vendor/twbs/bootstrap/less/normalize.less";
 @import "../../../../vendor/twbs/bootstrap/less/print.less";
-
-// Core CSS
+  // Core CSS
 @import "../../../../vendor/twbs/bootstrap/less/scaffolding.less";
 @import "../../../../vendor/twbs/bootstrap/less/type.less";
 @import "../../../../vendor/twbs/bootstrap/less/code.less";
@@ -31,8 +29,7 @@
 @import "../../../../vendor/twbs/bootstrap/less/tables.less";
 @import "../../../../vendor/twbs/bootstrap/less/forms.less";
 @import "../../../../vendor/twbs/bootstrap/less/buttons.less";
-
-// Components
+  // Components
 @import "../../../../vendor/twbs/bootstrap/less/component-animations.less";
 @import "../../../../vendor/twbs/bootstrap/less/glyphicons.less";
 @import "../../../../vendor/twbs/bootstrap/less/dropdowns.less";
@@ -54,15 +51,12 @@
 @import "../../../../vendor/twbs/bootstrap/less/panels.less";
 @import "../../../../vendor/twbs/bootstrap/less/wells.less";
 @import "../../../../vendor/twbs/bootstrap/less/close.less";
-
-
-// Components w/ JavaScript
+  // Components w/ JavaScript
 @import "../../../../vendor/twbs/bootstrap/less/modals.less";
 @import "../../../../vendor/twbs/bootstrap/less/tooltip.less";
 @import "../../../../vendor/twbs/bootstrap/less/popovers.less";
 @import "../../../../vendor/twbs/bootstrap/less/carousel.less";
-
-// Utility classes
+  // Utility classes
 @import "../../../../vendor/twbs/bootstrap/less/utilities.less";
 @import "../../../../vendor/twbs/bootstrap/less/responsive-utilities.less";
 
@@ -80,30 +74,31 @@
 body {
   background: #f2f2f2;
 }
+
 #wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    /* Negative indent footer by it's height */
-    margin: 0 auto -60px;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -60px;
 }
 
 /* Set the fixed height of the footer here */
 #push,
 #footer {
-    height: 60px;
-}
-#footer {
-    margin-top: 25px;
-    background-color: #D5D5D5;
+  height: 60px;
 }
 
+#footer {
+  margin-top: 25px;
+  background-color: #D5D5D5;
+}
 
 //#wrap > .container {
 //    padding-top: 60px;
 //}
 .container .credit {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 /*!
@@ -112,19 +107,23 @@ body {
  */
 
 .btn-cancel {
-	.btn;
-	.btn-warning;
+  .btn;
+  .btn-warning;
 }
 
 .table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 .pagination {
-    margin: 0;
+  margin: 0;
 }
 
-/* Nav bar */
+/** Nav bar **/
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+// -------------------------------------------------------------
 
 .navbar .divider-vertical {
   height: 40px;
@@ -133,73 +132,86 @@ body {
   border-left: 1px solid #f2f2f2;
 }
 
-#logoContainer{
+#logoContainer {
   height: 100px;
 }
 
-.UoGLogo{
+.UoGLogo {
   position: absolute;
   z-index: 2000;
-//    margin-top: -60px;
   margin-left: -14px;
   color: #EDB613;
 }
 
-  .menu-right{
-    float: none;
+.menu-right {
+  float: none;
+}
+
+@media (min-width: @screen-sm) {
+  .UoGLogo {
+    margin-left: 11px;
   }
 
-  @media (min-width: @screen-sm) {
-    .UoGLogo {
-      margin-left: 11px;
-    }
-    .menu-right{
-      float: right !important;
-    }
+  .menu-right {
+    float: right !important;
+  }
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar-inverse {
+  background-color: rgb(55, 125, 141);
+}
+
+/** Nav-bar Menu Items **/
+@media (min-width: @screen-sm) {
+  .navbar-inverse .navbar-nav .home {
+    margin-left: 95px;
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #FFF;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #EDB613;
+  background-color: #090909;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  color: #fff;
+  background-color: #090909;
+}
+
+.navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  color: #EDB613;
+  background-color: #090909;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .menu-right {
+    float: left !important;
+    margin-left: 95px;
   }
 
-  .navbar {
-    border: none;
+  #logoContainer {
+    height: 50px;
   }
+}
 
-  .navbar-inverse  {
-    background-color: rgb(55, 125, 141);
-  }
+.navbar-collapse {
+  max-height: 345px;
+}
 
-  /** Nav-bar Menu Items **/
-  @media (min-width: @screen-sm) {
-    .navbar-inverse .navbar-nav .home {
-      margin-left: 95px;
-    }
-  }
-  .navbar-inverse .navbar-nav > li > a{
-    color: #FFF;
-  }
-  .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
-    color: #EDB613;
-    background-color: #090909;
-  }
+/** Custom Css **/
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+// -------------------------------------------------------------
 
-  .navbar-inverse .navbar-nav > .active > a{
-    color: #fff;
-    background-color: #090909;
-  }
-
-  .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-    color: #EDB613;
-    background-color: #090909;
-  }
-
-  @media (min-width: 768px) and (max-width: 991px) {
-    .menu-right {
-      float: left!important;
-      margin-left: 95px;
-    }
-    #logoContainer{
-      height: 50px;
-    }
-  }
-
-  .navbar-collapse {
-    max-height: 345px;
-  }
+.well h1, h2, h3, h4, h5, h6{
+  margin-top: 0px;
+}

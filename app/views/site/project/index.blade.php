@@ -2,8 +2,28 @@
 
 {{-- Content --}}
 @section('content')
-	<p><h1>The Community University Portal</h1></p>
-	
-	The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph. 
-	
+<h1>View Projects</h1>
+<div class="container">
+	@foreach ($projects as $project)
+	<div class="well">
+		<dl class="dl-horizontal">
+			<dt></dt>
+			<dd><h3>{{ String::title($project->title) }}</h3></dd>
+			<dt>Project State</dt>
+			<dd>{{ String::title($project->state) }}</dd>
+			<p />
+			<dt>Description</dt>
+			<dd>{{ String::title(Str::limit($project->description, 750)) }}</dd>
+			<p />
+			<p />
+			<dd><a href={{ '"/project/'.$project->id.'"' }}><button type="button" class="btn btn-lg btn-primary">View Project</button></a></dd>
+		</dl>
+
+	</div>
+	@endforeach
+</div>
+<div class="text-center">
+	{{$projects->links()}}
+</div>
+
 @stop

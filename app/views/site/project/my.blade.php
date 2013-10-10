@@ -2,30 +2,38 @@
 
 {{-- Content --}}
 @section('content')
-    <h1>Projects</h1>
-    @if (!Auth::check())
-	    <div class="alert alert-danger"><b>WARNING! </b>You must create an account to access this feature.</div>
+	<h1>My Projects</h1>
+	@if (!Auth::check())
+		<div class="alert alert-info alert-block">You must create an account to access this feature.</div>
 	@else
-        <div class="container">
-            @foreach ($projects as $project)
-            <div class="well">                 
-                 <dl class="dl-horizontal">
-                     <dt><a href={{ '"/project/'.$project->id.'"' }}> <h3>{{ $project->title }}</h3></a></dt>
-                     <dd></dd>             
-                     <dt>Description</dt>
-                     <dd>{{$project->description}}</dd>
-                     <dt>Project Champion</dt>
-                     <dd>{{$project->contact_firstname}} {{$project->contact_lastname}}</dd>
-                     <dt>Contact Email</dt>
-                     <dd><a href={{'"mailto:'.$project->contact_email.'"'}}>{{$project->contact_email}}</a></dd>
-                     <dt>Contact Phone</dt>
-                     <dd>{{$project->contact_phone_number}} @if($project->contact_phone_number_ext != '') Ext. {{$project->contact_phone_number_ext}} @endif</dd>
-                     <dt>Project State</dt>
-                     <dd>{{$project->state}}</dd>
-                 </dl>
-            </div>             
-            @endforeach
-        </div>
+		<div class="container">
+			@foreach ($projects as $project)
+			<div class="well">
+				 <dl class="dl-horizontal">
+					 <dt></dt>
+					 <dd><h3>{{ String::title($project->title) }}</h3></dd>
+					 <dt>Project State</dt>
+					 <dd>{{ String::title($project->state) }}</dd>
+					 <p />
+					 <dt>Description</dt>
+					 <dd>{{ String::title(Str::limit($project->description, 750)) }}</dd>
+					 <p />
+					 <dt>Contact Info</dt>
+					 <dd>{{ String::title($project->contact_firstname) }} {{ String::title($project->contact_lastname) }}</dd>
+					 <dt></dt>
+					 <dd><a href={{'"mailto:'.$project->contact_email.'"'}}>{{$project->contact_email}}</a></dd>
+					 <dt></dt>
+					 <dd>{{$project->contact_phone_number}} @if($project->contact_phone_number_ext != '') Ext. {{$project->contact_phone_number_ext}} @endif</dd>
+					 <p />
+					 <p />
+					 <dd><a href={{ '"/project/'.$project->id.'"' }}><button type="button" class="btn btn-lg btn-primary">View Project</button></a></dd>
+				 </dl>
+
+			</div>
+			@endforeach
+		</div>
+		<div class="text-center">
+			{{$projects->links()}}
+		</div>
 	@endif
-	{{$projects->links()}}
 @stop

@@ -2,13 +2,11 @@
 
 {{-- Content --}}
 @section('content')
+<h1>Pitch An Idea To The Community University Portal</h1>
 <form class="form-horizontal" method="POST" action="{{ URL::to('project') }}" accept-charset="UTF-8">
 	<fieldset>
-
-		<h1>Pitch An Idea To The Community University Portal</h1>
-
 		@if (!Auth::check())
-			<div class="alert alert-danger"><b>WARNING! </b>You must create an account to access this feature.</div>
+			<div class="alert alert-info alert-block">You must create an account to access this feature.</div>
 		@endif
 
 		<div {{ ($errors->has('title')) ? 'class="form-group has-error"' : 'class="form-group"' }}>
@@ -17,8 +15,8 @@
 				<input class="form-control" required tabindex="1" placeholder="My awesome project title" type="text" name="title" id="title" value="{{ Input::old('title') }}" {{ (Auth::check() ? '' : 'disabled') }} >
 			</div>
 		</div>
+		<h4>Who will be the project champion?</h4>
 		<div {{ ($errors->has('contact_firstname')) ? 'class="form-group has-error"' : 'class="form-group"' }}>
-			<h4>Who will be the project champion?</h4>
 			<label class="col-md-2 control-label" for="contact_firstname">First Name</label>
 			<div class="col-md-10">
 				<input class="form-control" required tabindex="1" placeholder="John" type="text" name="contact_firstname" id="contact_firstname" value="{{ Input::old('contact_firstname') }}" {{ (Auth::check() ? '' : 'disabled') }} >
@@ -45,7 +43,7 @@
 		<div {{ ($errors->has('contact_phone_number_ext')) ? 'class="form-group has-error"' : 'class="form-group"' }}>
 			<label class="col-md-2 control-label" for="contact_phone_number_ext">Extension</label>
 			<div class="col-md-10">
-				<input class="form-control" required tabindex="1" type="text" name="contact_phone_number_ext" id="contact_phone_number_ext" value="{{ Input::old('contact_phone_number_ext') }}" {{ (Auth::check() ? '' : 'disabled') }} >
+				<input class="form-control" tabindex="1" type="text" name="contact_phone_number_ext" id="contact_phone_number_ext" value="{{ Input::old('contact_phone_number_ext') }}" {{ (Auth::check() ? '' : 'disabled') }} >
 			</div>
 		</div>
 		<h4>Tell us more about your project</h4>
@@ -93,14 +91,40 @@
 			</div>
 		</div>
 
+		<h4>Project Goals</h4>
+		<div id="goals">
+			<div class="form-group">
+				<label class="col-md-2 control-label">Goal</label>
+				<div class="col-md-10">
+					<input class="form-control" tabindex="1" placeholder="Project Goal" type="text" name="goals[]" {{ (Auth::check() ? '' : 'disabled') }} / >
+				</div>
+			</div>
+		</div>
+
 		@if (Auth::check())
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<button tabindex="3" type="button" id="goal_button" val="2" onclick="add_goal();" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-plus-sign"></span> Add Another Goal</button>
+			</div>
+		</div>
+
+
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<button tabindex="3" type="submit" class="btn btn-primary btn-lg">Submit!</button>
+				<button tabindex="3" type="submit" class="btn btn-success btn-lg">Submit</button>
 			</div>
 		</div>
+
+		<script>
+			function add_goal(){
+				var goal = '<div class="form-group"><label class="col-md-2 control-label">Goal</label><div class="col-md-10">	<input class="form-control" tabindex="1" placeholder="Project Goal" type="text" name="goals[]" / >	</div></div>';
+				$("#goals").append(goal);
+			}
+		</script>
+
+
 		@endif
 
 	</fieldset>

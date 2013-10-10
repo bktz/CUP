@@ -16,8 +16,8 @@ class Project extends Ardent{
 		'contact_lastname'         => 'required|between:1,255',
 		'contact_lastname'         => 'required|between:1,255',
 		'contact_email'            => 'required|email|between:1,255',
-		'contact_phone_number'     => 'required|between:1,255|integer',
-		'contact_phone_number_ext' => 'between:1,255',
+		'contact_phone_number'     => 'required|integer',
+		'contact_phone_number_ext' => 'integer',
 		'description'              => 'required',
 		'location'                 => 'required|between:1,255',
 		'expected_time'            => 'required|integer|between:1,6', //enum('lessMonth','aMonth','fourMonths','eightMonths','aYear','moreYear')

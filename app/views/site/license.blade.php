@@ -5,7 +5,29 @@
 <h2>Authors</h2>
 <div class="well">
 
-	<h3>Founders</h3>
+	<h3>Developers</h3>
+	<div class="media">
+		<a class="pull-left" href="http://ca.linkedin.com/in/benikatznelson">
+			<img class="media-object" src="https://www.linkedin.com/mpr/pub/image-n-fQdjems1B1IIPQq7H8-MoAzDIXlIb32ePqlF4gzsbJcDoIn-fqIQ3mz7yrzG7xcYFF/benjamin-katznelson.jpg" alt="Benjamin Katznelson Image">
+		</a>
+		<div class="media-body">
+			<h4>Benjamin Katznelson</h4>
+			Website: <a href="http://ca.linkedin.com/in/benikatznelson">http://ca.linkedin.com/in/benikatznelson</a>
+		</div>
+	</div>
+
+	<div class="media">
+		<a class="pull-left" href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">
+			<img class="media-object" src="http://m.c.lnkd.licdn.com/mpr/pub/image-MDYgfWV7M2cNV5EZ9JD8RXVFFiXgGtKrwIY8CBJ7z9XgaW_pYDY8CV0IK9Jgoljvz4M/justin-tempelman.jpg" alt="Justin Tempelman Image">
+		</a>
+		<div class="media-body">
+			<h4>Justin Tempelm</h4>
+			Website: <a href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">http://ca.linkedin.com/pub/justin-tempelman/63/a02/332</a>
+		</div>
+	</div>
+
+	<br />
+	<h3>Contributors</h3>
 	<div class="media">
 		<a class="pull-left" href="#">
 			<img class="media-object" src="http://placehold.it/100x100" alt="Dan Gillis Image">
@@ -26,24 +48,23 @@
 		</div>
 	</div>
 
-	<h3>Developers</h3>
 	<div class="media">
-		<a class="pull-left" href="http://ca.linkedin.com/in/benikatznelson">
-			<img class="media-object" src="https://www.linkedin.com/mpr/pub/image-n-fQdjems1B1IIPQq7H8-MoAzDIXlIb32ePqlF4gzsbJcDoIn-fqIQ3mz7yrzG7xcYFF/benjamin-katznelson.jpg" alt="Benjamin Katznelson Image">
+		<a class="pull-left" href="#">
+			<img class="media-object" src="http://placehold.it/100x100" alt="Daniel Williamson Image">
 		</a>
 		<div class="media-body">
-			<h4>Benjamin Katznelson</h4>
-			Website: <a href="http://ca.linkedin.com/in/benikatznelson">http://ca.linkedin.com/in/benikatznelson</a>
+			<h4>Research Shop #1</h4>
+			Website: <a href="#">#</a>
 		</div>
 	</div>
 
 	<div class="media">
-		<a class="pull-left" href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">
-			<img class="media-object" src="http://m.c.lnkd.licdn.com/mpr/pub/image-MDYgfWV7M2cNV5EZ9JD8RXVFFiXgGtKrwIY8CBJ7z9XgaW_pYDY8CV0IK9Jgoljvz4M/justin-tempelman.jpg" alt="Justin Tempelman Image">
+		<a class="pull-left" href="#">
+			<img class="media-object" src="http://placehold.it/100x100" alt="Daniel Williamson Image">
 		</a>
 		<div class="media-body">
-			<h4>Justin Tempelm</h4>
-			Website: <a href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">http://ca.linkedin.com/pub/justin-tempelman/63/a02/332</a>
+			<h4>Research Shop #2</h4>
+			Website: <a href="#">#</a>
 		</div>
 	</div>
 

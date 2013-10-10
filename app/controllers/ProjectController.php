@@ -12,25 +12,20 @@ class ProjectController extends BaseController {
 	{
 	    $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
 	}
-	
-	
-	/**
-	 * Website Index Page
-	 */
-	public function getIndex() {
-		$projects = Project::paginate(10);
-
-		// Show the page
-		return View::make('site/project/index', compact('projects'));
-	}
 
 	/**
 	 * My Projects Page
 	 */
 	public function getMy(){
-	    $userId = Auth::user()->id;
-	    $projects = Project::where('user_id', '=', $userId)->paginate(5);
-		return View::make('site/project/my', compact('projects'));
+		if(Auth::check()){
+			$user_id = Auth::user()->id;
+			$projects = Project::where('user_id', '=', $user_id)->orderBy('updated_at', 'DESC')->paginate(5);
+			return View::make('site/project/my', compact('projects'));
+		}
+		else{
+			return View::make('site/project/my')->with('info', 'You must create an account to access this feature.');
+		}
+
 	}
 
 	/**
@@ -39,7 +34,7 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function index(){
-		$projects = Project::paginate(10);
+		$projects = Project::where('state', '=', 'Available')->orWhere('state', '=', 'InProgress')->orderBy('created_at', 'DESC')->paginate(5);
 		return View::make('site/project/index', compact('projects'));
 	}
 
@@ -76,7 +71,23 @@ class ProjectController extends BaseController {
 		$project->state = 1; //Application state
 		$project->user_id = Auth::user()->id;
 
+
+
 		if ($project->save()) {
+
+			foreach($input['goals'] as $goal){
+				if($goal == ''){
+					continue;
+				}
+				else{
+					$goalObj = new Goal();
+					$goalObj->project_id = $project->id;
+					$goalObj->goal = $goal;
+					$goalObj->complete = 0;
+					$goalObj->save();
+				}
+			}
+
 			return Redirect::to('/project/create')->with('info', 'The project application has been submitted.');
 		} else {
 			return Redirect::to('/project/create')->withErrors($project->errors());
@@ -92,9 +103,7 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function show($id){
-
-		$projects = Array();
-		return View::make('site/project/index', compact('projects'));
+		return View::make('site/index');
 	}
 
 	/**
@@ -104,9 +113,7 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function edit($id){
-
-		$projects = Array();
-		return View::make('site/project/index', compact('projects'));
+		return View::make('site/index');
 	}
 
 	/**
@@ -116,8 +123,7 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function update($id){
-		$projects = Array();
-		return View::make('site/project/index', compact('projects'));
+		return View::make('site/index');
 	}
 
 	/**
@@ -127,8 +133,7 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function destroy($id){
-		$projects = Array();
-		return View::make('site/project/index', compact('projects'));
+		return View::make('site/index');
 	}
 
 }

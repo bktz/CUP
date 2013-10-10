@@ -127,4 +127,9 @@ Route::get('license', function()
 //Route::post('{postSlug}', 'BlogController@postView');
 
 # Index Page - Last route, no matches
-Route::get('/', array('uses' => 'ProjectController@getIndex'));
+# The License Static Page
+Route::get('/', function()
+{
+	// Return License page
+	return View::make('site/index');
+});
