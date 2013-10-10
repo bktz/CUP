@@ -94,7 +94,7 @@
     				<ul class="nav navbar-nav">
     					<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 						<li{{ (Request::is('admin/project') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/project') }}}"><span class="glyphicon glyphicon-file"></span> Projects</a></li>
-						<li{{ (Request::is('admin/tags') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/tags') }}}"><span class="glyphicon glyphicon-tag"></span> Tags</a></li>
+						<li{{ (Request::is('admin/tag') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/tag') }}}"><span class="glyphicon glyphicon-tag"></span> Tags</a></li>
 						<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
 								<span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
