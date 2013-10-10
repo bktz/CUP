@@ -35,11 +35,13 @@
 	        <div class="tab-pane" id="tab-permissions">
                 <div class="form-group">
                     @foreach ($permissions as $permission)
-                    <label>
-                        <input class="control-label" type="hidden" id="permissions[{{{ $permission['id'] }}}]" name="permissions[{{{ $permission['id'] }}}]" value="0" />
-                        <input class="form-control" type="checkbox" id="permissions[{{{ $permission['id'] }}}]" name="permissions[{{{ $permission['id'] }}}]" value="1"{{{ (isset($permission['checked']) && $permission['checked'] == true ? ' checked="checked"' : '')}}} />
-                        {{{ $permission['display_name'] }}}
-                    </label>
+					<div class="checkbox">
+						<label>
+							<input class="control-label" type="hidden" id="permissions[{{{ $permission['id'] }}}]" name="permissions[{{{ $permission['id'] }}}]" value="0" />
+							<input class="form-control" style="width: 13px;height: 13px;" type="checkbox" id="permissions[{{{ $permission['id'] }}}]" name="permissions[{{{ $permission['id'] }}}]" value="1"{{{ (isset($permission['checked']) && $permission['checked'] == true ? ' checked="checked"' : '')}}} />
+							{{{ $permission['display_name'] }}}
+						</label>
+					</div>
                     @endforeach
                 </div>
 	        </div>
