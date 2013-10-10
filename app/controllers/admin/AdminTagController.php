@@ -94,14 +94,11 @@ class AdminTagController extends BaseController{
 	 */
 	public function destroy($id){
 
-		// TODO fix this (still not done and not tested)
+		$tag = Tag::find($id);
 
-		$affectedRows = Tag::destroy($id);
-
-		if ($affectedRows == 99) {
+		if ($tag->delete()) {
 			return Redirect::to('/admin/tag')->with('info', 'The tag has been deleted.');
 		} else {
-			MessageBag::add('error', 'Unable to delete the tag.');
 			return Redirect::to('/admin/tag');
 		}
 	}
