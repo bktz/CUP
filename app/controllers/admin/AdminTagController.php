@@ -82,7 +82,18 @@ class AdminTagController extends BaseController{
 	 * @return Response
 	 */
 	public function update($id){
-		return Redirect::to('/admin/tag');
+
+		$input = Input::all();
+
+		$tag = Tag::find($id);
+		$tag->tag = $input['edit_tag'];
+
+		if($tag->save()){
+			return Redirect::to('/admin/tag')->with('info', 'The tag has been updated.');
+		}
+		else{
+			return Redirect::to('/admin/tag')->withErrors($tag->errors());
+		}
 	}
 
 	/**
