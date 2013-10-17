@@ -392,6 +392,16 @@ class App extends Illuminate\Support\Facades\App{
 	 }
 
 	/**
+	 * Get the current application locale.
+	 *
+	 * @return string
+	 * @static 
+	 */
+	 public static function getLocale(){
+		return Illuminate\Foundation\Application::getLocale();
+	 }
+
+	/**
 	 * Set the current application locale.
 	 *
 	 * @param string  $locale
@@ -687,11 +697,11 @@ class Artisan extends Illuminate\Support\Facades\Artisan{
 	 * Add a command, resolving through the application.
 	 *
 	 * @param string  $command
-	 * @return void
+	 * @return \Symfony\Component\Console\Command\Command
 	 * @static 
 	 */
 	 public static function resolve($command){
-		 Illuminate\Console\Application::resolve($command);
+		return Illuminate\Console\Application::resolve($command);
 	 }
 
 	/**
@@ -708,7 +718,7 @@ class Artisan extends Illuminate\Support\Facades\Artisan{
 	/**
 	 * Render the given exception.
 	 *
-	 * @param Exception  $e
+	 * @param \Exception  $e
 	 * @param \Symfony\Component\Console\Output\OutputInterface  $output
 	 * @return void
 	 * @static 
@@ -1111,6 +1121,16 @@ class Artisan extends Illuminate\Support\Facades\Artisan{
 }
 
 class Auth extends Illuminate\Support\Facades\Auth{
+	/**
+	 * Create an instance of the database driver.
+	 *
+	 * @return \Illuminate\Auth\Guard
+	 * @static 
+	 */
+	 public static function createDatabaseDriver(){
+		return Illuminate\Auth\AuthManager::createDatabaseDriver();
+	 }
+
 	/**
 	 * Create an instance of the Eloquent driver.
 	 *
@@ -1906,7 +1926,7 @@ class Config extends Illuminate\Support\Facades\Config{
 	 * Register an after load callback for a given namespace.
 	 *
 	 * @param string   $namespace
-	 * @param Closure  $callback
+	 * @param \Closure  $callback
 	 * @return void
 	 * @static 
 	 */
@@ -2003,7 +2023,7 @@ class Config extends Illuminate\Support\Facades\Config{
 	 * Get a configuration option.
 	 *
 	 * @param string  $key
-	 * @return bool
+	 * @return mixed
 	 * @static 
 	 */
 	 public static function offsetGet($key){
@@ -2014,7 +2034,7 @@ class Config extends Illuminate\Support\Facades\Config{
 	 * Set a configuration option.
 	 *
 	 * @param string  $key
-	 * @param string  $value
+	 * @param mixed  $value
 	 * @return void
 	 * @static 
 	 */
@@ -2282,6 +2302,17 @@ class DB extends Illuminate\Support\Facades\DB{
 	 }
 
 	/**
+	 * Disconnect from the given database.
+	 *
+	 * @param string  $name
+	 * @return void
+	 * @static 
+	 */
+	 public static function disconnect($name = null){
+		 Illuminate\Database\DatabaseManager::disconnect($name);
+	 }
+
+	/**
 	 * Get the default connection name.
 	 *
 	 * @return string
@@ -2315,6 +2346,16 @@ class DB extends Illuminate\Support\Facades\DB{
 	 }
 
 	/**
+	 * Return all of the created connections.
+	 *
+	 * @return array
+	 * @static 
+	 */
+	 public static function getConnections(){
+		return Illuminate\Database\DatabaseManager::getConnections();
+	 }
+
+	/**
 	 * Dynamically pass methods to the default connection.
 	 *
 	 * @param string  $method
@@ -2329,7 +2370,7 @@ class DB extends Illuminate\Support\Facades\DB{
 	/**
 	 * Get a schema builder instance for the connection.
 	 *
-	 * @return \Illuminate\Database\Schema\Builder
+	 * @return \Illuminate\Database\Schema\MySqlBuilder
 	 * @static 
 	 */
 	 public static function getSchemaBuilder(){
@@ -2949,6 +2990,18 @@ class DB extends Illuminate\Support\Facades\DB{
 
 class Eloquent extends Illuminate\Database\Eloquent\Model{
 	/**
+	 * Find a model by its primary key.
+	 *
+	 * @param array  $id
+	 * @param array  $columns
+	 * @return \Illuminate\Database\Eloquent\Model|Collection|static
+	 * @static 
+	 */
+	 public static function findMany($id, $columns = array()){
+		return Illuminate\Database\Eloquent\Builder::findMany($id, $columns);
+	 }
+
+	/**
 	 * Execute the query and get the first result.
 	 *
 	 * @param array  $columns
@@ -3547,6 +3600,18 @@ class Eloquent extends Illuminate\Database\Eloquent\Model{
 	 }
 
 	/**
+	 * Add a raw "order by" clause to the query.
+	 *
+	 * @param string  $sql
+	 * @param array  $bindings
+	 * @return \Illuminate\Database\Query\Builder|static
+	 * @static 
+	 */
+	 public static function orderByRaw($sql, $bindings = array()){
+		return Illuminate\Database\Query\Builder::orderByRaw($sql, $bindings);
+	 }
+
+	/**
 	 * Set the "offset" value of the query.
 	 *
 	 * @param int  $value
@@ -3871,11 +3936,11 @@ class Eloquent extends Illuminate\Database\Eloquent\Model{
 	 * Set the bindings on the query builder.
 	 *
 	 * @param array  $bindings
-	 * @return void
+	 * @return \Illuminate\Database\Query\Builder
 	 * @static 
 	 */
 	 public static function setBindings($bindings){
-		 Illuminate\Database\Query\Builder::setBindings($bindings);
+		return Illuminate\Database\Query\Builder::setBindings($bindings);
 	 }
 
 	/**
@@ -4032,7 +4097,7 @@ class Event extends Illuminate\Support\Facades\Event{
 	 * Create a class based listener using the IoC container.
 	 *
 	 * @param mixed    $listener
-	 * @return Closure
+	 * @return \Closure
 	 * @static 
 	 */
 	 public static function createClassListener($listener){
@@ -4121,6 +4186,18 @@ class File extends Illuminate\Support\Facades\File{
 	 }
 
 	/**
+	 * Prepend to a file.
+	 *
+	 * @param string  $path
+	 * @param string  $data
+	 * @return int
+	 * @static 
+	 */
+	 public static function prepend($path, $data){
+		return Illuminate\Filesystem\Filesystem::prepend($path, $data);
+	 }
+
+	/**
 	 * Append to a file.
 	 *
 	 * @param string  $path
@@ -4148,11 +4225,11 @@ class File extends Illuminate\Support\Facades\File{
 	 *
 	 * @param string  $path
 	 * @param string  $target
-	 * @return void
+	 * @return bool
 	 * @static 
 	 */
 	 public static function move($path, $target){
-		 Illuminate\Filesystem\Filesystem::move($path, $target);
+		return Illuminate\Filesystem\Filesystem::move($path, $target);
 	 }
 
 	/**
@@ -4160,11 +4237,11 @@ class File extends Illuminate\Support\Facades\File{
 	 *
 	 * @param string  $path
 	 * @param string  $target
-	 * @return void
+	 * @return bool
 	 * @static 
 	 */
 	 public static function copy($path, $target){
-		 Illuminate\Filesystem\Filesystem::copy($path, $target);
+		return Illuminate\Filesystem\Filesystem::copy($path, $target);
 	 }
 
 	/**
@@ -4308,11 +4385,11 @@ class File extends Illuminate\Support\Facades\File{
 	 * @param string  $directory
 	 * @param string  $destination
 	 * @param int     $options
-	 * @return void
+	 * @return bool
 	 * @static 
 	 */
 	 public static function copyDirectory($directory, $destination, $options = null){
-		 Illuminate\Filesystem\Filesystem::copyDirectory($directory, $destination, $options);
+		return Illuminate\Filesystem\Filesystem::copyDirectory($directory, $destination, $options);
 	 }
 
 	/**
@@ -4322,22 +4399,22 @@ class File extends Illuminate\Support\Facades\File{
 	 *
 	 * @param string  $directory
 	 * @param bool    $preserve
-	 * @return void
+	 * @return bool
 	 * @static 
 	 */
 	 public static function deleteDirectory($directory, $preserve = false){
-		 Illuminate\Filesystem\Filesystem::deleteDirectory($directory, $preserve);
+		return Illuminate\Filesystem\Filesystem::deleteDirectory($directory, $preserve);
 	 }
 
 	/**
 	 * Empty the specified directory of all files and folders.
 	 *
 	 * @param string  $directory
-	 * @return void
+	 * @return bool
 	 * @static 
 	 */
 	 public static function cleanDirectory($directory){
-		 Illuminate\Filesystem\Filesystem::cleanDirectory($directory);
+		return Illuminate\Filesystem\Filesystem::cleanDirectory($directory);
 	 }
 
 }
@@ -4475,6 +4552,19 @@ class Form extends Illuminate\Support\Facades\Form{
 	 */
 	 public static function email($name, $value = null, $options = array()){
 		return Illuminate\Html\FormBuilder::email($name, $value, $options);
+	 }
+
+	/**
+	 * Create a url input field.
+	 *
+	 * @param string  $name
+	 * @param string  $value
+	 * @param array   $options
+	 * @return string
+	 * @static 
+	 */
+	 public static function url($name, $value = null, $options = array()){
+		return Illuminate\Html\FormBuilder::url($name, $value, $options);
 	 }
 
 	/**
@@ -5193,7 +5283,7 @@ class Input extends Illuminate\Support\Facades\Input{
 	 *
 	 * @param string  $key
 	 * @param mixed   $default
-	 * @return \Symfony\Component\HttpFoundation\File\UploadedFile
+	 * @return \Symfony\Component\HttpFoundation\File\UploadedFile|array
 	 * @static 
 	 */
 	 public static function file($key = null, $default = null){
@@ -5708,9 +5798,9 @@ class Input extends Illuminate\Support\Facades\Input{
 	/**
 	 * Returns the client IP addresses.
 	 * 
-	 * The least trusted IP address is first, and the most trusted one last.
-	 * The "real" client IP address is the first one, but this is also the
-	 * least trusted one.
+	 * In the returned array the most trusted IP address is first, and the
+	 * least trusted one last. The "real" client IP address is the last one,
+	 * but this is also the least trusted one. Trusted proxies are stripped.
 	 * 
 	 * Use this method carefully; you should use getClientIp() instead.
 	 *
@@ -6682,7 +6772,7 @@ class Mail extends Illuminate\Support\Facades\Mail{
 	 * Create a new Mailer instance.
 	 *
 	 * @param \Illuminate\View\Environment  $views
-	 * @param Swift_Mailer  $swift
+	 * @param \Swift_Mailer  $swift
 	 * @return void
 	 * @static 
 	 */
@@ -6707,12 +6797,12 @@ class Mail extends Illuminate\Support\Facades\Mail{
 	 *
 	 * @param string  $view
 	 * @param array   $data
-	 * @param mixed  $callback
-	 * @return void
+	 * @param mixed   $callback
+	 * @return int
 	 * @static 
 	 */
 	 public static function plain($view, $data, $callback){
-		 Illuminate\Mail\Mailer::plain($view, $data, $callback);
+		return Illuminate\Mail\Mailer::plain($view, $data, $callback);
 	 }
 
 	/**
@@ -6721,11 +6811,11 @@ class Mail extends Illuminate\Support\Facades\Mail{
 	 * @param string|array  $view
 	 * @param array  $data
 	 * @param Closure|string  $callback
-	 * @return void
+	 * @return int
 	 * @static 
 	 */
 	 public static function send($view, $data, $callback){
-		 Illuminate\Mail\Mailer::send($view, $data, $callback);
+		return Illuminate\Mail\Mailer::send($view, $data, $callback);
 	 }
 
 	/**
@@ -6745,10 +6835,10 @@ class Mail extends Illuminate\Support\Facades\Mail{
 	/**
 	 * Queue a new e-mail message for sending on the given queue.
 	 *
+	 * @param string  $queue
 	 * @param string|array  $view
 	 * @param array   $data
 	 * @param Closure|string  $callback
-	 * @param string  $queue
 	 * @return void
 	 * @static 
 	 */
@@ -6822,7 +6912,7 @@ class Mail extends Illuminate\Support\Facades\Mail{
 	/**
 	 * Get the Swift Mailer instance.
 	 *
-	 * @return Swift_Mailer
+	 * @return \Swift_Mailer
 	 * @static 
 	 */
 	 public static function getSwiftMailer(){
@@ -6832,7 +6922,7 @@ class Mail extends Illuminate\Support\Facades\Mail{
 	/**
 	 * Set the Swift Mailer instance.
 	 *
-	 * @param Swift_Mailer  $swift
+	 * @param \Swift_Mailer  $swift
 	 * @return void
 	 * @static 
 	 */
@@ -7364,6 +7454,19 @@ class Redirect extends Illuminate\Support\Facades\Redirect{
 	 }
 
 	/**
+	 * Create a new redirect response to an external URL (no validation).
+	 *
+	 * @param string  $path
+	 * @param int     $status
+	 * @param array   $headers
+	 * @return \Illuminate\Http\RedirectResponse
+	 * @static 
+	 */
+	 public static function away($path, $status = 302, $headers = array()){
+		return Illuminate\Routing\Redirector::away($path, $status, $headers);
+	 }
+
+	/**
 	 * Create a new redirect response to the given HTTPS path.
 	 *
 	 * @param string  $path
@@ -7664,7 +7767,7 @@ class Request extends Illuminate\Support\Facades\Request{
 	 *
 	 * @param string  $key
 	 * @param mixed   $default
-	 * @return \Symfony\Component\HttpFoundation\File\UploadedFile
+	 * @return \Symfony\Component\HttpFoundation\File\UploadedFile|array
 	 * @static 
 	 */
 	 public static function file($key = null, $default = null){
@@ -8179,9 +8282,9 @@ class Request extends Illuminate\Support\Facades\Request{
 	/**
 	 * Returns the client IP addresses.
 	 * 
-	 * The least trusted IP address is first, and the most trusted one last.
-	 * The "real" client IP address is the first one, but this is also the
-	 * least trusted one.
+	 * In the returned array the most trusted IP address is first, and the
+	 * least trusted one last. The "real" client IP address is the last one,
+	 * but this is also the least trusted one. Trusted proxies are stripped.
 	 * 
 	 * Use this method carefully; you should use getClientIp() instead.
 	 *
@@ -9451,431 +9554,64 @@ class Seeder extends Illuminate\Database\Seeder{
 
 class Session extends Illuminate\Support\Facades\Session{
 	/**
-	 * Starts the session storage.
+	 * Create a new manager instance.
 	 *
-	 * @return Boolean True if session started.
-	 * @throws \RuntimeException If session fails to start.
-	 * @api 
+	 * @param \Illuminate\Foundation\Application  $app
+	 * @return void
 	 * @static 
 	 */
-	 public static function start(){
-		return Illuminate\Session\Store::start();
+	 public static function __construct($app){
+		//Method inherited from Illuminate\Support\Manager
+		 Illuminate\Session\SessionManager::__construct($app);
 	 }
 
 	/**
-	 * Force the session to be saved and closed.
-	 * 
-	 * This method is generally not required for real sessions as
-	 * the session will be automatically saved at the end of
-	 * code execution.
+	 * Get a driver instance.
 	 *
-	 * @static 
-	 */
-	 public static function save(){
-		 Illuminate\Session\Store::save();
-	 }
-
-	/**
-	 * Checks if an attribute is defined.
-	 *
-	 * @param string $name The attribute name
-	 * @return Boolean true if the attribute is defined, false otherwise
-	 * @api 
-	 * @static 
-	 */
-	 public static function has($name){
-		return Illuminate\Session\Store::has($name);
-	 }
-
-	/**
-	 * Returns an attribute.
-	 *
-	 * @param string $name    The attribute name
-	 * @param mixed  $default The default value if not found.
-	 * @return mixed
-	 * @api 
-	 * @static 
-	 */
-	 public static function get($name, $default = null){
-		return Illuminate\Session\Store::get($name, $default);
-	 }
-
-	/**
-	 * Determine if the session contains old input.
-	 *
-	 * @param string  $key
-	 * @return bool
-	 * @static 
-	 */
-	 public static function hasOldInput($key = null){
-		return Illuminate\Session\Store::hasOldInput($key);
-	 }
-
-	/**
-	 * Get the requested item from the flashed input array.
-	 *
-	 * @param string  $key
-	 * @param mixed   $default
+	 * @param string  $driver
 	 * @return mixed
 	 * @static 
 	 */
-	 public static function getOldInput($key = null, $default = null){
-		return Illuminate\Session\Store::getOldInput($key, $default);
+	 public static function driver($driver = null){
+		//Method inherited from Illuminate\Support\Manager
+		return Illuminate\Session\SessionManager::driver($driver);
 	 }
 
 	/**
-	 * Get the CSRF token value.
+	 * Register a custom driver creator Closure.
 	 *
-	 * @return string
-	 * @static 
-	 */
-	 public static function getToken(){
-		return Illuminate\Session\Store::getToken();
-	 }
-
-	/**
-	 * Get the CSRF token value.
-	 *
-	 * @return string
-	 * @static 
-	 */
-	 public static function token(){
-		return Illuminate\Session\Store::token();
-	 }
-
-	/**
-	 * Put a key / value pair in the session.
-	 *
-	 * @param string  $key
-	 * @param mixed   $value
+	 * @param string   $driver
+	 * @param Closure  $callback
 	 * @return void
 	 * @static 
 	 */
-	 public static function put($key, $value){
-		 Illuminate\Session\Store::put($key, $value);
+	 public static function extend($driver, $callback){
+		//Method inherited from Illuminate\Support\Manager
+		 Illuminate\Session\SessionManager::extend($driver, $callback);
 	 }
 
 	/**
-	 * Push a value onto a session array.
+	 * Get all of the created "drivers".
 	 *
-	 * @param string  $key
-	 * @param mixed   $value
-	 * @return void
+	 * @return array
 	 * @static 
 	 */
-	 public static function push($key, $value){
-		 Illuminate\Session\Store::push($key, $value);
+	 public static function getDrivers(){
+		//Method inherited from Illuminate\Support\Manager
+		return Illuminate\Session\SessionManager::getDrivers();
 	 }
 
 	/**
-	 * Flash a key / value pair to the session.
+	 * Dynamically call the default driver instance.
 	 *
-	 * @param string  $key
-	 * @param mixed   $value
-	 * @return void
+	 * @param string  $method
+	 * @param array   $parameters
+	 * @return mixed
 	 * @static 
 	 */
-	 public static function flash($key, $value){
-		 Illuminate\Session\Store::flash($key, $value);
-	 }
-
-	/**
-	 * Flash an input array to the session.
-	 *
-	 * @param array  $value
-	 * @return void
-	 * @static 
-	 */
-	 public static function flashInput($value){
-		 Illuminate\Session\Store::flashInput($value);
-	 }
-
-	/**
-	 * Reflash all of the session flash data.
-	 *
-	 * @return void
-	 * @static 
-	 */
-	 public static function reflash(){
-		 Illuminate\Session\Store::reflash();
-	 }
-
-	/**
-	 * Reflash a subset of the current flash data.
-	 *
-	 * @param array|dynamic  $keys
-	 * @return void
-	 * @static 
-	 */
-	 public static function keep($keys = null){
-		 Illuminate\Session\Store::keep($keys);
-	 }
-
-	/**
-	 * Remove an item from the session.
-	 *
-	 * @param string  $key
-	 * @return void
-	 * @static 
-	 */
-	 public static function forget($key){
-		 Illuminate\Session\Store::forget($key);
-	 }
-
-	/**
-	 * Remove all of the items from the session.
-	 *
-	 * @return void
-	 * @static 
-	 */
-	 public static function flush(){
-		 Illuminate\Session\Store::flush();
-	 }
-
-	/**
-	 * Generate a new session identifier.
-	 *
-	 * @return string
-	 * @static 
-	 */
-	 public static function regenerate(){
-		return Illuminate\Session\Store::regenerate();
-	 }
-
-	/**
-	 * Constructor.
-	 *
-	 * @param SessionStorageInterface $storage    A SessionStorageInterface instance.
-	 * @param AttributeBagInterface   $attributes An AttributeBagInterface instance, (defaults null for default AttributeBag)
-	 * @param FlashBagInterface       $flashes    A FlashBagInterface instance (defaults null for default FlashBag)
-	 * @static 
-	 */
-	 public static function __construct($storage = null, $attributes = null, $flashes = null){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		 Illuminate\Session\Store::__construct($storage, $attributes, $flashes);
-	 }
-
-	/**
-	 * Sets an attribute.
-	 *
-	 * @param string $name
-	 * @param mixed  $value
-	 * @api 
-	 * @static 
-	 */
-	 public static function set($name, $value){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		 Illuminate\Session\Store::set($name, $value);
-	 }
-
-	/**
-	 * Returns attributes.
-	 *
-	 * @return array Attributes
-	 * @api 
-	 * @static 
-	 */
-	 public static function all(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::all();
-	 }
-
-	/**
-	 * Sets attributes.
-	 *
-	 * @param array $attributes Attributes
-	 * @static 
-	 */
-	 public static function replace($attributes){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		 Illuminate\Session\Store::replace($attributes);
-	 }
-
-	/**
-	 * Removes an attribute.
-	 *
-	 * @param string $name
-	 * @return mixed The removed value
-	 * @api 
-	 * @static 
-	 */
-	 public static function remove($name){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::remove($name);
-	 }
-
-	/**
-	 * Clears all attributes.
-	 *
-	 * @api 
-	 * @static 
-	 */
-	 public static function clear(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		 Illuminate\Session\Store::clear();
-	 }
-
-	/**
-	 * Checks if the session was started.
-	 *
-	 * @return Boolean
-	 * @static 
-	 */
-	 public static function isStarted(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::isStarted();
-	 }
-
-	/**
-	 * Returns an iterator for attributes.
-	 *
-	 * @return \ArrayIterator An \ArrayIterator instance
-	 * @static 
-	 */
-	 public static function getIterator(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::getIterator();
-	 }
-
-	/**
-	 * Returns the number of attributes.
-	 *
-	 * @return int The number of attributes
-	 * @static 
-	 */
-	 public static function count(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::count();
-	 }
-
-	/**
-	 * Invalidates the current session.
-	 * 
-	 * Clears all session attributes and flashes and regenerates the
-	 * session and deletes the old session from persistence.
-	 *
-	 * @param integer $lifetime Sets the cookie lifetime for the session cookie. A null value
-	 *                          will leave the system settings unchanged, 0 sets the cookie
-	 *                          to expire with browser session. Time is in seconds, and is
-	 *                          not a Unix timestamp.
-	 * @return Boolean True if session invalidated, false if error.
-	 * @api 
-	 * @static 
-	 */
-	 public static function invalidate($lifetime = null){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::invalidate($lifetime);
-	 }
-
-	/**
-	 * Migrates the current session to a new session id while maintaining all
-	 * session attributes.
-	 *
-	 * @param Boolean $destroy  Whether to delete the old session or leave it to garbage collection.
-	 * @param integer $lifetime Sets the cookie lifetime for the session cookie. A null value
-	 *                          will leave the system settings unchanged, 0 sets the cookie
-	 *                          to expire with browser session. Time is in seconds, and is
-	 *                          not a Unix timestamp.
-	 * @return Boolean True if session migrated, false if error.
-	 * @api 
-	 * @static 
-	 */
-	 public static function migrate($destroy = false, $lifetime = null){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::migrate($destroy, $lifetime);
-	 }
-
-	/**
-	 * Returns the session ID.
-	 *
-	 * @return string The session ID.
-	 * @api 
-	 * @static 
-	 */
-	 public static function getId(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::getId();
-	 }
-
-	/**
-	 * Sets the session ID
-	 *
-	 * @param string $id
-	 * @api 
-	 * @static 
-	 */
-	 public static function setId($id){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		 Illuminate\Session\Store::setId($id);
-	 }
-
-	/**
-	 * Returns the session name.
-	 *
-	 * @return mixed The session name.
-	 * @api 
-	 * @static 
-	 */
-	 public static function getName(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::getName();
-	 }
-
-	/**
-	 * Sets the session name.
-	 *
-	 * @param string $name
-	 * @api 
-	 * @static 
-	 */
-	 public static function setName($name){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		 Illuminate\Session\Store::setName($name);
-	 }
-
-	/**
-	 * Gets session meta.
-	 *
-	 * @return MetadataBag
-	 * @static 
-	 */
-	 public static function getMetadataBag(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::getMetadataBag();
-	 }
-
-	/**
-	 * Registers a SessionBagInterface with the session.
-	 *
-	 * @param SessionBagInterface $bag
-	 * @static 
-	 */
-	 public static function registerBag($bag){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		 Illuminate\Session\Store::registerBag($bag);
-	 }
-
-	/**
-	 * Gets a bag instance by name.
-	 *
-	 * @param string $name
-	 * @return SessionBagInterface
-	 * @static 
-	 */
-	 public static function getBag($name){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::getBag($name);
-	 }
-
-	/**
-	 * Gets the flashbag interface.
-	 *
-	 * @return FlashBagInterface
-	 * @static 
-	 */
-	 public static function getFlashBag(){
-		//Method inherited from Symfony\Component\HttpFoundation\Session\Session
-		return Illuminate\Session\Store::getFlashBag();
+	 public static function __call($method, $parameters){
+		//Method inherited from Illuminate\Support\Manager
+		return Illuminate\Session\SessionManager::__call($method, $parameters);
 	 }
 
 }
@@ -10086,23 +9822,25 @@ class Validator extends Illuminate\Support\Facades\Validator{
 	 *
 	 * @param string  $rule
 	 * @param Closure|string  $extension
+	 * @param string  $message
 	 * @return void
 	 * @static 
 	 */
-	 public static function extend($rule, $extension){
-		 Illuminate\Validation\Factory::extend($rule, $extension);
+	 public static function extend($rule, $extension, $message = null){
+		 Illuminate\Validation\Factory::extend($rule, $extension, $message);
 	 }
 
 	/**
 	 * Register a custom implicit validator extension.
 	 *
-	 * @param string  $rule
-	 * @param Closure $extension
+	 * @param string   $rule
+	 * @param Closure  $extension
+	 * @param string  $message
 	 * @return void
 	 * @static 
 	 */
-	 public static function extendImplicit($rule, $extension){
-		 Illuminate\Validation\Factory::extendImplicit($rule, $extension);
+	 public static function extendImplicit($rule, $extension, $message = null){
+		 Illuminate\Validation\Factory::extendImplicit($rule, $extension, $message);
 	 }
 
 	/**
@@ -10525,6 +10263,19 @@ class View extends Illuminate\Support\Facades\View{
 	 public static function setContainer($container){
 		//Method inherited from Illuminate\View\Environment
 		 Robbo\Presenter\View\Environment::setContainer($container);
+	 }
+
+	/**
+	 * Get an item from the shared data.
+	 *
+	 * @param string  $key
+	 * @param mixed   $default
+	 * @return mixed
+	 * @static 
+	 */
+	 public static function shared($key, $default = null){
+		//Method inherited from Illuminate\View\Environment
+		return Robbo\Presenter\View\Environment::shared($key, $default);
 	 }
 
 	/**

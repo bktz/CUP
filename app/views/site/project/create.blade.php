@@ -107,8 +107,21 @@
 				<button tabindex="3" type="button" id="goal_button" val="2" onclick="add_goal();" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-plus-sign"></span> Add Another Goal</button>
 			</div>
 		</div>
+		@endif
 
+		<h4>Project tags</h4>
+		<div class="form-group">
+			<label class="col-md-2 control-label">Tags</label>
+			<div class="col-md-10">
+				<select class="form-control" id="tags" name="tags[]" size="10" multiple {{ (Auth::check() ? '' : 'disabled') }} >
+					@foreach ($tags as $tag)
+						<option value="{{ $tag->id }}">{{{ String::title($tag->tag) }}}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
 
+		@if (Auth::check())
 		<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 		<div class="form-group">

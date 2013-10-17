@@ -8,8 +8,7 @@ class ProjectController extends BaseController {
      */
     protected $project;
 
-	public function __construct(Project $project)
-	{
+	public function __construct(Project $project){
 	    $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
 	}
 
@@ -44,7 +43,9 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function create(){
-		return View::make('site/project/create');
+
+		$tags = Tag::orderby('tag')->get();
+		return View::make('site/project/create', compact('tags'));
 	}
 
 	/**
@@ -87,6 +88,20 @@ class ProjectController extends BaseController {
 					$goalObj->save();
 				}
 			}
+
+			foreach($input['tags'] as $tag){
+				if($tag == ''){
+					continue;
+				}
+				else{
+					$projectTag = new ProjectTag();
+					$projectTag->tag_id = $tag;
+					$projectTag->project_id = $project->id;
+					$projectTag->user_id = Auth::user()->id;
+					$projectTag->save();
+				}
+			}
+
 
 			return Redirect::to('/project/create')->with('info', 'The project application has been submitted.');
 		} else {
