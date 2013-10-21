@@ -21,6 +21,8 @@ The Community University Portal provides a resource for community-university pro
 
 ##Here is a list of all the packages that LEF uses:
 
+* [Laravel 4 Bootstrap Starter Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
+    * CUP is an extension of Laravel 4 Bootstrap Starter Site
 * [Laravel 4 Generators](https://github.com/JeffreyWay/Laravel-4-Generators/blob/master/readme.md)
     * This Laravel 4 package provides a variety of generators to speed up your development process.
 * [Presenter](https://github.com/robclancy/presenter)
