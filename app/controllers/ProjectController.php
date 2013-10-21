@@ -44,7 +44,7 @@ class ProjectController extends BaseController {
 	 */
 	public function create(){
 
-		$tags = Tag::orderby('tag')->get();
+		$tags = Tag::orderby('tag')->lists('tag', 'id');
 		return View::make('site/project/create', compact('tags'));
 	}
 
