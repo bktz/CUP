@@ -26,7 +26,7 @@
 		</div>
 </fieldset>
 <fieldset>
-	<legend>Who will be the project champion?</legend>
+	<legend>Who Will Be The Project Champion?</legend>
 		<div class="form-group {{ ($errors->has('contact_firstname')) ? 'has-error' : '' }}">
 			{{ Form::label('contact_firstname', 'First Name', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-10">
@@ -93,7 +93,7 @@
 		</div>
 </fieldset>
 <fieldset>
-	<legend>Tell us more about your project</legend>
+	<legend>Tell Us More About Your Project</legend>
 	<div class="form-group {{ ($errors->has('description')) ? 'has-error' : '' }}">
 			{{ Form::label('description', 'What do you want the project to do?', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-10">
@@ -217,7 +217,7 @@
 		@endif
 </fieldset>
 <fieldset>
-	<legend>Project tags</legend>
+	<legend>Project Tags</legend>
 		<div class="form-group">
 			{{ Form::label('tags[]', 'Tags', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-10">
