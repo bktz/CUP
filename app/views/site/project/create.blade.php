@@ -5,11 +5,12 @@
 <h1>Pitch An Idea To The Community University Portal</h1>
 <form class="form-horizontal" method="POST" action="{{ URL::to('project') }}" accept-charset="UTF-8">
 {{ Form::open(array('url' => 'project', 'method' => 'post')) }}
-	<fieldset>
+
 		@if (!Auth::check())
 			<div class="alert alert-info alert-block">You must create an account to access this feature.</div>
 		@endif
-
+<fieldset>
+	<legend>Project Title</legend>
 		<div class="form-group {{ ($errors->has('title')) ? 'has-error' : '' }}">
 			{{ Form::label('title', 'Project Title', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-10">
@@ -23,7 +24,9 @@
 				}}
 			</div>
 		</div>
-		<h4>Who will be the project champion?</h4>
+</fieldset>
+<fieldset>
+	<legend>Who will be the project champion?</legend>
 		<div class="form-group {{ ($errors->has('contact_firstname')) ? 'has-error' : '' }}">
 			{{ Form::label('contact_firstname', 'First Name', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-10">
@@ -88,8 +91,10 @@
 				}}
 			</div>
 		</div>
-		<h4>Tell us more about your project</h4>
-		<div class="form-group {{ ($errors->has('description')) ? 'has-error' : '' }}">
+</fieldset>
+<fieldset>
+	<legend>Tell us more about your project</legend>
+	<div class="form-group {{ ($errors->has('description')) ? 'has-error' : '' }}">
 			{{ Form::label('description', 'What do you want the project to do?', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-10">
 				{{ 	Form::textarea('description', Input::old('description'),
@@ -178,23 +183,26 @@
 				}}
 			</div>
 		</div>
-
-		<h4>Project Goals</h4>
-		<div id="goals">
+</fieldset>
+<fieldset>
+	<legend>Project Goals</legend>
+	<div id="goals_form">
 			@if (sizeof(Input::old('goals')) > 0)
+				<? $count = 0; ?>
 				@foreach(Input::old('goals') as $goal)
 					<div class="form-group">
-						{{ Form::label('goals', 'Goal', Array("class"=>"col-md-2 control-label")) }}
+						{{ Form::label('goals'.$count, 'Goal', Array("class"=>"col-md-2 control-label")) }}
 						<div class="col-md-10">
-							<input class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
+							<input id="goals{{$count}}" class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
 						</div>
 					</div>
+					<? $count++; ?>
 				@endforeach
 			@else
 			<div class="form-group">
-				{{ Form::label('goals', 'Goal', Array("class"=>"col-md-2 control-label")) }}
+				{{ Form::label('goals[]', 'Goal', Array("class"=>"col-md-2 control-label")) }}
 				<div class="col-md-10">
-					<input class="form-control" placeholder="Project Goal" type="text" name="goals[]" {{ (Auth::check() ? '' : 'disabled') }} / >
+					<input id="goals[]" class="form-control" placeholder="Project Goal" type="text" name="goals[]" {{ (Auth::check() ? '' : 'disabled') }} / >
 				</div>
 			</div>
 			@endif
@@ -207,13 +215,14 @@
 			</div>
 		</div>
 		@endif
-
-		<h4>Project tags</h4>
+</fieldset>
+<fieldset>
+	<legend>Project tags</legend>
 		<div class="form-group">
 			{{ Form::label('tags[]', 'Tags', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-10">
 				{{
-					Form::select('tags[]', $tags, Input::old('tags'), Array('size' => '10', 'class' => 'form-control', 'multiple'));
+					Form::select('tags[]', $tags, Input::old('tags'), Array('size' => '10', 'class' => 'form-control', 'multiple', (Auth::check() ? '' : 'disabled')));
 				}}
 			</div>
 		</div>
@@ -228,9 +237,11 @@
 		</div>
 
 		<script>
+			var goal_count = 0;
 			function add_goal(){
-				var goal = '<div class="form-group"><label class="col-md-2 control-label">Goal</label><div class="col-md-10">	<input class="form-control" placeholder="Project Goal" type="text" name="goals[]" / >	</div></div>';
-				$("#goals").append(goal);
+				var goal = '<div class="form-group"><label class="col-md-2 control-label" for="goalsx'+goal_count+'">Goal</label><div class="col-md-10">	<input id="goalsx'+goal_count+'" class="form-control" placeholder="Project Goal" type="text" name="goals[]" / >	</div></div>';
+				$("#goals_form").append(goal);
+				goal_count++;
 			}
 		</script>
 
