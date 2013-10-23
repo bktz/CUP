@@ -114,11 +114,24 @@ class ProjectController extends BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int  $project
 	 * @return Response
 	 */
-	public function show($id){
-		return View::make('site/index');
+	public function show($project){
+	    $goals = Goal::where('project_id', '=', $project->id)->get();
+//         $tags = Tag::where('project_id', '=', $project->id)->get()->toArray();
+//         var_dump($tags);
+//         die;
+//         $tags = DB::table('tag')->whereIn('id', $tags)->get();        
+//         print_r($tags);
+//         die;
+        
+        $tags = DB::table('tag')->join('tags','tag.id','=','tags.tag_id')->select('tag.tag')->where('project_id', '=', $project->id)->get();
+        
+//         print_r($tags);
+//         die;
+        
+		return View::make('site/project/show', compact('project','goals','tags'));
 	}
 
 	/**

@@ -1,8 +1,8 @@
 <?php
+
 use LaravelBook\Ardent\Ardent;
 
-class ProjectTag extends Ardent{
-
+class Tags extends Ardent {
 	// Table name
 	protected $table = 'tags';
 
@@ -10,9 +10,9 @@ class ProjectTag extends Ardent{
 
 	// Validation rules
 	public static $rules = array(
-		'tag_id'                  => 'required|exists:tag,id',
-		'project_id'                  => 'required|exists:projects,id',
-		'user_id'                  => 'required|exists:users,id'
+        'tag_id'        => 'required|exists:tag,id',	         
+        'project_id'    => 'required|exists:project,id',	         
+	    'user_id'       => 'required|exists:users,id',
 	);
-
+	
 }

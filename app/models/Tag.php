@@ -14,4 +14,9 @@ class Tag extends Ardent {
 	public static $rules = array(
 		'tag'       => 'required|between:1,255'
 	);
+	
+	public function tag()
+	{
+	    return $this->has_many('Tags');
+	}
 }

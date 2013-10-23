@@ -17,7 +17,7 @@
 						 <dd>{{ String::title($project->state) }}</dd>
 						 <p />
 						 <dt>Description</dt>
-						 <dd>{{ String::title(Str::limit($project->description, 750)) }}</dd>
+						 <dd>{{ Str::limit($project->description, 750) }}</dd>
 						 <p />
 						 <dt>Contact Info</dt>
 						 <dd>{{ String::title($project->contact_firstname) }} {{ String::title($project->contact_lastname) }}</dd>

@@ -14,7 +14,7 @@
 				<dd>{{ String::title($project->state) }}</dd>
 				<p />
 				<dt>Description</dt>
-				<dd>{{ String::title(Str::limit($project->description, 750)) }}</dd>
+				<dd>{{ Str::limit($project->description, 750) }}</dd>
 				<p />
 				<p />
 				<dd><a href={{ '"/project/'.$project->id.'"' }}><button type="button" class="btn btn-lg btn-primary">View Project</button></a></dd>
