@@ -1,7 +1,8 @@
 <?php
 use LaravelBook\Ardent\Ardent;
+use Robbo\Presenter\PresentableInterface;
 
-class Project extends Ardent{
+class Project extends Ardent implements PresentableInterface{
 
 	// Table name
 	protected $table = 'projects';
@@ -14,7 +15,6 @@ class Project extends Ardent{
 		'title'                    => 'required|between:1,255',
 		'contact_firstname'        => 'required|between:1,255',
 		'contact_lastname'         => 'required|between:1,255',
-		'contact_lastname'         => 'required|between:1,255',
 		'contact_email'            => 'required|email|between:1,255',
 		'contact_phone_number'     => 'required|integer',
 		'contact_phone_number_ext' => 'integer',
@@ -24,8 +24,12 @@ class Project extends Ardent{
 		'motivation'               => 'required|between:1,255',
 		'resources'                => 'required',
 		'constraints'              => 'required',
-		'constraints'              => 'required',
 		'state'                    => 'required|integer|between:1,6', // enum('Application','Available','InProgress','Complete','Canceled','NA')
 	);
+
+	public function getPresenter()
+	{
+		return new ProjectPresenter($this);
+	}
 
 }

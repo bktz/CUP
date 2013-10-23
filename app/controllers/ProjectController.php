@@ -72,8 +72,6 @@ class ProjectController extends BaseController {
 		$project->state = 1; //Application state
 		$project->user_id = Auth::user()->id;
 
-
-
 		if ($project->save()) {
 
 			foreach($input['goals'] as $goal){
@@ -114,53 +112,56 @@ class ProjectController extends BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $project
+	 * @param  Project  $project
 	 * @return Response
 	 */
 	public function show($project){
-	    $goals = Goal::where('project_id', '=', $project->id)->get();
-//         $tags = Tag::where('project_id', '=', $project->id)->get()->toArray();
-//         var_dump($tags);
-//         die;
-//         $tags = DB::table('tag')->whereIn('id', $tags)->get();        
-//         print_r($tags);
-//         die;
-        
-        $tags = DB::table('tag')->join('tags','tag.id','=','tags.tag_id')->select('tag.tag')->where('project_id', '=', $project->id)->get();
-        
-//         print_r($tags);
-//         die;
-        
-		return View::make('site/project/show', compact('project','goals','tags'));
+		if((Auth::check() && (Auth::user()->id == $project->user_id)) || $project->state != 'Application'){
+			$goals = Goal::where('project_id', '=', $project->id)->get();
+			$tags = DB::table('tag')->join('tags','tag.id','=','tags.tag_id')->select('tag.tag')->where('project_id', '=', $project->id)->get();
+			return View::make('site/project/show', compact('project','goals','tags'));
+		}
+		else{
+			return Redirect::to('/');
+		}
+
+
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Project  $project
 	 * @return Response
 	 */
-	public function edit($id){
-		return View::make('site/index');
+	public function edit($project){
+		if(Auth::check() && (Auth::user()->id == $project->user_id)){
+			$goals = Goal::where('project_id', '=', $project->id)->get();
+			$tags = DB::table('tag')->join('tags','tag.id','=','tags.tag_id')->select('tag.tag')->where('project_id', '=', $project->id)->get();
+			return View::make('site/index'); //TODO create edit project view
+		}
+		else{
+			return Redirect::to('/');
+		}
 	}
 
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  Project  $project
 	 * @return Response
 	 */
-	public function update($id){
+	public function update($project){
 		return View::make('site/index');
 	}
 
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  Project  $project
 	 * @return Response
 	 */
-	public function destroy($id){
+	public function destroy($project){
 		return View::make('site/index');
 	}
 

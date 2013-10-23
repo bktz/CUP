@@ -27,7 +27,10 @@
 						 <dd>{{ String::phone_number_expand($project->contact_phone_number) }} @if($project->contact_phone_number_ext != '') Ext. {{$project->contact_phone_number_ext}} @endif</dd>
 						 <p />
 						 <p />
-						 <dd><a href={{ '"/project/'.$project->id.'"' }}><button type="button" class="btn btn-lg btn-primary">View Project</button></a></dd>
+						 <dd>
+							 <a href={{ '"/project/'.$project->id.'"' }}><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon"></span>View Project</button></a>
+							 <a href={{ '"/project/'.$project->id.'/edit"' }}><button type="button" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit Project</button></a>
+						 </dd>
 					 </dl>
 				</div>
 			</div>
