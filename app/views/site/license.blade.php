@@ -8,7 +8,7 @@
 	<h3>Developers</h3>
 	<div class="media">
 		<a class="pull-left" href="http://ca.linkedin.com/in/benikatznelson">
-			<img class="media-object" src="https://www.linkedin.com/mpr/pub/image-n-fQdjems1B1IIPQq7H8-MoAzDIXlIb32ePqlF4gzsbJcDoIn-fqIQ3mz7yrzG7xcYFF/benjamin-katznelson.jpg" alt="Benjamin Katznelson Image">
+			<img class="media-object" src="/assets/img/license/beni.jpg" alt="Benjamin Katznelson Image">
 		</a>
 		<div class="media-body">
 			<h4>Benjamin Katznelson</h4>
@@ -18,7 +18,7 @@
 
 	<div class="media">
 		<a class="pull-left" href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">
-			<img class="media-object" src="http://m.c.lnkd.licdn.com/mpr/pub/image-MDYgfWV7M2cNV5EZ9JD8RXVFFiXgGtKrwIY8CBJ7z9XgaW_pYDY8CV0IK9Jgoljvz4M/justin-tempelman.jpg" alt="Justin Tempelman Image">
+			<img class="media-object" src="/assets/img/license/justin.jpg" alt="Justin Tempelman Image">
 		</a>
 		<div class="media-body">
 			<h4>Justin Tempelm</h4>
