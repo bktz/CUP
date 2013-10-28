@@ -8,7 +8,7 @@
 	<h3>Developers</h3>
 	<div class="media">
 		<a class="pull-left" href="http://ca.linkedin.com/in/benikatznelson">
-			<img class="media-object" src="/assets/img/license/beni.jpg" alt="Benjamin Katznelson Image">
+			<img class="media-object" src="/assets/img/license/beni.jpg" alt="Benjamin Katznelson Image" height="100" width="100">
 		</a>
 		<div class="media-body">
 			<h4>Benjamin Katznelson</h4>
@@ -18,7 +18,7 @@
 
 	<div class="media">
 		<a class="pull-left" href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">
-			<img class="media-object" src="/assets/img/license/justin.jpg" alt="Justin Tempelman Image">
+			<img class="media-object" src="/assets/img/license/justin.jpg" alt="Justin Tempelman Image" height="100" width="100">
 		</a>
 		<div class="media-body">
 			<h4>Justin Tempelm</h4>
@@ -30,41 +30,43 @@
 	<h3>Contributors</h3>
 	<div class="media">
 		<a class="pull-left" href="#">
-			<img class="media-object" src="http://placehold.it/100x100" alt="Dan Gillis Image">
+			<img class="media-object" src="/assets/img/license/danGillis.jpg" alt="Dan Gillis Image" height="100" width="100">
 		</a>
 		<div class="media-body">
 			<h4>Dan Gillis</h4>
-			Website: <a href="#">#</a>
+			Website: <a href="ca.linkedin.com/in/danielgillis">ca.linkedin.com/in/danielgillis</a>
 		</div>
 	</div>
 
 	<div class="media">
 		<a class="pull-left" href="#">
-			<img class="media-object" src="http://placehold.it/100x100" alt="Daniel Williamson Image">
+			<img class="media-object" src="/assets/img/license/danielWilliamson.jpg" alt="Daniel Williamson Image" height="100" width="100">
 		</a>
 		<div class="media-body">
 			<h4>Daniel Williamson</h4>
-			Website: <a href="#">#</a>
+			Website: <a href="ca.linkedin.com/in/williamsondaniel">ca.linkedin.com/in/williamsondaniel</a>
 		</div>
 	</div>
 
 	<div class="media">
 		<a class="pull-left" href="#">
-			<img class="media-object" src="http://placehold.it/100x100" alt="Daniel Williamson Image">
+			<img class="media-object" src="/assets/img/license/lindaHawkins.jpg" alt="Linda Hawkins Image" height="100" width="100">
 		</a>
 		<div class="media-body">
-			<h4>Research Shop #1</h4>
-			Website: <a href="#">#</a>
+			<h4>Linda Hawkins - Director at ICES</h4>		
+			<h5>Institute for Community Engaged Scholarship</h5>
+			Website: <a href="http://theresearchshop.ca/people">http://theresearchshop.ca/people</a>
 		</div>
 	</div>
 
 	<div class="media">
 		<a class="pull-left" href="#">
-			<img class="media-object" src="http://placehold.it/100x100" alt="Daniel Williamson Image">
+			<img class="media-object" src="/assets/img/license/anneBergen.jpg" alt="Anne Bergen Image" height="100" width="100">
 		</a>
 		<div class="media-body">
-			<h4>Research Shop #2</h4>
-			Website: <a href="#">#</a>
+			<h4>Anne Bergen - Knowledge Mobilization Coordinator</h4>
+			<h5>Institute for Community Engaged Scholarship</h5>		
+			Website: <a href="http://theresearchshop.ca/people">http://theresearchshop.ca/people</a>
 		</div>
 	</div>
 
