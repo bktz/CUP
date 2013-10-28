@@ -9,21 +9,11 @@
 			<dl class="dl-horizontal">
 				<dt></dt>
 				<dd><h3>{{ String::title($project->title) }}</h3></dd>
-				<dt>Project State</dt>
+				<dt>Project State:</dt>
 				<dd>{{ String::title($project->state) }}</dd>
 				<p/>
-				<dt>Description</dt>
+				<dt>Description:</dt>
 				<dd>{{ ucfirst($project->description) }}</dd>
-				<p/>
-				<dt>Contact Info</dt>
-				<dd>{{ String::title($project->contact_firstname) }} {{ String::title($project->contact_lastname) }}
-				</dd>
-				<dt></dt>
-				<dd><a href={{'"mailto:'.$project->contact_email.'"'}}>{{$project->contact_email}}</a></dd>
-				<dt></dt>
-				<dd>{{ String::phone_number_expand($project->contact_phone_number) }}
-					@if($project->contact_phone_number_ext != '') Ext. {{$project->contact_phone_number_ext}} @endif
-				</dd>
 				<p/>
 				<dt>Location:</dt>
 				<dd>{{ ucfirst($project->location) }}</dd>
@@ -47,7 +37,7 @@
 						<table class="table table-condensed table-bordered table-hover">
 							<thead>
 							<tr>
-								<th>Completed</th>
+								<th class="text-center">Completed</th>
 								<th>Goal</th>
 							</tr>
 							</thead>
@@ -55,12 +45,12 @@
 							@foreach ($goals as $goal)
 								@if ($goal->complete == 1)
 									<tr class="success">
-										<td class="text-center" style="width:10%;">
-											<span class="glyphicon glyphicon-check icon-green"></span>
+										<td class="text-center" style="width:15%;">
+											Complete <span class="glyphicon glyphicon-check icon-green"></span>
 								@else
 									<tr class="danger">
-										<td class="text-center" style="width:10%;">
-											<span class="glyphicon glyphicon-unchecked icon-red"></span>
+										<td class="text-center" style="width:15%;">
+											In Progress <span class="glyphicon glyphicon-unchecked icon-red"></span>
 								@endif
 										</td>
 									<td>{{ ucfirst($goal->goal) }}</td>
@@ -98,6 +88,16 @@
 					@else
 					N/A
 					@endif
+				</dd>
+				<p />
+				<dt>Contact Info:</dt>
+				<dd>{{ String::title($project->contact_firstname) }} {{ String::title($project->contact_lastname) }}
+				</dd>
+				<dt></dt>
+				<dd><a href={{'"mailto:'.$project->contact_email.'"'}}>{{$project->contact_email}}</a></dd>
+				<dt></dt>
+				<dd>{{ String::phone_number_expand($project->contact_phone_number) }}
+					@if($project->contact_phone_number_ext != '') Ext. {{$project->contact_phone_number_ext}} @endif
 				</dd>
 				@if (Auth::check() && (Auth::user()->id == $project->user_id))
 				<p />

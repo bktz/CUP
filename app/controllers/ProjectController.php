@@ -138,7 +138,10 @@ class ProjectController extends BaseController {
 		if(Auth::check() && (Auth::user()->id == $project->user_id)){
 			$goals = Goal::where('project_id', '=', $project->id)->get();
 			$tags = DB::table('tag')->join('tags','tag.id','=','tags.tag_id')->select('tag.tag')->where('project_id', '=', $project->id)->get();
-			return View::make('site/index'); //TODO create edit project view
+
+			$tags_all = Tag::orderby('tag')->lists('tag', 'id');
+
+			return View::make('site/project/edit', compact('project','goals','tags', 'tags_all'));
 		}
 		else{
 			return Redirect::to('/');
