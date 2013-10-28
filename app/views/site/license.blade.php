@@ -29,27 +29,27 @@
 	<br />
 	<h3>Contributors</h3>
 	<div class="media">
-		<a class="pull-left" href="#">
+		<a class="pull-left" href="http://ca.linkedin.com/in/danielgillis">
 			<img class="media-object" src="/assets/img/license/danGillis.jpg" alt="Dan Gillis Image" height="100" width="100">
 		</a>
 		<div class="media-body">
 			<h4>Dan Gillis</h4>
-			Website: <a href="ca.linkedin.com/in/danielgillis">ca.linkedin.com/in/danielgillis</a>
+			Website: <a href="http://ca.linkedin.com/in/danielgillis">http://ca.linkedin.com/in/danielgillis</a>
 		</div>
 	</div>
 
 	<div class="media">
-		<a class="pull-left" href="#">
+		<a class="pull-left" href="http://ca.linkedin.com/in/williamsondaniel">
 			<img class="media-object" src="/assets/img/license/danielWilliamson.jpg" alt="Daniel Williamson Image" height="100" width="100">
 		</a>
 		<div class="media-body">
 			<h4>Daniel Williamson</h4>
-			Website: <a href="ca.linkedin.com/in/williamsondaniel">ca.linkedin.com/in/williamsondaniel</a>
+			Website: <a href="http://ca.linkedin.com/in/williamsondaniel">http://ca.linkedin.com/in/williamsondaniel</a>
 		</div>
 	</div>
 
 	<div class="media">
-		<a class="pull-left" href="#">
+		<a class="pull-left" href="http://theresearchshop.ca/people">
 			<img class="media-object" src="/assets/img/license/lindaHawkins.jpg" alt="Linda Hawkins Image" height="100" width="100">
 		</a>
 		<div class="media-body">
@@ -60,7 +60,7 @@
 	</div>
 
 	<div class="media">
-		<a class="pull-left" href="#">
+		<a class="pull-left" href="http://theresearchshop.ca/people">
 			<img class="media-object" src="/assets/img/license/anneBergen.jpg" alt="Anne Bergen Image" height="100" width="100">
 		</a>
 		<div class="media-body">
