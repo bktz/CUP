@@ -141,6 +141,29 @@ class ProjectController extends BaseController {
 
 			$tags_all = Tag::orderby('tag')->lists('tag', 'id');
 
+			/** format enum for expected time */
+			switch ($project->expected_time)
+			{
+			case 'lessMonth':
+				$project->expected_time = 1;
+			  break;
+			case 'aMonth':
+				$project->expected_time = 2;
+			  break;
+			case 'fourMonths':
+				$project->expected_time = 3;
+			  break;
+			case 'eightMonths':
+				$project->expected_time = 4;
+			  break;
+			case 'ayear':
+				$project->expected_time = 5;
+			  break;
+			case 'moreYear':
+				$project->expected_time = 6;
+			  break;
+			}
+
 			return View::make('site/project/edit', compact('project','goals','tags', 'tags_all'));
 		}
 		else{
@@ -155,6 +178,30 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function update($project){
+
+		$project = new Project();
+		$input = Input::all();
+
+		$project->contact_firstname = $input['contact_firstname'];
+		$project->contact_lastname = $input['contact_lastname'];
+		$project->contact_email = $input['contact_email'];
+		$project->contact_phone_number = $input['contact_phone_number'];
+		$project->contact_phone_number_ext = $input['contact_phone_number_ext'];
+		$project->description = $input['description'];
+		$project->location = $input['location'];
+		$project->expected_time = $input['expected_time'];
+		$project->motivation =$input['motivation'];
+		$project->resources = $input['resources'];
+		$project->constraints = $input['constraints'];
+		$project->state = 1; //Application state
+		$project->user_id = Auth::user()->id;
+
+		print('<pre>');
+		print_r($input);
+		print('</pre>');
+
+		die;
+
 		return View::make('site/index');
 	}
 
