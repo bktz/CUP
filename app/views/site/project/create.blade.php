@@ -3,6 +3,7 @@
 {{-- Content --}}
 @section('content')
 <h1>Pitch An Idea To The Community University Portal</h1>
+<form class="form-horizontal" method="POST" action="{{ URL::to('project') }}" accept-charset="UTF-8">
 {{ Form::open(array('url' => 'project', 'method' => 'post')) }}
 
 		@if (!Auth::check())
