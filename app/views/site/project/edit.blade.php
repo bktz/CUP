@@ -4,8 +4,8 @@
 @section('content')
 
 <h1>{{ String::title($project->title) }}</h1>
-<form class="form-horizontal" method="PUT" action="{{ URL::to('project'.$project->id) }}" accept-charset="UTF-8">
-{{ Form::open(array('url' => 'project'.$project->id, 'method' => 'PUT')) }}
+<form class="form-horizontal" method="POST" action="{{ URL::to('project/'.$project->id) }}" accept-charset="UTF-8">
+{{ Form::open(array('url' => 'project/'.$project->id, 'method' => 'PUT')) }}
 
 <fieldset>
 	<legend>Who Will Be The Project Champion?</legend>

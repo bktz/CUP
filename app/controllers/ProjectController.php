@@ -178,7 +178,6 @@ class ProjectController extends BaseController {
 	 */
 	public function update($project){
 
-		$project = new Project();
 		$input = Input::all();
 
 		$project->contact_firstname = $input['contact_firstname'];
@@ -192,8 +191,6 @@ class ProjectController extends BaseController {
 		$project->motivation =$input['motivation'];
 		$project->resources = $input['resources'];
 		$project->constraints = $input['constraints'];
-		$project->state = 1; //Application state
-		$project->user_id = Auth::user()->id;
 
 		print('<pre>');
 		print_r($input);
