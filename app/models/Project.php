@@ -27,6 +27,10 @@ class Project extends Ardent implements PresentableInterface{
 		'state'                    => 'required|integer|between:1,6', // enum('Application','Available','InProgress','Complete','Canceled','NA')
 	);
 
+	public function tags(){
+		return $this->belongsToMany('Tag', 'tags');
+	}
+
 	public function getPresenter()
 	{
 		return new ProjectPresenter($this);

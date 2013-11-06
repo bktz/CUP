@@ -3,15 +3,6 @@
 {{-- Content --}}
 @section('content')
 
-<?//
-//
-//print('<pre>');
-//print_r($goals->toArray());
-//print('</pre>');
-//
-//?>
-
-
 <h1>{{ String::title($project->title) }}</h1>
 <form class="form-horizontal" method="PUT" action="{{ URL::to('project'.$project->id) }}" accept-charset="UTF-8">
 {{ Form::open(array('url' => 'project'.$project->id, 'method' => 'PUT')) }}
@@ -227,7 +218,15 @@
 			{{ Form::label('tags[]', 'Tags', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-10">
 				{{
-					Form::select('tags[]', $tags_all, Input::old('tags'), Array('size' => '10', 'class' => 'form-control', 'multiple', (Auth::check() ? '' : 'disabled')));
+					Form::select('tags[]',
+						$tags_all,
+						(Input::old('tags') != '') ? Input::old('tags') : $tags,
+						Array('size' => '10',
+							'class' => 'form-control',
+							'multiple',
+							(Auth::check() ? '' : 'disabled')
+						)
+					);
 				}}
 			</div>
 		</div>
@@ -241,6 +240,9 @@
 			</div>
 		</div>
 
+<!--########################-->
+<!--Script for adding a goal-->
+<!--########################-->
 		<script>
 			var goal_count = 0;
 			function add_goal(){

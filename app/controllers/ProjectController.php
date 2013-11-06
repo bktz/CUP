@@ -137,9 +137,8 @@ class ProjectController extends BaseController {
 	public function edit($project){
 		if(Auth::check() && (Auth::user()->id == $project->user_id)){
 			$goals = Goal::where('project_id', '=', $project->id)->get();
-			$tags = DB::table('tag')->join('tags','tag.id','=','tags.tag_id')->select('tag.tag')->where('project_id', '=', $project->id)->get();
-
 			$tags_all = Tag::orderby('tag')->lists('tag', 'id');
+			$tags = $project->tags()->lists('tag_id');
 
 			/** format enum for expected time */
 			switch ($project->expected_time)
@@ -164,7 +163,7 @@ class ProjectController extends BaseController {
 			  break;
 			}
 
-			return View::make('site/project/edit', compact('project','goals','tags', 'tags_all'));
+			return View::make('site/project/edit', compact('project','goals', 'tags_all', 'tags'));
 		}
 		else{
 			return Redirect::to('/');
