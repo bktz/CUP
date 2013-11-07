@@ -190,9 +190,9 @@
 					<div class="col-md-8">
 						<input id="goals{{$count}}" class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
 					</div>
-					{{ Form::label('completex'.$count, 'Completed', Array("class"=>"col-md-1 control-label")) }}
+					{{ Form::label('complete'.$count, 'Completed', Array("class"=>"col-md-1 control-label")) }}
 					<div class="col-md-1">
-						{{ Form::checkbox('completed[]', $count, (isset($completed[$count])) ? '1' : '0', array("id"=>"completex".$count, "class"=>"form-control", "style"=>"box-shadow: none; margin-top: 0px;")); }}
+						{{ Form::checkbox('completed[]', $count, (isset($completed[$count])) ? '1' : '0', array("id"=>"complete".$count, "class"=>"form-control", "style"=>"box-shadow: none; margin-top: 0px;")); }}
 					</div>
 				</div>
 				<? $count++; ?>
