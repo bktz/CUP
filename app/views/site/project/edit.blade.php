@@ -179,30 +179,52 @@
 <fieldset>
 	<legend>Project Goals</legend>
 	<div id="goals_form">
-			@if (sizeof($goals) > 0)
-				<? $count = 0; ?>
-				@foreach($goals as $goal)
-					<div class="form-group">
-						{{ Form::label('goals'.$count, 'Goal', Array("class"=>"col-md-2 control-label")) }}
-						<div class="col-md-8">
-							<input id="goals{{$count}}" class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal->goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
-						</div>
-						{{ Form::label('complete'.$goal->id, 'Completed', Array("class"=>"col-md-1 control-label")) }}
-						<div class="col-md-1">
-							{{ Form::checkbox('completed[]', $goal->id, $goal->complete, array("id"=>"complete".$goal->id, "class"=>"form-control", "style"=>"box-shadow: none; margin-top: 0px;")); }}
-						</div>
+		@if (sizeof(Input::old('goals')) > 0)
+			<? $count = 0; ?>
+			@foreach(Input::old('goals') as $goal)
+				@if($goal == '')
+				@endif
+				<? $completed = array_flip(Input::old('completed')); ?>
+				<div class="form-group">
+					{{ Form::label('goals'.$count, 'Goal', Array("class"=>"col-md-2 control-label")) }}
+					<div class="col-md-8">
+						<input id="goals{{$count}}" class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
 					</div>
-					<? $count++; ?>
-				@endforeach
-			@else
-			<div class="form-group">
-				{{ Form::label('goals[]', 'Goal', Array("class"=>"col-md-2 control-label")) }}
-				<div class="col-md-10">
-					<input id="goals[]" class="form-control" placeholder="Project Goal" type="text" name="goals[]" {{ (Auth::check() ? '' : 'disabled') }} / >
+					{{ Form::label('completex'.$count, 'Completed', Array("class"=>"col-md-1 control-label")) }}
+					<div class="col-md-1">
+						{{ Form::checkbox('completed[]', $count, (isset($completed[$count])) ? '1' : '0', array("id"=>"completex".$count, "class"=>"form-control", "style"=>"box-shadow: none; margin-top: 0px;")); }}
+					</div>
 				</div>
+				<? $count++; ?>
+			@endforeach
+		@elseif (sizeof($goals) > 0)
+			<? $count = 0; ?>
+			@foreach($goals as $goal)
+				<div class="form-group">
+					{{ Form::label('goals'.$count, 'Goal', Array("class"=>"col-md-2 control-label")) }}
+					<div class="col-md-8">
+						<input id="goals{{$count}}" class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal->goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
+					</div>
+					{{ Form::label('complete'.$goal->id, 'Completed', Array("class"=>"col-md-1 control-label")) }}
+					<div class="col-md-1">
+						{{ Form::checkbox('completed[]', $count, $goal->complete, array("id"=>"complete".$goal->id, "class"=>"form-control", "style"=>"box-shadow: none; margin-top: 0px;")); }}
+					</div>
+				</div>
+				<? $count++; ?>
+			@endforeach
+		@else
+		<div class="form-group">
+			{{ Form::label('goals[]', 'Goal', Array("class"=>"col-md-2 control-label")) }}
+			<div class="col-md-8">
+				<input id="goals[]" class="form-control" placeholder="Project Goal" type="text" name="goals[]" {{ (Auth::check() ? '' : 'disabled') }} / >
 			</div>
-			@endif
+			{{ Form::label('complete', 'Completed', Array("class"=>"col-md-1 control-label")) }}
+			<div class="col-md-1">
+				{{ Form::checkbox('completed[]', 0, 0, array("id"=>"complete", "class"=>"form-control", "style"=>"box-shadow: none; margin-top: 0px;")); }}
+			</div>
 		</div>
+		@endif
+	</div>
 
 		@if (Auth::check())
 		<div class="form-group">
@@ -241,12 +263,13 @@
 		</div>
 
 <!--########################-->
-<!--Script for adding a goal-->
+<!--Script for adding a goal & checkbox-->
 <!--########################-->
 		<script>
 			var goal_count = 0;
 			function add_goal(){
-				var goal = '<div class="form-group"><label class="col-md-2 control-label" for="goalsx'+goal_count+'">Goal</label><div class="col-md-10">	<input id="goalsx'+goal_count+'" class="form-control" placeholder="Project Goal" type="text" name="goals[]" / >	</div></div>';
+				var checkboxes = $('input:checkbox').length;
+				var goal = '<div class="form-group"><label class="col-md-2 control-label" for="goalsx'+goal_count+'">Goal</label><div class="col-md-8">	<input id="goalsx'+goal_count+'" class="form-control" placeholder="Project Goal" type="text" name="goals[]" / >	</div>   <label for="completex'+goal_count+'" class="col-md-1 control-label">Completed</label><div class="col-md-1"><input id="completex'+goal_count+'" class="form-control" style="box-shadow: none; margin-top: 0px;" name="completed[]" type="checkbox" value="'+checkboxes+'"></div>    </div>';
 				$("#goals_form").append(goal);
 				goal_count++;
 			}

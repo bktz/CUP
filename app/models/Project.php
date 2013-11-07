@@ -24,11 +24,14 @@ class Project extends Ardent implements PresentableInterface{
 		'motivation'               => 'required|between:1,255',
 		'resources'                => 'required',
 		'constraints'              => 'required',
-		'state'                    => 'required|integer|between:1,6', // enum('Application','Available','InProgress','Complete','Canceled','NA')
 	);
 
 	public function tags(){
 		return $this->belongsToMany('Tag', 'tags');
+	}
+
+	public function goals(){
+		return $this->hasMany('Goal');
 	}
 
 	public function getPresenter()

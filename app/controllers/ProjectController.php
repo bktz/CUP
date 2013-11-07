@@ -192,9 +192,57 @@ class ProjectController extends BaseController {
 		$project->resources = $input['resources'];
 		$project->constraints = $input['constraints'];
 
-		print('<pre>');
-		print_r($input);
-		print('</pre>');
+		if ($project->update()) {
+
+			// Delete project goals and then re-create them
+			$project->goals()->delete();
+			$loop_index = 0;
+			foreach($input['goals'] as $goal){
+				//Ignore empty goals
+				if($goal == ''){
+					$loop_index++;
+					continue;
+				}
+				else{
+					$goalObj = new Goal();
+					$goalObj->goal = $goal;
+
+					// The completed variable posted is an array containing the indexes for the goals that are marked as complete
+					// This will swap the array's index  with the value (ie. [0] => a, [1] => b will become [a] => 0, [b] => 1)
+					// This then allows us to see if the current loop index has a goal that is complete without needing to use a for loop
+					$completed = array_flip($input['completed']);
+					if(isset($completed[$loop_index])){
+						$goalObj->complete = 1;
+					}
+					else{
+						$goalObj->complete = 0;
+					}
+
+					$project->goals()->save( $goalObj );
+				}
+				$loop_index++;
+			}
+
+//			foreach($input['tags'] as $tag){
+//				if($tag == ''){
+//					continue;
+//				}
+//				else{
+//					$projectTag = new ProjectTag();
+//					$projectTag->tag_id = $tag;
+//					$projectTag->project_id = $project->id;
+//					$projectTag->user_id = Auth::user()->id;
+//					$projectTag->save();
+//				}
+//			}
+
+
+			return Redirect::to('/project/'.$project->id.'/edit')->with('info', 'The project has been updated.');
+		} else {
+			return Redirect::to('/project/'.$project->id.'/edit')->withErrors($project->errors());
+		}
+
+
 
 		die;
 
