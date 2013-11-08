@@ -3,7 +3,7 @@
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	<h4>Error</h4>
 	@foreach ($errors->all() as $error)
-	{{ $error."<br>" }}
+        {{ $error."<br>" }}
 	@endforeach
 </div>
 @endif
@@ -13,11 +13,11 @@
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	<h4>Error</h4>
     @if(is_array($message))
-    @foreach ($message as $m)
-    {{ $m."<br>" }}
-    @endforeach
+        @foreach ($message as $m)
+            {{ $m."<br>" }}
+        @endforeach
     @else
-    {{ $message }}
+        {{ $message }}
     @endif
 </div>
 @endif
@@ -27,11 +27,11 @@
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	<h4>Warning</h4>
     @if(is_array($message))
-    @foreach ($message as $m)
-    {{ $m."<br>" }}
-    @endforeach
+        @foreach ($message as $m)
+            {{ $m."<br>" }}
+        @endforeach
     @else
-    {{ $message }}
+        {{ $message }}
     @endif
 </div>
 @endif
@@ -41,11 +41,11 @@
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	<h4>Info</h4>
     @if(is_array($message))
-    @foreach ($message as $m)
-    {{ $m."<br>" }}
-    @endforeach
+        @foreach ($message as $m)
+            {{ $m."<br>" }}
+        @endforeach
     @else
-    {{ $message }}
+        {{ $message }}
     @endif
 </div>
 @endif

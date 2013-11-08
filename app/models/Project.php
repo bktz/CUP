@@ -26,6 +26,10 @@ class Project extends Ardent implements PresentableInterface{
 		'constraints'              => 'required',
 	);
 
+	public static $customMessages = array(
+	        'integer' => 'The :attribute must be only numbers, and cannot contain spaces or \'-\'',
+	);
+	
 	public function tags(){
 		return $this->belongsToMany('Tag', 'tags');
 	}
