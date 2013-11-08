@@ -108,7 +108,7 @@
 		<div class="container">
 			<p class="muted credit">Copyright &copy; 2013 <a target="_blank" href="http://ca.linkedin.com/in/benikatznelson">Benjamin Katznelson</a> & <a target="_blank" href="http://ca.linkedin.com/pub/justin-tempelman/63/a02/332">Justin Tempelman</a>
 				<block class="pull-right">
-					<a href="/privacy">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="/license">License</a>
+					<a href="/privacy">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="/license">License</a> | <a href="/contact-us">Contact Us</a>
 				</block>
 			</p>
 		</div>

@@ -224,6 +224,7 @@
 				{{
 					Form::select('tags[]', $tags, Input::old('tags'), Array('size' => '10', 'class' => 'form-control', 'multiple', (Auth::check() ? '' : 'disabled')));
 				}}
+				<p class="help-block">Hold down the ctrl or &#8984;cmd button and click to select multiple tags.</p>			
 			</div>
 		</div>
 
