@@ -101,9 +101,6 @@ Route::controller('user', 'UserController');
  *  ------------------------------------------
  */
 
-# Filter for detect language
-Route::when('contact-us', 'detectLang');
-
 # Contact Us Static Page
 Route::get('contact-us', function (){
 	// Return about us page

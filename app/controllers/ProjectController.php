@@ -92,11 +92,8 @@ class ProjectController extends BaseController {
 					continue;
 				}
 				else{
-					$projectTag = new ProjectTag();
-					$projectTag->tag_id = $tag;
-					$projectTag->project_id = $project->id;
-					$projectTag->user_id = Auth::user()->id;
-					$projectTag->save();
+					$tagObj = Tag::find($tag);
+					$project->tags()->attach($tagObj);
 				}
 			}
 
@@ -118,7 +115,8 @@ class ProjectController extends BaseController {
 	public function show($project){
 		if((Auth::check() && (Auth::user()->id == $project->user_id)) || $project->state != 'Application'){
 			$goals = Goal::where('project_id', '=', $project->id)->get();
-			$tags = DB::table('tag')->join('tags','tag.id','=','tags.tag_id')->select('tag.tag')->where('project_id', '=', $project->id)->get();
+			//$tags = DB::table('tag')->join('tags','tag.id','=','tags.tag_id')->select('tag.tag')->where('project_id', '=', $project->id)->get();
+			$tags = $project->tags()->lists('tag_id');
 			return View::make('site/project/show', compact('project','goals','tags'));
 		}
 		else{
@@ -210,7 +208,7 @@ class ProjectController extends BaseController {
 					// The completed variable posted is an array containing the indexes for the goals that are marked as complete
 					// This will swap the array's index  with the value (ie. [0] => a, [1] => b will become [a] => 0, [b] => 1)
 					// This then allows us to see if the current loop index has a goal that is complete without needing to use a for loop
-					$completed = array_flip($input['completed']);
+					$completed = isset($input['completed']) ? array_flip($input['completed']) : array();
 					if(isset($completed[$loop_index])){
 						$goalObj->complete = 1;
 					}
@@ -223,30 +221,22 @@ class ProjectController extends BaseController {
 				$loop_index++;
 			}
 
-//			foreach($input['tags'] as $tag){
-//				if($tag == ''){
-//					continue;
-//				}
-//				else{
-//					$projectTag = new ProjectTag();
-//					$projectTag->tag_id = $tag;
-//					$projectTag->project_id = $project->id;
-//					$projectTag->user_id = Auth::user()->id;
-//					$projectTag->save();
-//				}
-//			}
-
+			$project->tags()->detach();
+			foreach($input['tags'] as $tag){
+				if($tag == ''){
+					continue;
+				}
+				else{
+					$tagObj = Tag::find($tag);
+					$project->tags()->attach($tagObj);
+				}
+			}
 
 			return Redirect::to('/project/'.$project->id.'/edit')->with('info', 'The project has been updated.');
 		} else {
 			return Redirect::to('/project/'.$project->id.'/edit')->withErrors($project->errors());
 		}
 
-
-
-		die;
-
-		return View::make('site/index');
 	}
 
 	/**

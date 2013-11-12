@@ -79,7 +79,7 @@
 							@foreach ($tags as $tag)
 							<tr>
 								<td class="text-center" style="width:10%;"><span class="glyphicon glyphicon-tag icon-blue"></span></td>
-								<td>{{ ucfirst($tag->tag) }}</td>
+								<td>{{ $tag }}</td>
 							</tr>
 							@endforeach
 							</tbody>

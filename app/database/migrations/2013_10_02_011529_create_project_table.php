@@ -63,12 +63,10 @@ class CreateProjectTable extends Migration {
 			$table->increments('id');
 			$table->integer('tag_id')->unsigned()->index();
 			$table->integer('project_id')->unsigned()->index();
-			$table->integer('user_id')->unsigned()->index();
 			$table->timestamps();
 
 			$table->foreign('tag_id')->references('id')->on('tag');
 			$table->foreign('project_id')->references('id')->on('projects');
-			$table->foreign('user_id')->references('id')->on('users');
 		});
 
 		// Creates the tags table
