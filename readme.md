@@ -2,24 +2,7 @@
 
 The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph.
 
-##License
-
-[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
-
-[![License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
-
-###Authors
-* Benjamin Katznelson
-    * Website: [http://ca.linkedin.com/in/benikatznelson](http://ca.linkedin.com/in/benikatznelson)
-* Justin Tempelm
-    * Website: [http://ca.linkedin.com/pub/justin-tempelman/63/a02/332](http://ca.linkedin.com/pub/justin-tempelman/63/a02/332)
-
-###Attribution
-
-1. All authors must be attributed in code and final products of derivative works.
-2. Links to all authors' respective websites must be included in code and final products of derivative works.
-
-##Here is a list of all the packages that LEF uses:
+##Here is a list of all the packages that CUP uses:
 
 * [Laravel 4 Bootstrap Starter Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
     * CUP is an extension of Laravel 4 Bootstrap Starter Site
@@ -40,8 +23,6 @@ The Community University Portal provides a resource for community-university pro
 
 ##To be added in the future:
 
-* [Laravel Console](https://github.com/Darsain/laravel-console)
-    * In-browser console for Laravel 4 PHP framework.
 * [Laravel MongoDB](https://github.com/jenssegers/Laravel-MongoDB)
     * An Eloquent model and Query builder with support for MongoDB, inspired by LMongo, but using the original Laravel methods. This library extends the original Laravel classes, so it uses exactly the same methods.
 * [reCaptcha](https://github.com/greggilbert/recaptcha)
@@ -51,48 +32,6 @@ The Community University Portal provides a resource for community-university pro
 
 * [Override Default Model Save Function](http://stackoverflow.com/questions/18199756/laravel-4-trouble-overriding-models-save-method)
 
-#Laravel 4 Bootstrap Starter Site
-`Version: 1.2.1 Stable` [![ProjectStatus](http://stillmaintained.com/andrew13/Laravel-4-Bootstrap-Starter-Site.png)](http://stillmaintained.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
-[![Build Status](https://api.travis-ci.org/Zizaco/confide.png)](https://travis-ci.org/andrew13/Laravel-4-Bootstrap-Starter-Site)
-
-Laravel 4 Bootstrap Starter Site is a sample application for beginning development with Larvel 4.
-
-It began as a fork of [laravel4-starter-kit](https://github.com/brunogaspar/laravel4-starter-kit) taking the starter kit changing the included modules and adding a few as well.
-
-
-## Features
-
-* Twitter Bootstrap 3.0.0
-* Custom Error Pages
-	* 403 for forbidden page accesses
-	* 404 for not found pages
-	* 500 for internal server errors
-* [Confide](#confide) for Authentication and Authorization
-* Back-end
-	* User and Role management
-	* Manage blog posts and comments
-	* WYSIWYG editor for post creation and editing.
-    * DataTables dynamic table sorting and filtering.
-    * Colorbox Lightbox jQuery modal popup.
-* Front-end
-	* User login, registration, forgot password
-	* User account area
-	* Simple Blog functionality
-* Packages included:
-	* [Confide](#confide)
-	* [Entrust](#entrust)
-	* [Ardent](#ardent)
-	* [Carbon](#carbon)
-	* [Basset](#basset)
-	* [Presenter](#presenter)
-	* [Generators](#generators)
-
-## Issues
-See [github issue list](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site/issues) for current list.
-
-## Wiki
-[Roadmap](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site/wiki/Roadmap)
-
 -----
 
 ##Requirements
@@ -101,24 +40,15 @@ See [github issue list](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-
 	MCrypt PHP Extension
 
 ##How to install
-### Step 1: Get the code
-#### Option 1: Git Clone
-
-	git clone git://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site.git laravel
-
-#### Option 2: Download the repository
-
-    https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site/archive/master.zip
-
-### Step 2: Use Composer to install dependencies
+### Step 1: Download Dependencies
 #### Option 1: Composer is not installed globally
 
-    cd laravel
+    cd cup
 	curl -s http://getcomposer.org/installer | php
 	php composer.phar install --dev
 #### Option 2: Composer is installed globally
 
-    cd laravel
+    cd cup
 	composer install --dev
 
 If you haven't already, you might want to make [composer be installed globally](http://andrewelkins.com/programming/php/setting-up-composer-globally-for-laravel-4/) for future ease of use.
@@ -133,7 +63,7 @@ This will skip the development packages and ensure the version of the packages i
 
 NEVER run `php composer.phar update` on your production server.
 
-### Step 3: Configure Environments
+### Step 2: Configure Environments
 
 Laravel 4 will load configuration files depending on your environment. Basset will also build collections depending on this environment setting.
 
@@ -173,46 +103,22 @@ You will now be copying the initial configuration file inside this folder before
 
     );
 
-### Step 4: Configure Database
+### Step 3: Configure Database
 
 Now that you have the environment configured, you need to create a database configuration for it. Copy the file ***app/config/database.php*** in ***app/config/local*** and edit it to match your local database settings. You can remove all the parts that you have not changed as this configuration file will be loaded over the initial one.
 
-### Step 5: Configure Mailer
+### Step 4: Configure Mailer
 
 In the same fashion, copy the ***app/config/mail.php*** configuration file in ***app/config/local/mail.php***. Now set the `address` and `name` from the `from` array in ***config/mail.php***. Those will be used to send account confirmation and password reset emails to the users.
 If you don't set that registration will fail because it cannot send the confirmation email.
 
-### Step 6: Populate Database
+### Step 5: Populate Database
 Run these commands to create and populate Users table:
 
 	php artisan migrate
 	php artisan db:seed
 
-### Step 7: Set Encryption Key
-***In app/config/app.php***
-
-```
-/*
-|--------------------------------------------------------------------------
-| Encryption Key
-|--------------------------------------------------------------------------
-|
-| This key is used by the Illuminate encrypter service and should be set
-| to a random, long string, otherwise these encrypted values will not
-| be safe. Make sure to change it before deploying any application!
-|
-*/
-```
-
-	'key' => 'YourSecretKey!!!',
-
-You can use artisan to do this
-
-    php artisan key:generate
-
-Once you have generated your key, you might want to copy it over to your ***app/config/local/app.php*** local configuration file to have a different encryption key for each environment. A little tip, revert the key back to ***'YourSecretKey!!!'*** in ***app/config/app.php*** once you are done copying it. Now it can be generated again when you move the project to another environment.
-
-### Step 8: Make sure app/storage is writable by your web server.
+### Step 6: Make sure app/storage is writable by your web server.
 
 If permissions are set correctly:
 
@@ -222,7 +128,7 @@ Should work, if not try
 
     chmod -R 777 app/storage
 
-### Step 9: Build Assets
+### Step 7: Build Assets
 
 If you have setup your environments, basset will know you are in development and will build the assets automatically and will not apply certain filters such as minification or combination to keep the code readable. You will need to make the folder where the assets are built writable:
 
@@ -243,27 +149,33 @@ php artisan basset:build
 The starter site uses two asset collections, ***public*** and ***admin***. While in development, assets will be built in two folders, ***public*** and ***admin***, inside of ***public/assets/compiled***. These are ignored by git as you do not want them on your production server. Once you are ready to push or upload the code to production run:
 
 ```
-php artisan basset:build -p public
-php artisan basset:build -p admin
+    php artisan basset:build -p public
+    php artisan basset:build -p admin
 ```
 
 This will build the production assets in ***public/assets/compiled*** which will be versioned in git and should be uploaded to your production server.
 
-### Step 10: Start Page
+### Step 8: Complete!
 
-### User login with commenting permission
 Navigate to your Laravel 4 website and login at /user/login:
 
-    username : user
-    password : user
+#### Admin Login
+    username : admin
+    password : admin
+
+#### Broker Login
+    username : broker
+    password : broker
+
+#### Campus Login
+    username : campus
+    password : campus
+
+#### Community Login
+    username : community
+    password : community
 
 Create a new user at /user/create
-
-### Admin login
-Navigate to /admin
-
-    username: admin
-    password: admin
 
 -----
 ## Application Structure
@@ -274,39 +186,13 @@ The files within library could also be handled within a composer package, but is
 
 ### Development
 
-For ease of development you'll want to enable a couple useful packages. This requires editing the `app/config/app.php` file.
-
-```
-    'providers' => array(
-
-        [...]
-
-        /* Uncomment for use in development */
-//        'Way\Generators\GeneratorsServiceProvider', // Generators
-//        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // IDE Helpers
-
-    ),
-```
-Uncomment the Generators and IDE Helpers. Then you'll want to run a composer update with the dev flag.
-
-```
-php composer.phar update
-```
-This adds the generators and ide helpers.
-To make it build the ide helpers automatically you'll want to modify the post-update-cmd in `composer.json`
-
-```
-		"post-update-cmd": [
-			"php artisan ide-helper:generate",
-			"php artisan optimize"
-		]
-```
+All settings have been pre-configured for development.
 
 ### Production Launch
 
 By default debugging is enabled. Before you go to production you should disable debugging in `app/config/app.php`
 
-```
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -319,7 +205,7 @@ By default debugging is enabled. Before you go to production you should disable 
     */
 
     'debug' => false,
-```
+
 
 ## Troubleshooting
 
@@ -476,12 +362,19 @@ For full usage see [Laravel 4 Generators Readme](https://github.com/JeffreyWay/L
 
 
 -----
-## License
+##License
 
-This is free software distributed under the terms of the MIT license
+[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
 
-## Additional information
+[![License](http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
 
-Inspired by and based on [laravel4-starter-kit](https://github.com/brunogaspar/laravel4-starter-kit)
+###Authors
+* Benjamin Katznelson
+    * Website: [http://ca.linkedin.com/in/benikatznelson](http://ca.linkedin.com/in/benikatznelson)
+* Justin Tempelm
+    * Website: [http://ca.linkedin.com/pub/justin-tempelman/63/a02/332](http://ca.linkedin.com/pub/justin-tempelman/63/a02/332)
 
-Any questions, feel free to [contact me](http://twitter.com/andrewelkins).
+###Attribution
+
+1. All authors must be attributed in code and final products of derivative works.
+2. Links to all authors' respective websites must be included in code and final products of derivative works.
