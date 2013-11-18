@@ -33,7 +33,33 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function index(){
-		$projects = Project::where('state', '=', 'Available')->orWhere('state', '=', 'InProgress')->orderBy('created_at', 'DESC')->paginate(5);
+		if (Input::get('search') == null || Input::get('search') == ''){
+			$projects = Project::where('state', '=', 'Available')->orWhere('state', '=', 'InProgress')->orderBy('created_at', 'DESC')->paginate(5);
+		}
+		else{
+			$projects = Project::join('tags', 'projects.id', '=', 'tags.project_id')
+				->join('tag', 'tags.tag_id', '=', 'tag.id')
+				->select('projects.*')
+				->groupby('projects.id')
+				->where(function($query){
+					$count= 0;
+					foreach(explode(', ', Input::get('search')) as $searchToken){
+						if($count == 1){
+							$query->orWhere('tag.tag', 'like', '%'.strtolower($searchToken).'%');
+						}
+						else{
+							$query->where('tag.tag', 'like', '%'.strtolower($searchToken).'%');
+							$count = 1;
+						}
+					}
+				})
+				->where(function($query){
+					$query->where('state', '=', 'Available')
+						  ->orWhere('state', '=', 'InProgress');
+				})
+				->orderBy('projects.created_at', 'DESC')->paginate(5);
+
+		}
 		return View::make('site/project/index', compact('projects'));
 	}
 

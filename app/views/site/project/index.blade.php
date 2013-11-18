@@ -21,6 +21,7 @@
 						<button class="btn btn-success btn-md" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
 					</span>
 				</div>
+				<p class="help-block">Separate search tags with a comma followed by a space ", " - Eg: "Math, Art"</p>
 			</div>
 		</div>
 	{{ Form::close() }}

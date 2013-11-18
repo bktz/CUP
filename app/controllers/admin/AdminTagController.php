@@ -43,7 +43,9 @@ class AdminTagController extends BaseController{
 		$input = Input::all();
 
 		$tag = new Tag();
-		$tag->tag = $input['tag'];
+
+		//make sure all tags are lowercase to make searching easier
+		$tag->tag = strtolower(['tag']);
 
 		if ($tag->save()) {
 			return Redirect::to('/admin/tag')->with('info', 'The new tag has been created.');
