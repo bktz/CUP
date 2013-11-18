@@ -3,6 +3,29 @@
 {{-- Content --}}
 @section('content')
 <h1>View Projects</h1>
+<div class="container" style="margin-bottom: 20px;">
+	<form class="form-horizontal" method="GET" action="{{ URL::to('project') }}" accept-charset="UTF-8">
+		{{ Form::open(array('url' => 'project', 'method' => 'GET')) }}
+		<div class="row search">
+			<div class="col-md-12">
+				<div class="input-group">
+					{{ Form::label('search', 'Search', Array("class"=>"input-group-addon")) }}
+					{{ 	Form::text('search',
+							Input::get('search'),
+							Array(	"placeholder" =>"Search for tags",
+								"class"=>"form-control input-md"
+							)
+						)
+					}}
+					<span class="input-group-btn">
+						<button class="btn btn-success btn-md" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+					</span>
+				</div>
+			</div>
+		</div>
+	{{ Form::close() }}
+</div>
+
 <div class="container">
 	@foreach ($projects as $project)
 	<div class="panel panel-primary">
