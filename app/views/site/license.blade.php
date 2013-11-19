@@ -34,7 +34,12 @@
 		</a>
 		<div class="media-body">
 			<h4>Dan Gillis</h4>
-			Website: <a href="http://ca.linkedin.com/in/danielgillis">http://ca.linkedin.com/in/danielgillis</a>
+			<p>
+			    Faculty Profile: <a href="https://www.uoguelph.ca/cpes/users/dan-gillis">https://www.uoguelph.ca/cpes/users/dan-gillis</a>
+			</p>
+			<p>
+			    Website: <a href="http://ca.linkedin.com/in/danielgillis">http://ca.linkedin.com/in/danielgillis</a>
+			</p>
 		</div>
 	</div>
 
