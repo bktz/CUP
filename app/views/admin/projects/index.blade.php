@@ -1,18 +1,18 @@
-@extends('site.layouts.default')
+@extends('admin.layouts.default')
 
 {{-- Content --}}
 @section('content')
-<h1>View Projects</h1>
 <div class="container" style="margin-bottom: 20px;">
-	<form class="form-horizontal" method="GET" action="{{ URL::to('project') }}" accept-charset="UTF-8">
-		{{ Form::open(array('url' => 'project', 'method' => 'GET')) }}
+	<h1>Edit Projects</h1>
+	<form class="form-horizontal" method="GET" action="{{ URL::to('admin/project') }}" accept-charset="UTF-8">
+		{{ Form::open(array('url' => 'admin/project', 'method' => 'GET')) }}
 		<div class="row search">
 			<div class="col-md-12">
 				<div class="input-group">
 					{{ Form::label('search', 'Search', Array("class"=>"input-group-addon")) }}
 					{{ 	Form::text('search',
 							Input::get('search'),
-							Array(	"placeholder" =>"Search for tags",
+							Array(	"placeholder" =>"Search for project title",
 								"class"=>"form-control input-md"
 							)
 						)
@@ -21,13 +21,14 @@
 						<button class="btn btn-success btn-md" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
 					</span>
 				</div>
-				<p class="help-block">Separate search tags with a comma followed by a space ", " - Eg: "Math, Art"</p>
+				<p class="help-block">Search by the title of a project - Eg: "Community University Portal"</p>
 			</div>
 		</div>
 	{{ Form::close() }}
 </div>
 
 <div class="container">
+
 	@if(count($projects) == 0)
 		<div class="panel panel-primary">
 			<div class="panel-body">
@@ -48,7 +49,11 @@
 					<dd>{{ ucfirst(Str::limit($project->description, 750)) }}</dd>
 					<p />
 					<p />
-					<dd><a href={{ '"/project/'.$project->id.'"' }}><button type="button" class="btn btn-lg btn-primary">View Project</button></a></dd>
+					<dd>
+						@
+						<a href={{ '"/project/'.$project->id.'"' }}><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon"></span>View Project</button></a>
+						<a href={{ '"/project/'.$project->id.'/edit"' }}><button type="button" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit Project</button></a>
+					</dd>
 				</dl>
 			</div>
 		</div>
@@ -58,5 +63,15 @@
 <div class="text-center">
 	{{$projects->links()}}
 </div>
+
+
+
+
+
+
+</div>
+
+
+
 
 @stop

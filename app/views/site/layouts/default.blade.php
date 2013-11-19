@@ -9,9 +9,9 @@
 			Community University Portal
 			@show
 		</title>
-		<meta name="keywords" content="your, awesome, keywords, here" />
+		<meta name="keywords" content="UoGuelph, UoG, University of Guelph, Community University Portal, CUP, Benjamin Katznelson, Justin Tempelman, Community Based Scholarship" />
 		<meta name="author" content="Benjamin Katznelson & Justin Tempelman" />
-		<meta name="description" content="Lorem ipsum dolor sit amet, nihil fabulas et sea, nam posse menandri scripserit no, mei." />
+		<meta name="description" content="The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph." />
 
 		<!-- Mobile Specific Metas
 		================================================== -->

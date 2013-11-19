@@ -8,8 +8,7 @@ class AdminProjectController extends BaseController {
      */
     protected $project;
 
-	public function __construct(Project $project)
-	{
+	public function __construct(Project $project){
 	    $this->beforeFilter('csrf', array('on' => array('post', 'delete', 'put')));
 	}
 
@@ -19,11 +18,14 @@ class AdminProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function index(){
-
-		return View::make('admin/dashboard');
-
-		$projects = Project::where('state', '=', 'Available')->orWhere('state', '=', 'InProgress')->orderBy('created_at', 'DESC')->paginate(5);
-		return View::make('site/project/index', compact('projects'));
+		if (Input::get('search') == null || Input::get('search') == ''){
+			$projects = Project::orderBy('created_at', 'DESC')->paginate(5);
+		}
+		else{
+			$projects = Project::where('title', 'like', '%'.Input::get('search').'%')
+				->orderBy('projects.created_at', 'DESC')->paginate(5);
+		}
+		return View::make('admin/projects/index', compact('projects'));
 	}
 
 	/**
