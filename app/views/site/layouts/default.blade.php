@@ -72,7 +72,7 @@
 						@if (Auth::check())
                         	<li  {{ (Request::is('user') ? ' class="active"' : '') }}><a href="{{{ URL::to('user') }}}">Profile</a></li>
                         	<li><a href="{{{ URL::to('user/logout') }}}">Logout</a></li>
-							@if (Auth::user()->hasRole('admin'))
+							@if (Auth::user()->can("admin_panel"))
 								<li><a href="{{{ URL::to('admin') }}}">Admin Panel</a></li>
 							@endif
                         @else

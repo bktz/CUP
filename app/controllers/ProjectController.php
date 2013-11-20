@@ -139,7 +139,7 @@ class ProjectController extends BaseController {
 	 * @return Response
 	 */
 	public function show($project){
-		if((Auth::check() && (Auth::user()->id == $project->user_id)) || $project->state != 'Application'){
+		if((Auth::check() && (Auth::user()->id == $project->user_id)) || $project->state != 'Application' || Auth::user()->can("manage_projects")){
 			$goals = Goal::where('project_id', '=', $project->id)->get();
 			$tags = $project->tags()->lists('tag_id');
 			return View::make('site/project/show', compact('project','goals','tags'));

@@ -93,30 +93,31 @@
     			<div class="collapse navbar-collapse navbar-ex1-collapse">
     				<ul class="nav navbar-nav">
     					<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-						<li{{ (Request::is('admin/project') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/project') }}}"><span class="glyphicon glyphicon-file"></span> Projects</a></li>
-						<li{{ (Request::is('admin/tag') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/tag') }}}"><span class="glyphicon glyphicon-tag"></span> Tags</a></li>
-						<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
-								<span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
-						<li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
-					</ul>
-					</li>
+						@if (Auth::user()->can("manage_projects"))
+							<li{{ (Request::is('admin/project') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/project') }}}"><span class="glyphicon glyphicon-file"></span> Projects</a></li>
+						@endif
+						@if (Auth::user()->can("manage_tags"))
+							<li{{ (Request::is('admin/tag') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/tag') }}}"><span class="glyphicon glyphicon-tag"></span> Tags</a></li>
+						@endif
+						@if (Auth::user()->can("manage_users") || Auth::user()->can("manage_roles"))
+							<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
+									<span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									@if (Auth::user()->can("manage_users"))
+										<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+									@endif
+									@if (Auth::user()->can("manage_roles"))
+										<li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> Roles</a></li>
+									@endif
+								</ul>
+							</li>
+						@endif
     				</ul>
     				<ul class="nav navbar-nav pull-right">
     					<li><a href="{{{ URL::to('/') }}}">View Homepage</a></li>
-    					<li class="dropdown">
-    							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-    								<span class="glyphicon glyphicon-user"></span> {{{ Auth::user()->username }}}	<span class="caret"></span>
-    							</a>
-    							<ul class="dropdown-menu">
-    								<li><a href="{{{ URL::to('user/settings') }}}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li>
-    								<li class="divider"></li>
-    								<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-share"></span> Logout</a></li>
-    							</ul>
-    					</li>
+						<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-share"></span> Logout</a></li>
     				</ul>
     			</div>
             </div>

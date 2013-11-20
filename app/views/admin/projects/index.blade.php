@@ -3,7 +3,7 @@
 {{-- Content --}}
 @section('content')
 <div class="container" style="margin-bottom: 20px;">
-	<h1>Edit Projects</h1>
+	<h1>Manage Projects</h1>
 	<form class="form-horizontal" method="GET" action="{{ URL::to('admin/project') }}" accept-charset="UTF-8">
 		{{ Form::open(array('url' => 'admin/project', 'method' => 'GET')) }}
 		<div class="row search">
@@ -28,7 +28,6 @@
 </div>
 
 <div class="container">
-
 	@if(count($projects) == 0)
 		<div class="panel panel-primary">
 			<div class="panel-body">
@@ -50,9 +49,8 @@
 					<p />
 					<p />
 					<dd>
-						@
 						<a href={{ '"/project/'.$project->id.'"' }}><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon"></span>View Project</button></a>
-						<a href={{ '"/project/'.$project->id.'/edit"' }}><button type="button" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit Project</button></a>
+						<a href={{ '"/admin/project/'.$project->id.'/edit"' }}><button type="button" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit Project</button></a>
 					</dd>
 				</dl>
 			</div>
@@ -60,18 +58,9 @@
 		@endforeach
 	@endif
 </div>
+
 <div class="text-center">
 	{{$projects->links()}}
 </div>
-
-
-
-
-
-
-</div>
-
-
-
 
 @stop
