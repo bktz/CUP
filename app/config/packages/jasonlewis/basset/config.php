@@ -66,6 +66,7 @@ return array(
                 $collection->add('datatables.fnReloadAjax.js');
                 $collection->add('jquery.colorbox.js');
                 $collection->add('prettify.js');
+				$collection->add('canvasjs.js');
             })->apply('JsMin');
         }
 
