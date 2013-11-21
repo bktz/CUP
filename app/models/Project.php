@@ -34,6 +34,10 @@ class Project extends Ardent implements PresentableInterface{
 		return $this->belongsToMany('Tag', 'tags');
 	}
 
+	public function users(){
+		return $this->belongsToMany('User', 'assigned_project');
+	}
+
 	public function goals(){
 		return $this->hasMany('Goal');
 	}

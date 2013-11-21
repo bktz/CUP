@@ -9,7 +9,7 @@
 				},
 				data: [
 					{
-						type: "pie",
+						type: "doughnut",
 						showInLegend: false,
 						dataPoints: [
 							{  y: {{ $states['Application'] }}, indexLabel: "Application" },
