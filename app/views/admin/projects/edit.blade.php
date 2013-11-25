@@ -4,12 +4,107 @@
 @section('content')
 
 <h1 xmlns="http://www.w3.org/1999/html">Edit Project</h1>
+
+
+<fieldset>
+	<legend>General Information</legend>
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<div class="form-group">
+				<div class="col-md-2 custom-label">Created By</div>
+				<div class="col-md-3">
+					<div style="width: 100%;height: 34px; padding: 6px 12px;font-size: 14px;">{{ ucfirst($creator->first_name).' '.ucfirst($creator->last_name) }}</div>
+				</div>
+				<div class="col-md-2 custom-label">Email</div>
+				<div class="col-md-4">
+					<div id="creator_email" style="width: 100%;height: 34px; padding: 6px 12px;font-size: 14px;"><a href="mailto:{{ $creator->email }}?Subject=Community%20University%20Portal" target="_top">{{ $creator->email }}</a></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-2 custom-label">Date Created</div>
+				<div class="col-md-3">
+					<div id="created_at" style="width: 100%;height: 34px; padding: 6px 12px;font-size: 14px;">{{ $project->created_at }}</div>
+				</div>
+				<div class="col-md-2 custom-label">Last Update</div>
+				<div class="col-md-4">
+					<div id="updated_at" style="width: 100%;height: 34px; padding: 6px 12px;font-size: 14px;">{{ $project->updated_at }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</fieldset>
+
+
+
+<fieldset>
+
+	<legend>Assigned Users</legend>
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			@if (sizeof($users) > 0)
+				<div class="panel panel-primary">
+					<table class="table table-condensed table-hover table-striped">
+						<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email</th>
+							<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						@foreach ($users as $user)
+						<tr>
+							<td>{{ ucfirst($user->first_name) }}</td>
+							<td>{{ ucfirst($user->last_name) }}</td>
+							<td><a href="mailto:{{ $user->email }}?Subject=Community%20University%20Portal" target="_top">{{ $user->email }}</a></td>
+							<td>
+								<a onclick="delete_confirm({{ $user->id }});" data-toggle="modal" title="Delete this tag" data-id="{{ $user->id }}" href="#confirm_modal" class=".delete-confirm btn-sm btn-danger">Remove</a>
+							</td>
+						</tr>
+						@endforeach
+						</tbody>
+					</table>
+				</div>
+			@endif
+			<form class="form-horizontal" method="POST" action="{{ URL::to('admin/project/'.$project->id.'/assign') }}" accept-charset="UTF-8">
+				{{ Form::open(array('url' => 'admin/project/'.$project->id.'/assign', 'method' => 'POST')) }}
+				<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+				<div class="form-group">
+					{{ Form::label('assign_new', 'Assign New User', Array("class"=>"col-md-2 control-label")) }}
+					<div class="col-md-5">
+						{{	Form::text('assign_new',
+								Input::old('assign_new'),
+								Array(	"placeholder" =>"exmaple@example.com",
+										"class"=>"form-control",
+										"required"
+								)
+							)
+						}}
+					</div>
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-success btn-sm">Submit</button>
+					</div>
+				</div>
+			{{ Form::close() }}
+
+		</div>
+	</div>
+
+
+
+</fieldset>
+
+
+
+
 <form class="form-horizontal" method="POST" action="{{ URL::to('admin/project/'.$project->id) }}" accept-charset="UTF-8">
 {{ Form::open(array('url' => 'admin/project/'.$project->id, 'method' => 'PUT')) }}
 
 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 <fieldset>
+	<legend>Project Details</legend>
 	<div class="form-group {{ ($errors->has('title')) ? 'has-error' : '' }}">
 		{{ Form::label('title', 'Project Title', Array("class"=>"col-md-2 control-label")) }}
 		<div class="col-md-10">
@@ -24,34 +119,28 @@
 			}}
 		</div>
 	</div>
-</fieldset>
-<fieldset>
-	<legend>General Information</legend>
-	<div class="form-group">
-		{{ Form::label('creator', 'Created By', Array("class"=>"col-md-2 control-label")) }}
+	<div class="form-group {{ ($errors->has('expected_time')) ? 'has-error' : '' }}">
+		{{ Form::label('state', 'Project Status', Array("class"=>"col-md-2 control-label")) }}
 		<div class="col-md-10">
-			<div id="creator" style="width: 100%;height: 34px; padding: 6px 12px;font-size: 14px;">{{ ucfirst($creator->first_name).' '.ucfirst($creator->last_name) }}</div>
-		</div>
-	</div>
-	<div class="form-group">
-		{{ Form::label('creator_email', 'Created Email', Array("class"=>"col-md-2 control-label")) }}
-		<div class="col-md-10">
-			<div id="creator_email" style="width: 100%;height: 34px; padding: 6px 12px;font-size: 14px;"><a href="mailto:{{ $creator->email }}?Subject=Community%20University%20Portal" target="_top">{{ $creator->email }}</a></div>
-		</div>
-	</div>
-	<div class="form-group">
-		{{ Form::label('created_at', 'Date Created', Array("class"=>"col-md-2 control-label")) }}
-		<div class="col-md-10">
-			<div id="created_at" style="width: 100%;height: 34px; padding: 6px 12px;font-size: 14px;">{{ $project->created_at }}</div>
-		</div>
-	</div>
-	<div class="form-group">
-		{{ Form::label('updated_at', 'Last Update', Array("class"=>"col-md-2 control-label")) }}
-		<div class="col-md-10">
-			<div id="updated_at" style="width: 100%;height: 34px; padding: 6px 12px;font-size: 14px;">{{ $project->updated_at }}</div>
+			{{ 	Form::select('state',
+			Array('1' => 'Application',
+			'2' => 'Available',
+			'3' => 'In Progress',
+			'4' => 'Complete',
+			'5' => 'Canceled',
+			'6' => 'N/A'
+			),
+			(Input::old('state') != '') ? Input::old('state') : $project->state,
+			Array("class"=>"form-control",
+			"required",
+			(Auth::check() ? '' : 'disabled')
+			)
+			)
+			}}
 		</div>
 	</div>
 </fieldset>
+
 <fieldset>
 	<legend>Who Will Be The Project Champion?</legend>
 	<div class="form-group {{ ($errors->has('contact_firstname')) ? 'has-error' : '' }}">
@@ -298,40 +387,17 @@
 			<p class="help-block">Hold down the ctrl or &#8984;cmd button and click to select multiple tags.</p>
 		</div>
 	</div>
-</fieldset>
-
-<fieldset>
-	<legend>Assigned Users</legend>
-
-	@if (sizeof($users) > 0)
-	<div class="panel panel-primary">
-		<table class="table table-condensed table-hover table-striped">
-			<thead>
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Email</th>
-			</tr>
-			</thead>
-			<tbody>
-			@foreach ($users as $user)
-				<td>{{ ucfirst($user->first_name) }}</td>
-				<td>{{ ucfirst($user->last_name) }}</td>
-				<td>{{ ucfirst($user->email) }}</td>
-			@endforeach
-			</tbody>
-		</table>
-	</div>
-	@else
-	N/A
-	@endif
 
 	<div class="form-group">
 		<div class="col-md-offset-2 col-md-10">
 			<button type="submit" class="btn btn-success btn-lg">Submit</button>
 		</div>
 	</div>
+
 </fieldset>
+
+{{ Form::close() }}
+
 	<!--########################-->
 	<!--Script for adding a goal & checkbox-->
 	<!--########################-->
@@ -345,10 +411,53 @@
 		}
 	</script>
 
+<!--########################-->
+<!--Confirm delete dialog box-->
+<!--########################-->
 
+<script type="text/javascript">
 
+	function delete_confirm(userID) {
+		$("#delete_form").attr("action","/admin/project/{{ $project->id }}/unassign/"+userID);
+	}
 
+</script>
 
-{{ Form::close() }}
+<!-- Delete Confirmation Modal -->
+<div class="modal modal-small fade" id="confirm_modal" role="dialog" aria-labelledby="delete-confirmation-modal" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2 class="modal-title">Confirm</h2>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<div class="col-md-offset-4 col-md-10">
+						<h3>Are you sure?</h3>
+					</div>
+				</div>
+
+				<form id="delete_form" method="POST" action="{{ URL::to('/admin/project/'.$project->id.'/unassign/') }}" accept-charset="UTF-8">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+					<div class="form-group">
+						<div class="col-md-offset-4 col-md-10">
+							<button type="submit" class="btn btn-success">Yes</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+
+				</form>
+				<br>
+				<br>
+			</div>
+			<div class="modal-footer">
+
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>
+<!-- /.Delete Confirmation Modal -->
 
 @stop

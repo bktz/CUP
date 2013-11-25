@@ -92,6 +92,28 @@ class AdminProjectController extends BaseController {
 				break;
 		}
 
+		/** format enum for state */
+		switch ($project->state)
+		{
+			case 'Application':
+				$project->state = 1;
+				break;
+			case 'Available':
+				$project->state = 2;
+				break;
+			case 'InProgress':
+				$project->state = 3;
+				break;
+			case 'Complete':
+				$project->state = 4;
+				break;
+			case 'Canceled':
+				$project->state = 5;
+				break;
+			case 'NA':
+				$project->state = 6;
+				break;
+		}
 
 		return View::make('admin/projects/edit', compact('project','goals', 'tags_all', 'tags', 'users', 'creator'));
 	}
@@ -117,6 +139,7 @@ class AdminProjectController extends BaseController {
 		$project->motivation =$input['motivation'];
 		$project->resources = $input['resources'];
 		$project->constraints = $input['constraints'];
+		$project->state = $input['state'];
 
 		if ($project->update()) {
 
@@ -165,6 +188,50 @@ class AdminProjectController extends BaseController {
 		} else {
 			return Redirect::to('/admin/project/'.$project->id.'/edit')->withErrors($project->errors());
 		}
+	}
+
+	/**
+	 * Assign new user to a project
+	 * @param Project $project
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function assign($project){
+
+		// Get input
+		$input = Input::all();
+
+		// Validate the new assigned user
+		$validator_input = array('email' => $input['assign_new']);
+		$rules = array('email' => 'required|email|exists:users');
+		$messages = array(
+			'required' => 'The :attribute is required.',
+			'email' => 'The :attribute format is invalid. (Eg: example@uoguelph.ca)',
+			'exists' => 'The :attribute does not exist within our system.',
+		);
+
+		$validator = Validator::make($validator_input, $rules, $messages);
+
+		if ($validator->fails()){
+			return Redirect::to('/admin/project/'.$project->id.'/edit')->withErrors($validator->messages());
+		}
+		else{
+			// Save new attached user
+			$user = User::where('email', '=', $input['assign_new'])->first();
+			$project->users()->attach($user);
+
+			return Redirect::to('/admin/project/'.$project->id.'/edit')->with('info', 'A new user has been assigned to the project.');
+		}
+	}
+
+	/**
+	 * Remove a user from a project
+	 *
+	 * @param Project $project
+	 * @param User $user
+	 */
+	public function unassign($project, $user){
+		$project->users()->detach($user);
+		return Redirect::to('/admin/project/'.$project->id.'/edit')->with('info', 'The user has been removed from the project.');
 	}
 
 	/**

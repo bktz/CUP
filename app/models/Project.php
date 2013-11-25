@@ -24,6 +24,7 @@ class Project extends Ardent implements PresentableInterface{
 		'motivation'               => 'required|between:1,255',
 		'resources'                => 'required',
 		'constraints'              => 'required',
+		'state'                    => 'integer|between:1,6', //enum('Application','Available','InProgress','Complete','Canceled','NA')
 	);
 
 	public static $customMessages = array(

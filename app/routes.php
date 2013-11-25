@@ -26,6 +26,13 @@ Route::model('project', 'Project');
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function (){
 
 	# Project Management
+	// remove a user from project a project
+	Route::delete('project/{project}/unassign/{user}', 'AdminProjectController@unassign')
+		->where('project', '[0-9]+')->where('user', '[0-9]+');
+	// assign a user to project a project
+	Route::post('project/{project}/assign', 'AdminProjectController@assign')
+		->where('project', '[0-9]+');
+
 	Route::resource('project', 'AdminProjectController');
 
 	# Tags Management

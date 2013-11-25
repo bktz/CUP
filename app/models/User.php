@@ -32,6 +32,16 @@ class User extends ConfideUser implements PresentableInterface {
         return $this->where('username', '=', $username)->first();
     }
 
+	/**
+	 * Get user by email
+	 * @param String $email
+	 * @return mixed
+	 */
+	public function getUserByEmail( $email )
+	{
+		return $this->where('email', '=', $email)->first();
+	}
+
     /**
      * Get the date the user was created.
      *
