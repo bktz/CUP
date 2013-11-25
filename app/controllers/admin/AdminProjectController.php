@@ -141,6 +141,9 @@ class AdminProjectController extends BaseController {
 		$project->constraints = $input['constraints'];
 		$project->state = $input['state'];
 
+		$input['tags'] = isset($input['tags']) ? $input['tags'] : array(); //verify that there are some goals and tags in the $input
+		$input['goals'] = isset($input['goals']) ? $input['goals'] : array();
+		
 		if ($project->update()) {
 
 			// Delete project goals and then re-create them

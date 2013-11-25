@@ -214,7 +214,34 @@ class ProjectController extends BaseController {
 		$project->motivation =$input['motivation'];
 		$project->resources = $input['resources'];
 		$project->constraints = $input['constraints'];
-
+        
+		/** format enum for state */
+		switch ($project->state)
+		{
+		    case 'Application':
+		        $project->state = 1;
+		        break;
+		    case 'Available':
+		        $project->state = 2;
+		        break;
+		    case 'InProgress':
+		        $project->state = 3;
+		        break;
+		    case 'Complete':
+		        $project->state = 4;
+		        break;
+		    case 'Canceled':
+		        $project->state = 5;
+		        break;
+		    case 'NA':
+		        $project->state = 6;
+		        break;
+		}
+		
+		
+		$input['tags'] = isset($input['tags']) ? $input['tags'] : array(); //verify that there are some goals and tags in the $input
+		$input['goals'] = isset($input['goals']) ? $input['goals'] : array();
+		
 		if ($project->update()) {
 
 			// Delete project goals and then re-create them
