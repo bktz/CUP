@@ -323,6 +323,9 @@
 			{{ Form::label('goals'.$count, 'Goal', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-8">
 				<input id="goals{{$count}}" class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
+				@if ($count == 0)
+				    <p class="help-block">Leave a goal blank to delete it.</p>
+				@endif		
 			</div>
 			{{ Form::label('complete'.$count, 'Completed', Array("class"=>"col-md-1 control-label")) }}
 			<div class="col-md-1">
@@ -338,6 +341,9 @@
 			{{ Form::label('goals'.$count, 'Goal', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-8">
 				<input id="goals{{$count}}" class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal->goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
+				@if ($count == 0)
+				    <p class="help-block">Leave a goal blank to delete it.</p>
+				@endif						
 			</div>
 			{{ Form::label('complete'.$goal->id, 'Completed', Array("class"=>"col-md-1 control-label")) }}
 			<div class="col-md-1">
@@ -351,6 +357,7 @@
 			{{ Form::label('goals[]', 'Goal', Array("class"=>"col-md-2 control-label")) }}
 			<div class="col-md-8">
 				<input id="goals[]" class="form-control" placeholder="Project Goal" type="text" name="goals[]" {{ (Auth::check() ? '' : 'disabled') }} / >
+				<p class="help-block">Leave a goal blank to delete it.</p>				
 			</div>
 			{{ Form::label('complete', 'Completed', Array("class"=>"col-md-1 control-label")) }}
 			<div class="col-md-1">

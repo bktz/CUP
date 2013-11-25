@@ -190,7 +190,7 @@
 						<input id="goals{{$count}}" class="form-control" placeholder="Project Goal" type="text" name="goals[]" value="{{ $goal }}" {{ (Auth::check() ? '' : 'disabled') }} / >
 						@if ($count == 0)
 						    <p class="help-block">Leave a goal blank to delete it.</p>
-						@endif													
+						@endif												
 					</div>
 					{{ Form::label('complete'.$count, 'Completed', Array("class"=>"col-md-1 control-label")) }}
 					<div class="col-md-1">
