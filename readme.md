@@ -378,3 +378,7 @@ For full usage see [Laravel 4 Generators Readme](https://github.com/JeffreyWay/L
 
 1. All authors must be attributed in code and final products of derivative works.
 2. Links to all authors' respective websites must be included in code and final products of derivative works.
+
+-----
+
+Based on [https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site](andrew13/Laravel-4-Bootstrap-Starter-Site)
