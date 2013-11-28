@@ -28,3 +28,6 @@ app/_ide_helpers.php
 .buildpath
 .project
 .settings/
+
+# Local site configuations
+site.conf
