@@ -28,10 +28,6 @@ The Community University Portal provides a resource for community-university pro
 * [reCaptcha](https://github.com/greggilbert/recaptcha)
     * A reCAPTCHA Validator for Laravel 4.
 
-##Some stackoverflow links that may be useful during development:
-
-* [Override Default Model Save Function](http://stackoverflow.com/questions/18199756/laravel-4-trouble-overriding-models-save-method)
-
 -----
 
 ##Requirements
@@ -381,4 +377,4 @@ For full usage see [Laravel 4 Generators Readme](https://github.com/JeffreyWay/L
 
 -----
 
-Based on [https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site](andrew13/Laravel-4-Bootstrap-Starter-Site)
+Based on [andrew13/Laravel-4-Bootstrap-Starter-Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
