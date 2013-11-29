@@ -1,5 +1,5 @@
 {
-    "name": "bktz/CUP",
+    "name": "bktz/cup",
     "description": "The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph.",
     "keywords": ["laravel","CUP", "UoGuelph"],
     "license": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License",
