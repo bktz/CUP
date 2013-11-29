@@ -4,40 +4,39 @@ The Community University Portal provides a resource for community-university pro
 
 Project Status: [![ProjectStatus](http://stillmaintained.com/bktz/CUP.png)](http://stillmaintained.com/bktz/CUP)
 
-##Here is a list of all the packages that CUP uses:
+###Here is a list of all the packages that CUP uses:
 
-* [Laravel 4 Bootstrap Starter Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
-    * CUP is an extension of Laravel 4 Bootstrap Starter Site
-* [Laravel 4 Generators](https://github.com/JeffreyWay/Laravel-4-Generators/blob/master/readme.md)
-    * This Laravel 4 package provides a variety of generators to speed up your development process.
-* [Presenter](https://github.com/robclancy/presenter)
-    * Presenter is a very simply class that overloads methods and variables so that you can add extra logic to your objects or arrays without adding view logic to areas like your models or controllers and also keeps any extra logic our of your views.
+* [Ardent](https://github.com/laravelbook/ardent)
+    * Self-validating smart models for Laravel Framework 4's Eloquent O/RM.
 * [Basset](http://jasonlewis.me/code/basset/4.0)
     * Basset is a better asset management package for the Laravel framework.
 * [Carbon](https://github.com/briannesbitt/Carbon)
     * A simple API extension for DateTime with PHP 5.3+.
-* [Ardent Documentation](https://github.com/laravelbook/ardent)
-    * Self-validating smart models for Laravel Framework 4's Eloquent O/RM.
-* [Zizaco/Entrust Documentation](https://github.com/zizaco/entrust)
+* [Laravel 4 Generators](https://github.com/JeffreyWay/Laravel-4-Generators/blob/master/readme.md)
+    * This Laravel 4 package provides a variety of generators to speed up your development process.
+* [Presenter](https://github.com/robclancy/presenter)
+    * Presenter is a very simply class that overloads methods and variables so that you can add extra logic to your objects or arrays without adding view logic to areas like your models or controllers and also keeps any extra logic our of your views.
+* [Entrust](https://github.com/zizaco/entrust)
     * Entrust provides a flexible way to add Role-based Permissions to Laravel4.
-* [Zizaco/Confide Documentation](https://github.com/zizaco/confide)
+* [Confide](https://github.com/zizaco/confide)
     * Confide is a authentication solution for Laravel4 made to eliminate repetitive tasks involving the management of users: Account creation, login, logout, confirmation by e-mail, password reset, etc.
+* [CanvasJS](http://canvasjs.com/docs/charts/intro/)
+    * CanvasJS is an easy to use HTML5 and Javascript Charting library.
 
-##To be added in the future:
+Forked from [andrew13/Laravel-4-Bootstrap-Starter-Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site) which was based on [brunogaspar/laravel4-starter-kit](https://github.com/brunogaspar/laravel4-starter-kit).
+
+###Packages to add in future releases:
 
 * [Laravel MongoDB](https://github.com/jenssegers/Laravel-MongoDB)
     * An Eloquent model and Query builder with support for MongoDB, inspired by LMongo, but using the original Laravel methods. This library extends the original Laravel classes, so it uses exactly the same methods.
 * [reCaptcha](https://github.com/greggilbert/recaptcha)
     * A reCAPTCHA Validator for Laravel 4.
 
------
-
-##Requirements
+##How to install
+###Requirements
 
 	PHP >= 5.4.0 (Entrust requires 5.4, this is an increase over Laravel's 5.3.7 requirement)
 	MCrypt PHP Extension
-
-##How to install
 ### Step 1: Download Dependencies
 #### Option 1: Composer is not installed globally
 
@@ -241,10 +240,9 @@ to:
             })->apply('JsMin');
 ```
 
------
 ## Included Package Information
 <a name="confide"></a>
-## Confide Authentication Solution
+### Confide Authentication Solution
 
 Used for the user auth and registration. In general for user controllers you'll want to use something like the following:
 
@@ -259,7 +257,7 @@ Used for the user auth and registration. In general for user controllers you'll 
 For full usage see [Zizaco/Confide Documentation](https://github.com/zizaco/confide)
 
 <a name="entrust"></a>
-## Entrust Role Solution
+### Entrust Role Solution
 
 Entrust provides a flexible way to add Role-based Permissions to Laravel4.
 
@@ -275,14 +273,14 @@ Entrust provides a flexible way to add Role-based Permissions to Laravel4.
 For full usage see [Zizaco/Entrust Documentation](https://github.com/zizaco/entrust)
 
 <a name="ardent"></a>
-## Ardent - Used for handling repetitive validation tasks.
+### Ardent - Used for handling repetitive validation tasks.
 
 Self-validating, secure and smart models for Laravel 4's Eloquent ORM
 
 For full usage see [Ardent Documentation](https://github.com/laravelbook/ardent)
 
 <a name="carbon"></a>
-## Carbon
+### Carbon
 
 A fluent extension to PHPs DateTime class.
 
@@ -306,7 +304,7 @@ $worldWillEnd = Carbon::createFromDate(2012, 12, 21, 'GMT');
 For full usage see [Carbon](https://github.com/briannesbitt/Carbon)
 
 <a name="basset"></a>
-## Basset
+### Basset
 
 A Better Asset Management package for Laravel.
 
@@ -330,7 +328,7 @@ I would recommend using development collections for development instead of compi
 For full usage see [Using Basset by Jason Lewis](http://jasonlewis.me/code/basset/4.0)
 
 <a name="presenter"></a>
-## Presenter
+### Presenter
 
 Simple presenter to wrap and render objects. Think of it of a way to modify an asset for the view layer only.
 Control the presentation in the presentation layer not in the model.
@@ -342,7 +340,7 @@ The `$userObject` will function the same unless a method is called that is a mem
 For full usage see [Presenter Readme](https://github.com/robclancy/presenter)
 
 <a name="generators"></a>
-## Laravel 4 Generators
+### Laravel 4 Generators
 
 Laravel 4 Generators package provides a variety of generators to speed up your development process. These generators include:
 
@@ -359,7 +357,6 @@ Laravel 4 Generators package provides a variety of generators to speed up your d
 For full usage see [Laravel 4 Generators Readme](https://github.com/JeffreyWay/Laravel-4-Generators/blob/master/readme.md)
 
 
------
 ##License
 
 [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US)
@@ -377,6 +374,5 @@ For full usage see [Laravel 4 Generators Readme](https://github.com/JeffreyWay/L
 1. All authors must be attributed in code and final products of derivative works.
 2. Links to all authors' respective websites must be included in code and final products of derivative works.
 
------
-
-Based on [andrew13/Laravel-4-Bootstrap-Starter-Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
+##Thanks
+Special thanks to [andrew13/Laravel-4-Bootstrap-Starter-Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site) and all the contributors for the amazing project and detailed readme.
