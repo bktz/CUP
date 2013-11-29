@@ -2,6 +2,8 @@
 
 The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph.
 
+Project Status: [![ProjectStatus](http://stillmaintained.com/bktz/CUP.png)](http://stillmaintained.com/bktz/CUP)
+
 ##Here is a list of all the packages that CUP uses:
 
 * [Laravel 4 Bootstrap Starter Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site)
