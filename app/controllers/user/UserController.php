@@ -38,9 +38,17 @@ class UserController extends BaseController {
      */
     public function postIndex()
     {
-        $this->user->username = Input::get( 'username' );
-        $this->user->email = Input::get( 'email' );
-
+        $this->user->username = Input::get('username');
+        $this->user->email = Input::get('email');          
+        
+        $accountType = Input::get('Account_Type');        
+        if($accountType == 1 && !(strpos($this->user->email, '@uoguelph') !== FALSE))
+        {
+        	return Redirect::to('user/create')
+        	->withInput(Input::except('password','password_confirmation'))        	 
+        	->with('error', Lang::get('admin/users/messages.not_campus_domain'));
+        }
+        	
         $password = Input::get( 'password' );
         $passwordConfirmation = Input::get( 'password_confirmation' );
 

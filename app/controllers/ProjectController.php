@@ -75,7 +75,7 @@ class ProjectController extends BaseController {
 	}
 
 	/**
-	 * Store a newly created User in database.
+	 * Store a newly created Project in the database.
 	 *
 	 * @return Response
 	 */
