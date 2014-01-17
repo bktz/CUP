@@ -103,12 +103,18 @@ class UserController extends BaseController {
         if ($validator->passes())
         {
             $oldUser = clone $user;
-            $user->username = Input::get( 'username' );
-            $user->email = Input::get( 'email' );
+            $user->username = Input::get('username');
+            $user->email = Input::get('email');
 
-            $password = Input::get( 'password' );
-            $passwordConfirmation = Input::get( 'password_confirmation' );
+            $passwordOld = Input::get('password_old');            
+            $password = Input::get('password');
+            $passwordConfirmation = Input::get('password_confirmation');
 
+            if($passwordOld !== $oldUser->password)
+            {
+            	return Redirect::to('users')->with('error', Lang::get('admin/users/messages.old_password_incorrect'));            	 
+            }
+            
             if(!empty($password)) {
                 if($password === $passwordConfirmation) {
                     $user->password = $password;
@@ -121,10 +127,16 @@ class UserController extends BaseController {
                     return Redirect::to('users')->with('error', Lang::get('admin/users/messages.password_does_not_match'));
                 }
             } else {
-                unset($user->password);
+            	unset($user->password);
                 unset($user->password_confirmation);
             }
 
+            $user->first_name = Input::get('first_name');
+            $user->last_name = Input::get('last_name');
+            $user->organization = Input::get('organization');
+            $user->phone_no = Input::get('phone_no');
+            $user->phone_no_ext = Input::get('phone_no_ext');
+            
             $user->prepareRules($oldUser, $user);
 
             // Save if valid. Password field will be hashed before save

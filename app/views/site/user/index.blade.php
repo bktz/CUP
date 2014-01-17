@@ -45,9 +45,19 @@ body {
         </div>
         <!-- ./ email -->
 
-        <!-- Password -->
+        <!-- Old Password -->
         <div class="form-group {{{ $errors->has('password') ? 'error' : '' }}}">
-            <label class="col-md-2 control-label" for="password">Password</label>
+            <label class="col-md-2 control-label" for="password_old">Old Password</label>
+            <div class="col-md-10">
+                <input class="form-control" type="password" name="password_old" id="password_old" value="" />
+                {{{ $errors->first('password', '<span class="help-inline">:message</span>') }}}
+            </div>
+        </div>
+        <!-- ./ password -->
+        
+        <!-- New Password -->
+        <div class="form-group {{{ $errors->has('password') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="password">New Password</label>
             <div class="col-md-10">
                 <input class="form-control" type="password" name="password" id="password" value="" />
                 {{{ $errors->first('password', '<span class="help-inline">:message</span>') }}}
