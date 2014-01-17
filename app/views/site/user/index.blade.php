@@ -64,6 +64,60 @@ body {
             </div>
         </div>
         <!-- ./ password confirm -->
+        
+        <br>
+        <br>
+        
+        <!-- First Name -->
+        <div class="form-group {{{ $errors->has('first_name') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="username">First Name</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="first_name" id="first_name" value="{{{ Input::old('first_name', $user->first_name) }}}" />
+                {{{ $errors->first('first_name', '<span class="help-inline">:message</span>') }}}
+            </div>
+        </div>
+        <!-- ./ First Name -->
+        
+        <!-- Last Name -->
+        <div class="form-group {{{ $errors->has('last_name') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="last_name">Last Name</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="last_name" id="last_name" value="{{{ Input::old('last_name', $user->last_name) }}}" />
+                {{{ $errors->first('last_name', '<span class="help-inline">:message</span>') }}}
+            </div>
+        </div>
+        <!-- ./ Last Name -->
+        
+        <!-- Organization -->
+        <div class="form-group {{{ $errors->has('organization') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="organization">Organization</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="organization" id="organization" value="{{{ Input::old('organization', $user->organization) }}}" />
+                {{{ $errors->first('organization', '<span class="help-inline">:message</span>') }}}
+            </div>
+        </div>
+        <!-- ./ Organization -->
+        
+        <!-- Phone Number -->
+        <div class="form-group {{{ $errors->has('phone_number') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="phone_number">Phone Number</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="phone_number" id="phone_number" value="{{{ Input::old('phone_number', $user->phone_number) }}}" />
+                {{{ $errors->first('phone_number', '<span class="help-inline">:message</span>') }}}
+            </div>
+        </div>
+        <!-- ./ Phone Number -->
+        
+        <!-- Phone Number Ext -->
+        <div class="form-group {{{ $errors->has('phone_number_ext') ? 'error' : '' }}}">
+            <label class="col-md-2 control-label" for="phone_number_ext">Phone Number Extension</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="phone_number_ext" id="phone_number_ext" value="{{{ Input::old('phone_number_ext', $user->phone_number_ext) }}}" />
+                {{{ $errors->first('phone_number_ext', '<span class="help-inline">:message</span>') }}}
+            </div>
+        </div>
+        <!-- ./ Phone Number Ext -->
+        
     </div>
     <!-- ./ general tab -->
 
