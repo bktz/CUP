@@ -29,7 +29,7 @@ body {
         <div class="form-group {{{ $errors->has('username') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="username">Username</label>
             <div class="col-md-10">
-                <input class="form-control" type="text" name="username" id="username" value="{{{ Input::old('username', $user->username) }}}" />
+                <input id= "username" disabled="true" class="form-control" type="text" name="username" value="{{{ Input::old('username', $user->username) }}}" />
                 {{{ $errors->first('username', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -39,7 +39,7 @@ body {
         <div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="email">Email</label>
             <div class="col-md-10">
-                <input class="form-control" type="text" name="email" id="email" value="{{{ Input::old('email', $user->email) }}}" />
+                <input id="email" class="form-control" type="text" name="email" value="{{{ Input::old('email', $user->email) }}}" />
                 {{{ $errors->first('email', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -49,7 +49,7 @@ body {
         <div class="form-group {{{ $errors->has('password') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="password_old">Old Password</label>
             <div class="col-md-10">
-                <input class="form-control" type="password" name="password_old" id="password_old" value="" />
+                <input id="password_old" class="form-control" type="password" name="password_old" value="" />
                 {{{ $errors->first('password', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -59,7 +59,7 @@ body {
         <div class="form-group {{{ $errors->has('password') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="password">New Password</label>
             <div class="col-md-10">
-                <input class="form-control" type="password" name="password" id="password" value="" />
+                <input id="password" class="form-control" type="password" name="password" value="" />
                 {{{ $errors->first('password', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -69,7 +69,7 @@ body {
         <div class="form-group {{{ $errors->has('password_confirmation') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="password_confirmation">Password Confirm</label>
             <div class="col-md-10">
-                <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" value="" />
+                <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" value="" />
                 {{{ $errors->first('password_confirmation', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -80,9 +80,9 @@ body {
         
         <!-- First Name -->
         <div class="form-group {{{ $errors->has('first_name') ? 'error' : '' }}}">
-            <label class="col-md-2 control-label" for="username">First Name</label>
+            <label class="col-md-2 control-label" for="first_name">First Name</label>
             <div class="col-md-10">
-                <input class="form-control" type="text" name="first_name" id="first_name" value="{{{ Input::old('first_name', $user->first_name) }}}" />
+                <input id="first_name" class="form-control" type="text" name="first_name" value="{{{ Input::old('first_name', $user->first_name) }}}" />
                 {{{ $errors->first('first_name', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -92,7 +92,7 @@ body {
         <div class="form-group {{{ $errors->has('last_name') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="last_name">Last Name</label>
             <div class="col-md-10">
-                <input class="form-control" type="text" name="last_name" id="last_name" value="{{{ Input::old('last_name', $user->last_name) }}}" />
+                <input id="last_name" class="form-control" type="text" name="last_name" value="{{{ Input::old('last_name', $user->last_name) }}}" />
                 {{{ $errors->first('last_name', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -102,7 +102,7 @@ body {
         <div class="form-group {{{ $errors->has('organization') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="organization">Organization</label>
             <div class="col-md-10">
-                <input class="form-control" type="text" name="organization" id="organization" value="{{{ Input::old('organization', $user->organization) }}}" />
+                <input id="organization" class="form-control" type="text" name="organization" value="{{{ Input::old('organization', $user->organization) }}}" />
                 {{{ $errors->first('organization', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -112,7 +112,7 @@ body {
         <div class="form-group {{{ $errors->has('phone_number') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="phone_number">Phone Number</label>
             <div class="col-md-10">
-                <input class="form-control" type="text" name="phone_number" id="phone_number" value="{{{ Input::old('phone_number', $user->phone_number) }}}" />
+                <input id="phone_number" class="form-control" type="text" name="phone_number" value="{{{ Input::old('phone_number', $user->phone_number) }}}" />
                 {{{ $errors->first('phone_number', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
@@ -122,7 +122,7 @@ body {
         <div class="form-group {{{ $errors->has('phone_number_ext') ? 'error' : '' }}}">
             <label class="col-md-2 control-label" for="phone_number_ext">Phone Number Extension</label>
             <div class="col-md-10">
-                <input class="form-control" type="text" name="phone_number_ext" id="phone_number_ext" value="{{{ Input::old('phone_number_ext', $user->phone_number_ext) }}}" />
+                <input id="phone_number_ext" class="form-control" type="text" name="phone_number_ext" value="{{{ Input::old('phone_number_ext', $user->phone_number_ext) }}}" />
                 {{{ $errors->first('phone_number_ext', '<span class="help-inline">:message</span>') }}}
             </div>
         </div>
