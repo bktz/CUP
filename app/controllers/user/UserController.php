@@ -100,8 +100,7 @@ class UserController extends BaseController {
         $validator = Validator::make(Input::all(), $user->getUpdateRules());
 
 
-        if ($validator->passes())
-        {
+        //if ($validator->passes()) { //ends up validating the form inputs which fails if the password isn't set to be changed
             $oldUser = clone $user;
             $user->username = Input::get('username');
             $user->email = Input::get('email');
@@ -110,38 +109,44 @@ class UserController extends BaseController {
             $password = Input::get('password');
             $passwordConfirmation = Input::get('password_confirmation');
 
-            if($passwordOld !== $oldUser->password)
-            {
-            	return Redirect::to('users')->with('error', Lang::get('admin/users/messages.old_password_incorrect'));            	 
-            }
             
-            if(!empty($password)) {
-                if($password === $passwordConfirmation) {
-                    $user->password = $password;
-                    // The password confirmation will be removed from model
-                    // before saving. This field will be used in Ardent's
-                    // auto validation.
-                    $user->password_confirmation = $passwordConfirmation;
-                } else {
-                    // Redirect to the new user page
-                    return Redirect::to('users')->with('error', Lang::get('admin/users/messages.password_does_not_match'));
-                }
-            } else {
-            	unset($user->password);
-                unset($user->password_confirmation);
-            }
-
+//            if(!empty($passwordOld)) {
+            	
+// 	            if($passwordOld !== $oldUser->password) {
+// 	            	return Redirect::to('user')->with('error', Lang::get('admin/users/messages.old_password_incorrect'));            	 
+// 	            }
+	            
+	            if(!empty($password)) {
+	                if($password === $passwordConfirmation) {
+	                    $user->password = $password;
+	                    // The password confirmation will be removed from model
+	                    // before saving. This field will be used in Ardent's
+	                    // auto validation.
+	                    $user->password_confirmation = $passwordConfirmation;
+	                } else {
+	                    // Redirect to the new user page
+	                    return Redirect::to('user')->with('error', Lang::get('admin/users/messages.password_does_not_match'));
+	                }
+	            } else {
+	            	unset($user->password);
+	                unset($user->password_confirmation);
+	            }
+            //}
+            
             $user->first_name = Input::get('first_name');
             $user->last_name = Input::get('last_name');
             $user->organization = Input::get('organization');
-            $user->phone_no = Input::get('phone_no');
-            $user->phone_no_ext = Input::get('phone_no_ext');
+            $user->phone_number = Input::get('phone_number');
+            $user->phone_number_ext = Input::get('phone_number_ext');
             
             $user->prepareRules($oldUser, $user);
 
             // Save if valid. Password field will be hashed before save
             $user->amend();
-        }
+//         } else {
+//         	print "fail fail fail XD";
+//         	die;
+//         }
 
         // Get validation errors (see Ardent package)
         $error = $user->errors()->all();
