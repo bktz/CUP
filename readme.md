@@ -7,6 +7,8 @@ The Community University Portal provides a resource for community-university pro
 [![Latest Stable Version](https://poser.pugx.org/bktz/cup/v/stable.png)](https://packagist.org/packages/bktz/cup)
 [![Total Downloads](https://poser.pugx.org/bktz/cup/downloads.png)](https://packagist.org/packages/bktz/cup)
 
+![screenshot1](https://raw2.github.com/bktz/CUP/master/ScreenShots/Screenshot%20from%202014-01-20%2016:35:07.png)
+
 ###Here is a list of all the packages that CUP uses:
 
 * [Ardent](https://github.com/laravelbook/ardent)
