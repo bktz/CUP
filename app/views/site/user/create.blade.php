@@ -11,10 +11,10 @@
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">		
 		<fieldset>
 			<div class="form-group">
-				<label class="col-md-2 control-label" for="username">Select account type </label>
+				<label class="col-md-2 control-label" for="Account_Type">Select account type </label>
 				<div class="col-md-10">
-					<input type="radio" name="Account_Type" value="0" alt="Community Option" required <?php if(Input::old('Account_Type')== "0") { echo 'checked="checked"'; }?>> Community
-					<input type="radio" name="Account_Type" value="1" alt="Campus Option" <?php if(Input::old('Account_Type')== "1") { echo 'checked="checked"'; }?>> Campus
+					<input id="Account_Type" type="radio" name="Account_Type" value="0" alt="Community Option" required <?php if(Input::old('Account_Type')== "0") { echo 'checked="checked"'; }?>> Community
+					<input id="Account_Type" type="radio" name="Account_Type" value="1" alt="Campus Option" <?php if(Input::old('Account_Type')== "1") { echo 'checked="checked"'; }?>> Campus
 					<p class="help-block">Your account is a Campus account if you want to take on projects and a Community account if you are submitting them.</p>			
 				</div>
 			</div>
