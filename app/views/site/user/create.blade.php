@@ -29,21 +29,21 @@
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="email">Email </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" name="email" value="{{Input::old('email')}}" alt="Email Input Box" placeholder="John@doe.com" required><br>
+					<input id="email" type="text" class="form-control" name="email" value="{{Input::old('email')}}" alt="Email Input Box" placeholder="John@doe.com" required><br>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="password">Password </label>
 				<div class="col-md-10">
-					<input type="password" class="form-control" name="password" value="" alt="Password Input Box" placeholder="*********" required><br>
+					<input id="password" type="password" class="form-control" name="password" value="" alt="Password Input Box" placeholder="*********" required><br>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label class="col-md-2 control-label" for="re-enter password">Re-Enter Password </label>
+				<label class="col-md-2 control-label" for="re-enter-password">Re-Enter Password </label>
 				<div class="col-md-10">
-					<input type="password" class="form-control" name="password_confirmation" value="" alt="Re-Enter Password Input Box" placeholder="*********" required><br>
+					<input id="re-enter-password" type="password" class="form-control" name="password_confirmation" value="" alt="Re-Enter Password Input Box" placeholder="*********" required><br>
 				</div>
 			</div>
 			
