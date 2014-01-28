@@ -40,51 +40,66 @@ class UserController extends BaseController {
 	 */
 	public function postIndex()
 	{
-		$this->user->username = Input::get('username');
-		$this->user->email = Input::get('email');
 
-		$accountType = Input::get('Account_Type');
-		if($accountType == 1 && !(strpos($this->user->email, '@uoguelph') !== FALSE)) {
-			return Redirect::to('user/create')
-			->withInput(Input::except('password','password_confirmation'))
-			->with('error', Lang::get('admin/users/messages.not_campus_domain'));
-		}
-			
-		$password = Input::get( 'password' );
-		$passwordConfirmation = Input::get( 'password_confirmation' );
+		$rules = array(
+				// ...
+				'recaptcha_response_field' => 'required|recaptcha',
+		);
+		
+		$capchaValidator = Validator::make(Input::all(), $rules);
+		
+		if($capchaValidator->passes())
+		{ //input new users for a passing validator only
+			$this->user->username = Input::get('username');
+			$this->user->email = Input::get('email');
 
-		if(!empty($password)) {
-			if($password === $passwordConfirmation) {
-				$this->user->password = $password;
-				// The password confirmation will be removed from model
-				// before saving. This field will be used in Ardent's
-				// auto validation.
-				$this->user->password_confirmation = $passwordConfirmation;
-			} else {
-				// Redirect to the new user page
+			$accountType = Input::get('Account_Type');
+			if($accountType == 1 && !(strpos($this->user->email, '@uoguelph') !== FALSE)) {
 				return Redirect::to('user/create')
 				->withInput(Input::except('password','password_confirmation'))
-				->with('error', Lang::get('admin/users/messages.password_does_not_match'));
+				->with('error', Lang::get('admin/users/messages.not_campus_domain'));
+			}
+
+			$password = Input::get( 'password' );
+			$passwordConfirmation = Input::get( 'password_confirmation' );
+
+			if(!empty($password)) {
+				if($password === $passwordConfirmation) {
+					$this->user->password = $password;
+					// The password confirmation will be removed from model
+					// before saving. This field will be used in Ardent's
+					// auto validation.
+					$this->user->password_confirmation = $passwordConfirmation;
+				} else {
+					// Redirect to the new user page
+					return Redirect::to('user/create')
+					->withInput(Input::except('password','password_confirmation'))
+					->with('error', Lang::get('admin/users/messages.password_does_not_match'));
+				}
+			} else {
+				unset($this->user->password);
+				unset($this->user->password_confirmation);
+			}
+
+			// Save if valid. Password field will be hashed before save
+			$this->user->save();
+
+			if ( $this->user->id ) {
+				// Redirect with success message, You may replace "Lang::get(..." for your custom message.
+				return Redirect::to('user/login')
+				->with( 'notice', Lang::get('user/user.user_account_created') );
+			} else {
+				// Get validation errors (see Ardent package)
+				$error = $this->user->errors()->all();
+
+				return Redirect::to('user/create')
+				->withInput(Input::except('password'))
+				->with( 'error', $error );
 			}
 		} else {
-			unset($this->user->password);
-			unset($this->user->password_confirmation);
-		}
-
-		// Save if valid. Password field will be hashed before save
-		$this->user->save();
-
-		if ( $this->user->id ) {
-			// Redirect with success message, You may replace "Lang::get(..." for your custom message.
-			return Redirect::to('user/login')
-			->with( 'notice', Lang::get('user/user.user_account_created') );
-		} else {
-			// Get validation errors (see Ardent package)
-			$error = $this->user->errors()->all();
-
 			return Redirect::to('user/create')
-			->withInput(Input::except('password'))
-			->with( 'error', $error );
+			->withInput(Input::except('password','password_confirmation'))
+			->with('error', Lang::get('validation.recaptcha'));				
 		}
 	}
 
@@ -128,7 +143,7 @@ class UserController extends BaseController {
 			unset($user->password);
 			unset($user->password_confirmation);
 		}
-		
+
 		$user->first_name = Input::get('first_name');
 		$user->last_name = Input::get('last_name');
 		$user->organization = Input::get('organization');

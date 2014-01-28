@@ -120,7 +120,8 @@ return array(
         'Basset\BassetServiceProvider', // Better Asset Management
         'Robbo\Presenter\PresenterServiceProvider', // Presenter
         'Bllim\Datatables\DatatablesServiceProvider', // Datatables
-
+    	'Greggilbert\Recaptcha\RecaptchaServiceProvider', //recapcha
+    		
         /* Uncomment for use in development */
         'Way\Generators\GeneratorsServiceProvider', // Generators
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // IDE Helpers

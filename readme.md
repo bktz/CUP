@@ -344,6 +344,10 @@ The `$userObject` will function the same unless a method is called that is a mem
 
 For full usage see [Presenter Readme](https://github.com/robclancy/presenter)
 
+### reCAPTCHA
+
+We use the reCAPTCHA as an accessible tool to verify that real people are signing up for accounts on the site. To enable to reCAPTCHA you must get a key from Google here: http://www.google.com/recaptcha. You must then input the public and private keys you receive into the /app/config/packages/greggilbert/recaptcha/config.php file.
+
 <a name="generators"></a>
 ### Laravel 4 Generators
 

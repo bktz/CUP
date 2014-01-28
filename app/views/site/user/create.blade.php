@@ -49,6 +49,10 @@
 			
 			<div class="form-group">
 				<div class="col-md-offset-2 col-md-10">
+					<label class="control-label" for="recaptcha_response_field">reCaptcha</label>
+					<div id="recaptcha_widget_div">
+						{{ Form::captcha(array('theme' => 'clean')); }}
+					</div>					
 					<button type="submit" class="btn btn-success btn-lg">Submit</button>
 				</div>
 			</div>
