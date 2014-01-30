@@ -152,7 +152,7 @@ The starter site uses two asset collections, ***public*** and ***admin***. While
 
 This will build the production assets in ***public/assets/compiled*** which will be versioned in git and should be uploaded to your production server.
 
-#### Ste 8: Configure reCAPTCHA
+### Ste 8: Configure reCAPTCHA
 
 In ***app/config/packages/greggilbert/recaptcha/config.php***, enter your reCAPTCHA public and private keys.
 
