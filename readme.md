@@ -27,15 +27,10 @@ The Community University Portal provides a resource for community-university pro
     * Confide is a authentication solution for Laravel4 made to eliminate repetitive tasks involving the management of users: Account creation, login, logout, confirmation by e-mail, password reset, etc.
 * [CanvasJS](http://canvasjs.com/docs/charts/intro/)
     * CanvasJS is an easy to use HTML5 and Javascript Charting library.
-
-Forked from [andrew13/Laravel-4-Bootstrap-Starter-Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site) which was based on [brunogaspar/laravel4-starter-kit](https://github.com/brunogaspar/laravel4-starter-kit).
-
-###Packages to add in future releases:
-
-* [Laravel MongoDB](https://github.com/jenssegers/Laravel-MongoDB)
-    * An Eloquent model and Query builder with support for MongoDB, inspired by LMongo, but using the original Laravel methods. This library extends the original Laravel classes, so it uses exactly the same methods.
 * [reCaptcha](https://github.com/greggilbert/recaptcha)
     * A reCAPTCHA Validator for Laravel 4.
+
+Forked from [andrew13/Laravel-4-Bootstrap-Starter-Site](https://github.com/andrew13/Laravel-4-Bootstrap-Starter-Site) which was based on [brunogaspar/laravel4-starter-kit](https://github.com/brunogaspar/laravel4-starter-kit).
 
 ##How to install
 ###Requirements
@@ -157,7 +152,24 @@ The starter site uses two asset collections, ***public*** and ***admin***. While
 
 This will build the production assets in ***public/assets/compiled*** which will be versioned in git and should be uploaded to your production server.
 
-### Step 8: Complete!
+#### Ste 8: Configure reCAPTCHA
+
+In ***app/config/packages/greggilbert/recaptcha/config.php***, enter your reCAPTCHA public and private keys.
+
+```
+    /*
+        |--------------------------------------------------------------------------
+        | API Keys
+        |--------------------------------------------------------------------------
+        |
+        | Set the public and private API keys as provided by reCAPTCHA.
+        |
+        */
+        'public_key'        => '',
+        'private_key'        => '',
+```
+
+### Step 9: Complete!
 
 Navigate to your Laravel 4 website and login at /user/login:
 
@@ -346,7 +358,56 @@ For full usage see [Presenter Readme](https://github.com/robclancy/presenter)
 
 ### reCAPTCHA
 
-We use the reCAPTCHA as an accessible tool to verify that real people are signing up for accounts on the site. To enable to reCAPTCHA you must get a key from Google here: http://www.google.com/recaptcha. You must then input the public and private keys you receive into the /app/config/packages/greggilbert/recaptcha/config.php file.
+#### Usage
+
+1. In your form, use `Form::captcha()` to echo out the markup.
+2. In your validation rules, add the following:
+
+```php
+    $rules = array(
+        // ...
+        'recaptcha_response_field' => 'required|recaptcha',
+    };
+```
+
+It's also recommended to add `required` when validating.
+
+#### Customization
+
+reCAPTCHA allows for customization of the widget through a number of options, listed [at the official documentation](https://developers.google.com/recaptcha/docs/customization). You can configure the output of the captcha in several ways.
+
+In the `config.php`, you can create an `options` array to set the default behavior. For example:
+
+```php
+    // ...
+    'options' => array(
+		'theme' => 'white',
+	),
+```
+
+would default all the reCAPTCHAs to the white theme. If you want to further customize, you can pass options through the Form option:
+
+```php
+echo Form::captcha(array('theme' => 'blackglass'));
+```
+
+Alternatively, if you want to set a default template instead of the standard one, you can use the config:
+
+```php
+    // ...
+    'template' => 'customCaptcha',
+```
+
+or you can pass it in through the Form option:
+
+```php
+echo Form::captcha(array('template' => 'customCaptcha'));
+```
+
+
+Options passed into `Form::captcha` will always supercede the configuration.
+
+For full usage see [recaptcha Readme](https://github.com/greggilbert/recaptcha)
 
 <a name="generators"></a>
 ### Laravel 4 Generators
