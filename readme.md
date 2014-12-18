@@ -2,8 +2,6 @@
 
 The Community University Portal provides a resource for community-university project engagement and development between community groups and students, staff, and faculty of the University of Guelph.
 
-<!--- [![Build Status](https://secure.travis-ci.org/bktz/CUP.png)](http://travis-ci.org/bktz/CUP) --->
-[![ProjectStatus](http://stillmaintained.com/bktz/CUP.png)](http://stillmaintained.com/bktz/CUP)
 [![Latest Stable Version](https://poser.pugx.org/bktz/cup/v/stable.png)](https://packagist.org/packages/bktz/cup)
 [![Total Downloads](https://poser.pugx.org/bktz/cup/downloads.png)](https://packagist.org/packages/bktz/cup)
 
